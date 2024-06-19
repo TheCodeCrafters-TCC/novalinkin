@@ -1,0 +1,46 @@
+import { ConnectifyLoaderImg } from "@/assets";
+import { PuffScaleLoader } from "@/lib/components/Loaders";
+import {
+  LoaderImage,
+  StyledLoader,
+  TaskText,
+} from "@/styles/components/styled";
+import { colors, poppins } from "@/styles/global";
+import Head from "next/head";
+import React, { useEffect, useState } from "react";
+
+const LoadingScreen = () => {
+  const messages = [
+    "Fetching articles...",
+    "Loading resources...",
+    "Preparing content...",
+  ];
+  const [currentMessage, setCurrentMessage] = useState(messages[0]);
+
+  useEffect(() => {
+    const ActionInterval = setInterval(() => {
+      setCurrentMessage((prev) => {
+        const currentAction = messages.indexOf(prev);
+        const nextAction = (currentAction + 1) % messages.length;
+        return messages[nextAction];
+      });
+    }, 2000);
+
+    return () => clearInterval(ActionInterval);
+  }, [messages]);
+
+  return (
+    <>
+      <Head>
+        <title>Loading...</title>
+      </Head>
+      <StyledLoader>
+        <LoaderImage src={ConnectifyLoaderImg} alt="Loading" priority />
+        <PuffScaleLoader size={40} color={colors.primaryColor} />
+        <TaskText className={poppins.className}>{currentMessage}</TaskText>
+      </StyledLoader>
+    </>
+  );
+};
+
+export default LoadingScreen;

@@ -1,39 +1,46 @@
-import { AppLayout } from "@/components";
+import { AppLayout, LoadingScreen } from "@/components";
 import { useAppSelector } from "@/hooks/state";
+import { ToasterProvider } from "@/hooks/useToast";
 import { store } from "@/redux/store";
 import { updateTheme } from "@/redux/systemSlice";
 import { GlobalStyle, darkTheme, lightTheme } from "@/styles/global";
 import type { AppProps } from "next/app";
+import { useState } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
 store.dispatch(updateTheme());
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <Provider store={store}>
-      <AppLayout>
-        <ThemedApp Component={Component} pageProps={pageProps} />
-      </AppLayout>
+      <ThemedApp Component={Component} pageProps={pageProps} router={router} />
     </Provider>
   );
 }
 
-function ThemedApp({ Component, pageProps }: AppProps) {
-  const currentTheme = useAppSelector((state) => state.system.theme);
+function ThemedApp({ Component, pageProps, router }: AppProps) {
+  const currentTheme: string = useAppSelector((state) => state.system.theme);
+  const themed = currentTheme;
+  const [isLoading, setIsLoading] = useState(false);
 
-  const theme = {
+  const theme: any = {
     dark: {
-      color: darkTheme,
+      colors: darkTheme,
     },
     light: {
-      color: lightTheme,
+      colors: lightTheme,
     },
   };
+
   return (
-    <ThemeProvider theme={theme[currentTheme]}>
-      <GlobalStyle />
-      <Component {...pageProps} />
+    <ThemeProvider theme={theme[themed]}>
+      <AppLayout isAppLoading={isLoading}>
+        <GlobalStyle />
+        <ToasterProvider>
+          {isLoading ? <LoadingScreen /> : <Component {...pageProps} />}
+        </ToasterProvider>
+      </AppLayout>
     </ThemeProvider>
   );
 }

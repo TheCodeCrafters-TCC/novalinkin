@@ -9,8 +9,8 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <StyledLogoWrap>
-      <LogoWrap src={LogoImg} alt="Logo" />
+    <StyledLogoWrap href="/">
+      <LogoWrap priority src={LogoImg} alt="Logo" />
       <StyledLogoText className={pollerOne.className}>onnectify</StyledLogoText>
     </StyledLogoWrap>
   );

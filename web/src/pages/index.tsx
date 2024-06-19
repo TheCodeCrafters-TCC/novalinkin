@@ -1,12 +1,9 @@
-import { useAppDispatch, useAppSelector } from "@/hooks/state";
-import { toggleTheme } from "@/redux/systemSlice";
+import { DynamicBar, Feed, MobileNavBar, SideBar } from "@/components";
+import { poppins } from "@/styles/global";
+import { MainWrapper } from "@/styles/pages/styled";
 import Head from "next/head";
-import { FaMoon } from "react-icons/fa";
 
 export default function Home() {
-  const systemTheme = useAppSelector((state) => state.system.theme);
-
-  const dispatch = useAppDispatch();
   return (
     <>
       <Head>
@@ -18,13 +15,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <FaMoon
-          color="red"
-          size={50}
-          onClick={() => dispatch(toggleTheme())}
-          style={{ marginTop: 100, marginLeft: 50, cursor: "pointer" }}
-        />
+      <MobileNavBar hasUserIcon hasSearchIcon hasModeIcon />
+      <main className={poppins.className}>
+        <Feed />
       </main>
     </>
   );
