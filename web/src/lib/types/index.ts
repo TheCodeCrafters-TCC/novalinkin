@@ -45,8 +45,10 @@ export type ButtonProps = {
   /**
    * @param radius - Border radius triming for button interface
    */
-  radius: "sm" | "md" | "lg" | "xl";
+  radius: "xs" | "sm" | "md" | "lg" | "xl";
   width: string;
+  height?: string;
+  className?: React.CSSProperties | string;
 };
 
 export type ToastType = {
@@ -64,4 +66,16 @@ export type ToastType = {
     | "top-right"
     | "bottom-left"
     | "bottom-right";
+};
+
+export type NotIconprops = {
+  label: number;
+  varaint: "primary" | "secondary";
+};
+
+export type TruncateProps = {
+  text: string;
+  maxLength: number;
+  className?: React.CSSProperties | string | undefined | any;
+  showClass?: React.CSSProperties | string | undefined | any;
 };

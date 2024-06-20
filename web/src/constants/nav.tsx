@@ -19,19 +19,24 @@ export const MobileTabsData = [
 ];
 
 export const sidenavlink = [
-  { url: "/", label: "Feed", icon: <MdDynamicFeed size={27} /> },
-  { url: "/explore", label: "Explore", icon: <MdExplore size={27} /> },
-  { url: "/notifications", label: "Notification", icon: <FaBell size={27} /> },
+  { url: "/", label: "Feed", icon: <MdDynamicFeed size={25} /> },
+  { url: "/explore", label: "Explore", icon: <MdExplore size={25} /> },
+  {
+    url: "/notifications",
+    hasIcon: true,
+    label: "Notification",
+    icon: <FaBell size={23} />,
+  },
   {
     url: "/chats",
     label: "Chats",
-    icon: <BsFillChatSquareDotsFill size={27} />,
+    icon: <BsFillChatSquareDotsFill size={20} />,
   },
-  { url: "/search", label: "Search", icon: <FiSearch size={27} /> },
+  { url: "/search", label: "Search", icon: <FiSearch size={25} /> },
   {
-    url: "/:user",
+    url: "/profile/slug",
     label: "Profile",
-    icon: <FaUser size={27} />,
+    icon: <FaUser size={20} />,
     isProfile: true,
   },
   {

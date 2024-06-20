@@ -11,10 +11,17 @@ const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 const Nav: React.FC<NavProps> = ({ icon, label, url, push, isProfile }) => {
   const router = useRouter();
   const isActive = router.pathname === url;
-  const activeColor: any = isActive && colors.primaryColor;
+  const activeColor: any = isActive ? colors.primaryColor : undefined;
+  function pushNav() {
+    if (isProfile) {
+      push("/profile/Rapheal");
+    } else {
+      push(url);
+    }
+  }
   return (
     <NavLink
-      onClick={() => push(url)}
+      onClick={pushNav}
       style={{ color: activeColor }}
       className={isActive ? "nav_link" : "__nav_unactive"}
     >

@@ -5,7 +5,6 @@ import { VscError } from "react-icons/vsc";
 import { MdErrorOutline, MdOutlineDone } from "react-icons/md";
 import { colors, poppins } from "@/styles/global";
 import { IoClose } from "react-icons/io5";
-import styled from "styled-components";
 
 const getPosition = (position: ToastType["position"]) => {
   switch (position) {
@@ -64,13 +63,13 @@ const Toast: React.FC<ToastType> = ({
   const toasterLoadWith = isHovered ? loadWidth : "auto";
   const loaderRadius = isHovered ? 0 : 10;
 
-  const ToastLoder = styled.div`
-    height: 7px;
-    width: ${toasterLoadWith};
-    transform: translateY(-9.5px);
-    border-bottom-right-radius: ${loaderRadius};
-    border-bottom-left-radius: 10px;
-  `;
+  // const ToastLoder = styled.div`
+  //   height: 7px;
+  //   width: ${toasterLoadWith};
+  //   transform: translateY(-9.5px);
+  //   border-bottom-right-radius: ${loaderRadius};
+  //   border-bottom-left-radius: 10px;
+  // `;
 
   function holdToast() {
     setIsHovered(true);
@@ -103,17 +102,6 @@ const Toast: React.FC<ToastType> = ({
         </InfoWrap>
         <IoClose size={25} onClick={endToast} className="close" />
       </IToast>
-      <ToastLoder
-        id="toast_con"
-        className={isHovered ? "" : "loadToast"}
-        style={{
-          background: getColor(variant),
-          // width: toasterLoadWith,
-          // borderBottomRightRadius: loaderRadius,
-        }}
-      >
-        .
-      </ToastLoder>
     </StyledToast>
   );
 };

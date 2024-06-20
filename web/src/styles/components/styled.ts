@@ -210,6 +210,33 @@ export const StyledHeaderNav = styled.div`
   }
 `;
 
+export const StyledInfoPage_ = styled.div`
+  display: flex;
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  background: ${({ theme }) => theme.colors.background};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
+  padding: 8px;
+  padding-right: 1.2rem;
+  padding-left: 1.2rem;
+
+  svg {
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.icon};
+    }
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    display: none;
+  }
+`;
+
 export const HImage = styled(Image)`
   width: 45px;
   height: 45px;
@@ -234,22 +261,49 @@ export const HeaderInfoWrap = styled.div`
 export const SideBarContainer = styled.div`
   width: 625px;
   position: relative;
-  background: red;
+  /* background: red; */
 
+  @media screen and (max-width: ${getDevice("dxxl")}) {
+    width: 1100px;
+  }
+  @media screen and (max-width: ${getDevice("dxl")}) {
+    width: 855px;
+  }
+  @media screen and (max-width: ${getDevice("dlg")}) {
+    width: 850px;
+  }
+  @media screen and (max-width: ${getDevice("dmd")}) {
+    width: 740px;
+  }
+  @media screen and (max-width: ${getDevice("dsm")}) {
+    width: 625px;
+  }
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 160px;
+  }
+  @media screen and (max-width: ${getDevice("tab")}) {
+    width: 155px;
+  }
   @media screen and (max-width: ${getDevice("lg")}) {
-    width: 360px;
+    width: 325px;
   }
   @media screen and (max-width: ${getDevice("md")}) {
     display: none;
   }
 `;
 export const DynaBarContainer = styled.div`
-  /* background: red; */
+  background: red;
   width: 460px;
   position: relative;
 
-  @media screen and (max-width: ${getDevice("lg")}) {
+  @media screen and (max-width: ${getDevice("xl")}) {
     width: 430px;
+  }
+  @media screen and (max-width: ${getDevice("tab")}) {
+    display: none;
+  }
+  @media screen and (max-width: ${getDevice("lg")}) {
+    display: none;
   }
   @media screen and (max-width: ${getDevice("md")}) {
     display: none;
@@ -262,6 +316,30 @@ export const FeedWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: ${getDevice("dxxl")}) {
+    width: 600px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("dxl")}) {
+    width: 620px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("dlg")}) {
+    width: 603px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("dmd")}) {
+    width: 550px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("dsm")}) {
+    width: 550px;
+  }
+
   @media screen and (max-width: ${getDevice("md")}) {
     width: 100%;
     margin-top: 4.3rem;
@@ -272,11 +350,37 @@ export const FeedWrapper = styled.div`
 export const NavLinksWrapper = styled.div`
   position: relative;
   display: flex;
-  gap: 1.5rem;
-  /* width: 100%; */
+  gap: 1.3rem;
   flex-direction: column;
   transform: translateX(-3rem);
-  margin-top: 1rem;
+  margin-top: 0;
+
+  ._mobile_share_article {
+    display: none;
+  }
+
+  @media screen and (max-width: ${getDevice("xl")}) {
+    transform: translateX(-1rem);
+
+    button {
+      display: none;
+    }
+    ._mobile_share_article {
+      display: flex;
+      align-items: center;
+      width: auto;
+      height: 40px;
+      gap: 1rem;
+      padding: 9px;
+      border-radius: 7px;
+    }
+  }
+  @media screen and (max-width: ${getDevice("tab")}) {
+    transform: translateX(0rem);
+  }
+  @media screen and (max-width: ${getDevice("lg")}) {
+    transform: translateX(0rem);
+  }
 `;
 
 export const NavLink = styled.div`
@@ -303,6 +407,9 @@ export const NavLink = styled.div`
   }
 
   @media screen and (max-width: ${getDevice("xl")}) {
+    p {
+      display: none;
+    }
   }
 `;
 
@@ -315,6 +422,7 @@ export const StyledAMenu = styled.div`
   border-radius: 11px;
   display: flex;
   flex-direction: column;
+  padding: 0.5rem;
 
   @media screen and (max-width: ${getDevice("md")}) {
     position: fixed;
@@ -322,9 +430,11 @@ export const StyledAMenu = styled.div`
     bottom: 0;
     z-index: 200;
     right: 0;
-    left: 0;
+    left: -1px;
     transform: translateY(0);
     border-radius: 0;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
   }
 `;
 
@@ -332,6 +442,84 @@ export const AMenuItems = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.8rem;
   gap: 10px;
+  border-radius: 14px;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    padding: 1.5rem;
+  }
+`;
+
+export const StyledHeroWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+`;
+
+export const StyledHeroBg = styled.div`
+  width: 100%;
+  height: 280px;
+  background: ${({ theme }) => theme.colors.hero};
+`;
+
+export const StyledProfileImage = styled(Image)`
+  width: 110px;
+  height: 110px;
+  /* transform: translateY(-3.5rem); */
+  margin-left: 2rem;
+  position: absolute;
+  bottom: -3rem;
+`;
+
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 26px;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 1rem;
+
+  h1 {
+    font-size: 23px;
+  }
+  .__desc_tag {
+    font-size: 13px;
+    /* width: 550px; */
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+  }
+`;
+
+export const InfoFlexBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const InfoIconsWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: ${({ theme }) => theme.colors.info};
+  flex-wrap: wrap;
+
+  .__link {
+    cursor: pointer;
+  }
+`;
+
+export const InFlex = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const InfoTag = styled.p`
+  font-size: 12px;
 `;

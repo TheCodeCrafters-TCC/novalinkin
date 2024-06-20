@@ -1,7 +1,7 @@
 "use client";
 import { DeviceType } from "@/types";
 import { Inter, Poller_One, Poppins, Roboto } from "next/font/google";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 const inter = Inter({ subsets: ["latin"] });
 const poppinsLight = Poppins({ subsets: ["latin"], weight: "300" });
 const poppinsNormal = Poppins({ subsets: ["latin"], weight: "400" });
@@ -43,6 +43,33 @@ const colors = {
   red600: "rgb(220 38 38)",
   star500: "#FFBC00",
   dropBg: "rgb(0,0,0,0.5)",
+};
+
+export const getDevice = (size: DeviceType) => {
+  switch (size) {
+    case "sm":
+      return "320px";
+    case "md":
+      return "480px";
+    case "lg":
+      return "768px";
+    case "tab":
+      return "820px";
+    case "xl":
+      return "1024px";
+    case "dxs":
+      return "1280px";
+    case "dsm":
+      return "1366px";
+    case "dmd":
+      return "1440px";
+    case "dlg":
+      return "1600px";
+    case "dxl":
+      return "1680px";
+    case "dxxl":
+      return "1920px";
+  }
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -91,6 +118,16 @@ const GlobalStyle = createGlobalStyle`
     .__a_menu{
       border: 1px solid ${({ theme }) => theme.colors.nav};
       background: ${({ theme }) => theme.colors.background};
+    }
+    ._a_menuItem{
+     &:hover{
+      background: ${({ theme }) => theme.colors.icon};
+     }
+     @media screen and (max-width:${getDevice("md")}){
+      &:hover{
+        background: transparent;
+      }
+     }
     }
     
     .action-icons >svg {
@@ -144,6 +181,9 @@ export const lightTheme = {
   icon: colors.lightGray,
   nav: colors.neutral300,
   timestamp: colors.primaryGray,
+  hero: colors.softGray,
+  info: colors.mutedGray,
+  search: colors.softGray,
 };
 export const darkTheme = {
   primary: colors.primaryColor,
@@ -153,6 +193,9 @@ export const darkTheme = {
   icon: colors.darkGray,
   nav: colors.darkGray,
   timestamp: colors.neutral700,
+  hero: colors.darkGray,
+  info: colors.neutral500,
+  search: colors.darkGray,
 };
 
 export const screens = {
@@ -163,15 +206,19 @@ export const screens = {
   largeTablet: "1200px",
 };
 
-export const getDevice = (size: DeviceType) => {
-  switch (size) {
-    case "sm":
-      return "320px";
-    case "md":
-      return "480px";
-    case "lg":
-      return "768px";
-    case "xl":
-      return "1024px";
+export const FlexBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const TitleFlexWrap = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  svg {
+    &:hover {
+      cursor: pointer;
+    }
   }
-};
+`;

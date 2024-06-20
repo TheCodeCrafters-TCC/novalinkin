@@ -2,6 +2,7 @@ import React from "react";
 
 export type SystemTypes = {
   theme: string;
+  query: string | any;
 };
 
 export type ThemeType = {
@@ -11,7 +12,18 @@ export type ThemeType = {
   border: string;
 };
 
-export type DeviceType = "sm" | "md" | "lg" | "xl";
+export type DeviceType =
+  | "sm"
+  | "md"
+  | "lg"
+  | "tab"
+  | "xl"
+  | "dxs"
+  | "dsm"
+  | "dmd"
+  | "dlg"
+  | "dxl"
+  | "dxxl";
 
 export type MobileNavProps = {
   hasUserIcon?: boolean;
