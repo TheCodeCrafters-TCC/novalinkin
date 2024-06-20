@@ -1,0 +1,40 @@
+import { GT, firstUser, seconduser } from "@/assets";
+
+export const articles = [
+  {
+    profile: firstUser,
+    userName: "Alice Simple",
+    created: "4mins ago",
+    isVerified: true,
+    desc: "Working on my new typescript projects.. 😊Type safety ✔ Caching ✔ API Optimization ✔",
+    hasCode: true,
+    likes: "6.1k",
+    views: "11k",
+    comment: "5k",
+    stars: "7.6k",
+    code: "type UserType = {name: string; email: string; password: string; isAdmin: boolean; projects: Array<object>}",
+  },
+  {
+    profile: seconduser,
+    userName: "Emmy Cole",
+    created: "6mins ago",
+    isVerified: false,
+    likes: "3.3k",
+    views: "7.3k",
+    comment: "2.4k",
+    stars: "1.6k",
+    desc: "The dev roadmap that you need to become a perfect fullstack dev",
+  },
+  {
+    profile: GT,
+    userName: "Kingrashy",
+    created: "11mins ago",
+    isVerified: false,
+    image: GT,
+    likes: "12.1k",
+    views: "13.5k",
+    comment: "8.1k",
+    stars: "9.6k",
+    desc: "McLaren did a great job a this GT men the car is dobe",
+  },
+];
