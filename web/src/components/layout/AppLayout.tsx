@@ -22,16 +22,16 @@ const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
   const path = useRouter();
   const hideNav = path.pathname.includes("auth") || isAppLoading;
   const router = useRouter();
-  const hideNavs = router.pathname.includes("auth");
+  // const hideNavs = router.pathname.includes("auth");
   return (
     <StyledLayout>
       {isAppLoading ? "" : <NavBar />}
       <MainWrapper>
-        {hideNavs ? "" : <SideBar />}
+        {hideNav ? "" : <SideBar />}
         <MobileLayout>
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         </MobileLayout>
-        <DynamicBar />
+        {hideNav ? "" : <DynamicBar />}
       </MainWrapper>
       <MobileTabs />
     </StyledLayout>
