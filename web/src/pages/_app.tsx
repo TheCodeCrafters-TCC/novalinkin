@@ -22,7 +22,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 function ThemedApp({ Component, pageProps, router }: AppProps) {
   const currentTheme: string = useAppSelector((state) => state.system.theme);
   const themed = currentTheme;
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const theme: any = {
     dark: {

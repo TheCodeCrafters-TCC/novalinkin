@@ -74,4 +74,7 @@ const FixedNav = styled.nav`
   @media screen and (max-width: ${getDevice("lg")}) {
     width: 200px;
   }
+  /* @media screen and (max-width: ${getDevice("lg")}) {
+    width: 300px;
+  } */
 `;

@@ -1,3 +1,9 @@
+import dynamic from "next/dynamic";
+
+export const DSearch = dynamic(() => import("./components/DSearch"), {
+  ssr: false,
+});
+
 export { default as AuthInput } from "./components/AuthInput";
 export { default as PasswordInput } from "./components/PasswordInput";
 export { default as Button } from "./components/Button";

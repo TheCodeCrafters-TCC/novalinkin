@@ -15,3 +15,4 @@ export { default as MobileTabs } from "./layout/MobileTabs";
 export { default as Feed } from "./article/Feed";
 export { default as SideBar } from "./layout/SideBar";
 export { default as DynamicBar } from "./layout/DynamicBar";
+export { default as Profile } from "./user/Profile";

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Nav from "./Nav";
 import { sidenavlink } from "@/constants/nav";
 import { useRouter } from "next/navigation";
+import { Button, NotIcon } from "@/lib";
+import { TbScriptPlus } from "react-icons/tb";
 
 const SideBar = () => {
   const router = useRouter();
@@ -31,6 +33,17 @@ const SideBar = () => {
               key={index}
             />
           ))}
+          <Button
+            label="Share article"
+            variant="primary"
+            radius="sm"
+            width="auto"
+            className="__share_btn"
+          />
+          <TbScriptPlus
+            className="_mobile_share_article __nav_unactive"
+            size={30}
+          />
         </NavLinksWrapper>
       </FixedNav>
     </SideBarContainer>

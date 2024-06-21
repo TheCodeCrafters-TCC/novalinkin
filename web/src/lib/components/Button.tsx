@@ -27,6 +27,8 @@ const getBackgroundColor = (variant: ButtonProps["variant"]) => {
  */
 const getBorderRadius = (radius: ButtonProps["radius"]) => {
   switch (radius) {
+    case "xs":
+      return "8px";
     case "sm":
       return "10px";
     case "md":
@@ -51,6 +53,8 @@ const Button: React.FC<ButtonProps> = ({
   width,
   variant,
   radius,
+  height,
+  className,
 }) => {
   const loadAction = Loading ? "not-allowed" : "pointer";
   if (Loading && typeof Loading !== "boolean") {
@@ -62,13 +66,14 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <ButtonInterFace
       disabled={disabled}
-      className={poppins.className}
+      className={`${className} ${poppins.className}`}
       onClick={onActionClick}
       style={{
         cursor: loadAction,
         background: getBackgroundColor(variant),
         borderRadius: getBorderRadius(radius),
         width: width,
+        height: height,
       }}
     >
       {Loading ? <ClipLoader color="white" size={20} /> : label}

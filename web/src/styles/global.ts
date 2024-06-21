@@ -214,3 +214,9 @@ export const getDevice = (size: DeviceType) => {
       return screens.xtraXtraLarge;
   }
 };
+
+export const FlexBetween = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;

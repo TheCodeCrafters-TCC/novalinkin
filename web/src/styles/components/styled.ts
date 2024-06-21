@@ -210,6 +210,33 @@ export const StyledHeaderNav = styled.div`
   }
 `;
 
+export const StyledInfoPage_ = styled.div`
+  display: flex;
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  background: ${({ theme }) => theme.colors.background};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
+  padding: 8px;
+  padding-right: 1.2rem;
+  padding-left: 1.2rem;
+
+  svg {
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.icon};
+    }
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    display: none;
+  }
+`;
+
 export const HImage = styled(Image)`
   width: 45px;
   height: 45px;
@@ -268,7 +295,7 @@ export const SideBarContainer = styled.div`
   }
 `;
 export const DynaBarContainer = styled.div`
-  /* background: red; */
+  background: red;
   width: 460px;
   position: relative;
 
@@ -277,6 +304,12 @@ export const DynaBarContainer = styled.div`
   }
   @media screen and (max-width: ${getDevice("lg")}) {
     width: 390px;
+    display: none;
+  }
+  @media screen and (max-width: ${getDevice("tab")}) {
+    display: none;
+  }
+  @media screen and (max-width: ${getDevice("lg")}) {
     display: none;
   }
   @media screen and (max-width: ${getDevice("md")}) {
@@ -377,6 +410,7 @@ export const StyledAMenu = styled.div`
   border-radius: 11px;
   display: flex;
   flex-direction: column;
+  padding: 0.5rem;
 
   @media screen and (max-width: ${getDevice("md")}) {
     position: fixed;
@@ -384,9 +418,11 @@ export const StyledAMenu = styled.div`
     bottom: 0;
     z-index: 200;
     right: 0;
-    left: 0;
+    left: -1px;
     transform: translateY(0);
     border-radius: 0;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
   }
 `;
 
@@ -394,6 +430,84 @@ export const AMenuItems = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.8rem;
   gap: 10px;
+  border-radius: 14px;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    padding: 1.5rem;
+  }
+`;
+
+export const StyledHeroWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+`;
+
+export const StyledHeroBg = styled.div`
+  width: 100%;
+  height: 280px;
+  background: ${({ theme }) => theme.colors.hero};
+`;
+
+export const StyledProfileImage = styled(Image)`
+  width: 110px;
+  height: 110px;
+  /* transform: translateY(-3.5rem); */
+  margin-left: 2rem;
+  position: absolute;
+  bottom: -3rem;
+`;
+
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 26px;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 1rem;
+
+  h1 {
+    font-size: 23px;
+  }
+  .__desc_tag {
+    font-size: 13px;
+    /* width: 550px; */
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+  }
+`;
+
+export const InfoFlexBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const InfoIconsWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: ${({ theme }) => theme.colors.info};
+  flex-wrap: wrap;
+
+  .__link {
+    cursor: pointer;
+  }
+`;
+
+export const InFlex = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const InfoTag = styled.p`
+  font-size: 12px;
 `;

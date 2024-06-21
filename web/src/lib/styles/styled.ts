@@ -67,7 +67,8 @@ export const ButtonInterFace = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  :hover {
+
+  &:hover {
     opacity: 0.75;
   }
 
@@ -202,4 +203,30 @@ export const ToastLoder = styled.div`
   transform: translateY(-9.5px);
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+`;
+
+export const DSearchContainer = styled.div`
+  width: 350px;
+  height: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  background: ${({ theme }) => theme.colors.search};
+  color: ${colors.primaryGray};
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const DSearchInput = styled.input`
+  width: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+
+  ::placeholder {
+    color: ${colors.primaryGray};
+  }
+  &:focus {
+    caret-color: ${colors.primaryColor};
+  }
 `;
