@@ -1,3 +1,4 @@
+import { NotIcon } from "@/lib";
 import { NavLink } from "@/styles/components/styled";
 import { colors } from "@/styles/global";
 import { NavProps } from "@/types";
@@ -5,20 +6,40 @@ import { Poppins } from "next/font/google";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDynamicFeed } from "react-icons/md";
+import styled from "styled-components";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
-const Nav: React.FC<NavProps> = ({ icon, label, url, push, isProfile }) => {
+const Nav: React.FC<NavProps> = ({
+  icon,
+  label,
+  url,
+  push,
+  isProfile,
+  hasicon,
+  iconVariant,
+  totalNot,
+}) => {
   const router = useRouter();
   const isActive = router.pathname === url;
   const activeColor: any = isActive && colors.primaryColor;
+  function navPush() {
+    if (isProfile) {
+      push(`/profile/noah-moore`);
+    } else {
+      push(url);
+    }
+  }
   return (
     <NavLink
-      onClick={() => push(url)}
+      onClick={navPush}
       style={{ color: activeColor }}
       className={isActive ? "nav_link" : "__nav_unactive"}
     >
-      {icon}
+      <IconWrap>
+        {hasicon && <NotIcon label={totalNot} varinat={iconVariant} />}
+        {icon}
+      </IconWrap>
       <p className={poppins.className}>{label}</p>
       {isActive && <div className="dot" />}
     </NavLink>
@@ -26,3 +47,9 @@ const Nav: React.FC<NavProps> = ({ icon, label, url, push, isProfile }) => {
 };
 
 export default Nav;
+
+const IconWrap = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;

@@ -4,26 +4,30 @@ import NavBar from "./NavBar";
 import StyledComponentsRegistry from "@/hooks/registry";
 import MobileTabs from "./MobileTabs";
 import { MainWrapper } from "@/styles/pages/styled";
-import SideBar from "./SideBar";
-import DynamicBar from "./DynamicBar";
 import styled from "styled-components";
-import { poppins } from "@/styles/global";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 interface LayoutProps {
   children: React.ReactNode;
   isAppLoading: boolean;
 }
 
+const SideBar = dynamic(() => import("./SideBar"), { ssr: false });
+const DynamicBar = dynamic(() => import("./DynamicBar"), { ssr: false });
+
 const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
+  const router = useRouter();
+  const hideNavs = router.pathname.includes("auth");
   return (
     <StyledLayout>
       {isAppLoading ? "" : <NavBar />}
       <MainWrapper>
-        <SideBar />
+        {hideNavs ? "" : <SideBar />}
         <MobileLayout>
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         </MobileLayout>
-        <DynamicBar />
+        {hideNavs ? "" : <DynamicBar />}
       </MainWrapper>
       <MobileTabs />
     </StyledLayout>

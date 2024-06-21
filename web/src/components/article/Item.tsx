@@ -42,7 +42,12 @@ const Item = ({ article }: any) => {
       <ArticleWrap>
         <p className={poppinsNormal.className}>{article.desc}</p>
         {article.image && (
-          <ArticleImg onClick={viewFullWidth} src={article.image} alt="user" />
+          <ArticleImg
+            onClick={viewFullWidth}
+            priority
+            src={article.image}
+            alt="user"
+          />
         )}
         <ActionBar article={article} />
       </ArticleWrap>
@@ -53,6 +58,7 @@ const Item = ({ article }: any) => {
             onClick={() => setView(false)}
             src={fullImage}
             alt="full-image"
+            priority
           />
           <FiDownload
             size={30}
