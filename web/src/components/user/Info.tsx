@@ -1,27 +1,14 @@
 import { profileInfo } from "@/data/info";
 import { Button, Title, TruncateText } from "@/lib";
-import {
-  InFlex,
-  InfoContainer,
-  InfoFlexBox,
-  InfoIconsWrap,
-  InfoTag,
-} from "@/styles/components/styled";
+import { InfoContainer, InfoFlexBox } from "@/styles/components/styled";
 import {
   FlexBetween,
-  TitleFlexWrap,
   colors,
-  poppins,
   poppinsNormal,
   poppinsSemibold,
 } from "@/styles/global";
 import React, { useEffect, useState } from "react";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
-import { IoLocation, IoPeople } from "react-icons/io5";
-import { LuArrowUpRight } from "react-icons/lu";
-import { MdArticle, MdVerified } from "react-icons/md";
-import { TbWorld } from "react-icons/tb";
+import { MdVerified } from "react-icons/md";
 import Platform from "./info/Platform";
 import Socails from "./info/Socails";
 
@@ -52,17 +39,12 @@ const Info = () => {
       <FlexBetween>
         <InfoFlexBox>
           <h1 className={poppinsSemibold.className}>{profileInfo.name}</h1>
-          <TitleFlexWrap>
-            <MdVerified
-              onMouseEnter={toastTitle}
-              onMouseLeave={UntoastTitle}
-              size={20}
-              color={colors.primaryColor}
-            />
-            {showTitle && (
-              <Title width="150px" title="This account is verified" />
-            )}
-          </TitleFlexWrap>
+          <MdVerified
+            onMouseEnter={toastTitle}
+            onMouseLeave={UntoastTitle}
+            size={20}
+            color={colors.primaryColor}
+          />
         </InfoFlexBox>
         <Button
           variant="primary"

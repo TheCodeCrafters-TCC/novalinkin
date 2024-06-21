@@ -60,19 +60,13 @@ const FixedNav = styled.nav`
   align-items: center;
 
   @media screen and (max-width: ${getDevice("dxxl")}) {
-    width: 500px;
+    width: 485px;
   }
   @media screen and (max-width: ${getDevice("dxl")}) {
-    width: 490px;
+    width: 465px;
   }
   @media screen and (max-width: ${getDevice("dlg")}) {
-    width: 400px;
-  }
-  @media screen and (max-width: ${getDevice("dmd")}) {
     width: 430px;
-  }
-  @media screen and (max-width: ${getDevice("dsm")}) {
-    width: 470px;
   }
   @media screen and (max-width: ${getDevice("dxs")}) {
     width: 390px;
@@ -80,10 +74,13 @@ const FixedNav = styled.nav`
   @media screen and (max-width: ${getDevice("xl")}) {
     width: 375px;
   }
-  @media screen and (max-width: ${getDevice("tab")}) {
-    display: none;
+  @media screen and (max-width: ${getDevice("xxm")}) {
+    width: 380px;
   }
   @media screen and (max-width: ${getDevice("lg")}) {
-    display: none;
+    width: 200px;
   }
+  /* @media screen and (max-width: ${getDevice("lg")}) {
+    width: 300px;
+  } */
 `;

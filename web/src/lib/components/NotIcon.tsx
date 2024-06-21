@@ -1,22 +1,23 @@
 import React from "react";
-import styled from "styled-components";
-import { NotIconprops } from "../types";
+import { NotIconProps } from "../types";
 import { colors, poppins } from "@/styles/global";
+import styled from "styled-components";
 
-const getColor = (variant: NotIconprops["varaint"]) => {
-  switch (variant) {
-    case "primary":
-      return colors.primaryColor;
-    case "secondary":
-      return colors.red600;
-  }
-};
-
-const NotIcon: React.FC<NotIconprops> = ({ label, varaint }) => {
+const NotIcon = ({ varinat, label }: NotIconProps) => {
+  const getColor = (variant: NotIconProps["varinat"]) => {
+    switch (variant) {
+      case "primary":
+        return colors.primaryColor;
+      case "seconadry":
+        return colors.red600;
+      default:
+        return colors.red600;
+    }
+  };
   return (
     <StyledIcon
       className={poppins.className}
-      style={{ background: getColor(varaint) }}
+      style={{ background: getColor(varinat) }}
     >
       {label}
     </StyledIcon>
@@ -26,15 +27,16 @@ const NotIcon: React.FC<NotIconprops> = ({ label, varaint }) => {
 export default NotIcon;
 
 const StyledIcon = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
   border-radius: 10px;
   border: 1px solid white;
   position: absolute;
-  justify-content: center;
-  display: flex;
-  align-items: center;
   color: white;
-  left: 5px;
-  font-size: 14px;
+  transform: translateY(-5px);
+  left: -3px;
+  font-size: 11px;
 `;

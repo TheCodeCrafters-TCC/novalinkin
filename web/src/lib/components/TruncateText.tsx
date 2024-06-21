@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TruncateProps } from "../types";
+import { TruncateTextProps } from "../types";
 import styled from "styled-components";
 
 function TruncateText({
@@ -7,7 +7,7 @@ function TruncateText({
   maxLength,
   className,
   showClass,
-}: TruncateProps) {
+}: TruncateTextProps) {
   const [isTruncated, setIsTruncated] = useState(true);
 
   const toggleTruncate = () => {

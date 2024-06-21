@@ -68,14 +68,14 @@ export type ToastType = {
     | "bottom-right";
 };
 
-export type NotIconprops = {
+export type NotIconProps = {
+  varinat?: "primary" | "seconadry";
   label: number;
-  varaint: "primary" | "secondary";
 };
 
-export type TruncateProps = {
-  text: string;
-  maxLength: number;
-  className?: React.CSSProperties | string | undefined | any;
-  showClass?: React.CSSProperties | string | undefined | any;
+export type TruncateTextProps = {
+  text: string | any;
+  maxLength: number | any;
+  className: React.CSSProperties | string | any;
+  showClass: React.CSSProperties | string | any;
 };

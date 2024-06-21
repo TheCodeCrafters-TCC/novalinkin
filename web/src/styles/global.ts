@@ -45,33 +45,6 @@ const colors = {
   dropBg: "rgb(0,0,0,0.5)",
 };
 
-export const getDevice = (size: DeviceType) => {
-  switch (size) {
-    case "sm":
-      return "320px";
-    case "md":
-      return "480px";
-    case "lg":
-      return "768px";
-    case "tab":
-      return "820px";
-    case "xl":
-      return "1024px";
-    case "dxs":
-      return "1280px";
-    case "dsm":
-      return "1366px";
-    case "dmd":
-      return "1440px";
-    case "dlg":
-      return "1600px";
-    case "dxl":
-      return "1680px";
-    case "dxxl":
-      return "1920px";
-  }
-};
-
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -118,16 +91,6 @@ const GlobalStyle = createGlobalStyle`
     .__a_menu{
       border: 1px solid ${({ theme }) => theme.colors.nav};
       background: ${({ theme }) => theme.colors.background};
-    }
-    ._a_menuItem{
-     &:hover{
-      background: ${({ theme }) => theme.colors.icon};
-     }
-     @media screen and (max-width:${getDevice("md")}){
-      &:hover{
-        background: transparent;
-      }
-     }
     }
     
     .action-icons >svg {
@@ -181,9 +144,6 @@ export const lightTheme = {
   icon: colors.lightGray,
   nav: colors.neutral300,
   timestamp: colors.primaryGray,
-  hero: colors.softGray,
-  info: colors.mutedGray,
-  search: colors.softGray,
 };
 export const darkTheme = {
   primary: colors.primaryColor,
@@ -193,32 +153,57 @@ export const darkTheme = {
   icon: colors.darkGray,
   nav: colors.darkGray,
   timestamp: colors.neutral700,
-  hero: colors.darkGray,
-  info: colors.neutral500,
-  search: colors.darkGray,
 };
 
 export const screens = {
   small: "320px",
   medium: "480px",
   large: "768px",
+  mediumTablet: "850px",
+  xxMedium: "960px",
   tablet: "1024px",
-  largeTablet: "1200px",
+  xtraSmallDesktop: "1280px",
+  smallDesktop: "1366px",
+  mediumDesktop: "1440px",
+  largeDesktop: "1600px",
+  xtraLargeDesktop: "1680px",
+  xtraXtraLarge: "1920px",
+};
+/**
+ * Queries for device responsiveness
+ * `lg` for devices like Galaxy Tab
+ */
+export const getDevice = (size: DeviceType) => {
+  switch (size) {
+    case "sm":
+      return screens.small;
+    case "md":
+      return screens.medium;
+    case "lg":
+      return screens.large;
+    case "mt":
+      return screens.mediumTablet;
+    case "xxm":
+      return screens.xxMedium;
+    case "xl":
+      return screens.tablet;
+    case "dxs":
+      return screens.xtraSmallDesktop;
+    case "dsm":
+      return screens.smallDesktop;
+    case "dmd":
+      return screens.mediumDesktop;
+    case "dlg":
+      return screens.largeDesktop;
+    case "dxl":
+      return screens.xtraLargeDesktop;
+    case "dxxl":
+      return screens.xtraXtraLarge;
+  }
 };
 
 export const FlexBetween = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-`;
-
-export const TitleFlexWrap = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  svg {
-    &:hover {
-      cursor: pointer;
-    }
-  }
+  justify-content: space-between;
 `;

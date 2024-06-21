@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IToast, InfoWrap, StyledToast } from "../styles/styled";
+import { IToast, InfoWrap, StyledToast, ToastLoder } from "../styles/styled";
 import { ToastType } from "../types";
 import { VscError } from "react-icons/vsc";
 import { MdErrorOutline, MdOutlineDone } from "react-icons/md";
@@ -62,14 +62,6 @@ const Toast: React.FC<ToastType> = ({
   const [loadWidth, setLoadWidth] = useState("");
   const toasterLoadWith = isHovered ? loadWidth : "auto";
   const loaderRadius = isHovered ? 0 : 10;
-
-  // const ToastLoder = styled.div`
-  //   height: 7px;
-  //   width: ${toasterLoadWith};
-  //   transform: translateY(-9.5px);
-  //   border-bottom-right-radius: ${loaderRadius};
-  //   border-bottom-left-radius: 10px;
-  // `;
 
   function holdToast() {
     setIsHovered(true);

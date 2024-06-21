@@ -16,6 +16,8 @@ export type DeviceType =
   | "sm"
   | "md"
   | "lg"
+  | "mt"
+  | "xxm"
   | "tab"
   | "xl"
   | "dxs"
@@ -41,4 +43,7 @@ export type NavProps = {
   icon: React.ReactElement;
   push: any;
   isProfile: boolean | any;
+  hasicon: boolean | any;
+  iconVariant: string | any;
+  totalNot: number | any;
 };

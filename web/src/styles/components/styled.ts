@@ -264,28 +264,31 @@ export const SideBarContainer = styled.div`
   /* background: red; */
 
   @media screen and (max-width: ${getDevice("dxxl")}) {
-    width: 1100px;
+    width: 1150px;
   }
   @media screen and (max-width: ${getDevice("dxl")}) {
-    width: 855px;
+    width: 1000px;
   }
   @media screen and (max-width: ${getDevice("dlg")}) {
-    width: 850px;
+    width: 900px;
   }
   @media screen and (max-width: ${getDevice("dmd")}) {
-    width: 740px;
+    width: 780px;
   }
   @media screen and (max-width: ${getDevice("dsm")}) {
+    width: 700px;
+  }
+  @media screen and (max-width: ${getDevice("dxs")}) {
     width: 625px;
   }
   @media screen and (max-width: ${getDevice("xl")}) {
-    width: 160px;
+    width: 143px;
   }
-  @media screen and (max-width: ${getDevice("tab")}) {
-    width: 155px;
+  @media screen and (max-width: ${getDevice("mt")}) {
+    width: 190px;
   }
   @media screen and (max-width: ${getDevice("lg")}) {
-    width: 325px;
+    width: 190px;
   }
   @media screen and (max-width: ${getDevice("md")}) {
     display: none;
@@ -296,8 +299,12 @@ export const DynaBarContainer = styled.div`
   width: 460px;
   position: relative;
 
-  @media screen and (max-width: ${getDevice("xl")}) {
-    width: 430px;
+  @media screen and (max-width: ${getDevice("mt")}) {
+    display: none;
+  }
+  @media screen and (max-width: ${getDevice("lg")}) {
+    width: 390px;
+    display: none;
   }
   @media screen and (max-width: ${getDevice("tab")}) {
     display: none;
@@ -317,69 +324,50 @@ export const FeedWrapper = styled.div`
   flex-direction: column;
 
   @media screen and (max-width: ${getDevice("dxxl")}) {
-    width: 600px;
+    width: 650px;
     border-left: 1px solid ${({ theme }) => theme.colors.nav};
     border-right: 1px solid ${({ theme }) => theme.colors.nav};
   }
   @media screen and (max-width: ${getDevice("dxl")}) {
-    width: 620px;
-    border-left: 1px solid ${({ theme }) => theme.colors.nav};
-    border-right: 1px solid ${({ theme }) => theme.colors.nav};
-  }
-  @media screen and (max-width: ${getDevice("dlg")}) {
-    width: 603px;
-    border-left: 1px solid ${({ theme }) => theme.colors.nav};
-    border-right: 1px solid ${({ theme }) => theme.colors.nav};
-  }
-  @media screen and (max-width: ${getDevice("dmd")}) {
-    width: 550px;
-    border-left: 1px solid ${({ theme }) => theme.colors.nav};
-    border-right: 1px solid ${({ theme }) => theme.colors.nav};
-  }
-  @media screen and (max-width: ${getDevice("dsm")}) {
     width: 550px;
   }
-
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 550px;
+    border-left: 0;
+    border-right: 0;
+  }
+  @media screen and (max-width: ${getDevice("xxm")}) {
+    width: 480px;
+  }
+  @media screen and (max-width: ${getDevice("mt")}) {
+    /* width: 480px; */
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("lg")}) {
+    width: 480px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
   @media screen and (max-width: ${getDevice("md")}) {
     width: 100%;
     margin-top: 4.3rem;
     margin-bottom: 5rem;
+    border-left: 0;
+    border-right: 0;
   }
 `;
 
 export const NavLinksWrapper = styled.div`
   position: relative;
   display: flex;
-  gap: 1.3rem;
+  gap: 1.5rem;
   flex-direction: column;
   transform: translateX(-3rem);
-  margin-top: 0;
-
-  ._mobile_share_article {
-    display: none;
-  }
+  margin-top: 1rem;
 
   @media screen and (max-width: ${getDevice("xl")}) {
-    transform: translateX(-1rem);
-
-    button {
-      display: none;
-    }
-    ._mobile_share_article {
-      display: flex;
-      align-items: center;
-      width: auto;
-      height: 40px;
-      gap: 1rem;
-      padding: 9px;
-      border-radius: 7px;
-    }
-  }
-  @media screen and (max-width: ${getDevice("tab")}) {
-    transform: translateX(0rem);
-  }
-  @media screen and (max-width: ${getDevice("lg")}) {
-    transform: translateX(0rem);
+    transform: translate(-0.5rem);
   }
 `;
 

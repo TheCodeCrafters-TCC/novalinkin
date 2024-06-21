@@ -4,33 +4,36 @@ import StyledComponentsRegistry from "@/hooks/registry";
 import { MainWrapper } from "@/styles/pages/styled";
 import styled from "styled-components";
 import { poppins } from "@/styles/global";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { NoSSRDyn } from "..";
-
-const DynNavbar = dynamic(() => import("./NavBar"), { ssr: false });
-const DynSideBar = dynamic(() => import("./SideBar"), { ssr: false });
-const DynTab = dynamic(() => import("./MobileTabs"), { ssr: false });
+import { useRouter } from "next/router";
+import NavBar from "./NavBar";
+import MobileTab from "./MobileTab";
+import MobileTabs from "./MobileTabs";
 
 interface LayoutProps {
   children: React.ReactNode;
   isAppLoading: boolean;
 }
 
+const SideBar = dynamic(() => import("./SideBar"), { ssr: false });
+const DynamicBar = dynamic(() => import("./DynamicBar"), { ssr: false });
+
 const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
   const path = useRouter();
   const hideNav = path.pathname.includes("auth") || isAppLoading;
+  const router = useRouter();
+  const hideNavs = router.pathname.includes("auth");
   return (
     <StyledLayout>
-      {isAppLoading ? "" : <DynNavbar />}
+      {isAppLoading ? "" : <NavBar />}
       <MainWrapper>
-        {hideNav ? "" : <DynSideBar />}
+        {hideNavs ? "" : <SideBar />}
         <MobileLayout>
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         </MobileLayout>
-        {hideNav ? "" : <NoSSRDyn />}
+        <DynamicBar />
       </MainWrapper>
-      <DynTab />
+      <MobileTabs />
     </StyledLayout>
   );
 };

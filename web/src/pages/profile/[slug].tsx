@@ -1,4 +1,4 @@
-import { NoSSRBar, Profile, InfoPageHeader } from "@/components";
+import { MobileNavBar, Profile } from "@/components";
 import Head from "next/head";
 import React from "react";
 import { GetServerSideProps } from "next";
@@ -14,7 +14,7 @@ const Slug: React.FC<SlugProps> = ({ slug }) => {
         <title>{slug} | Connectify</title>
       </Head>
       <div>
-        <NoSSRBar infoPage hasFilterIcon />
+        <MobileNavBar infoPage hasFilterIcon />
         <Profile />
       </div>
     </>
