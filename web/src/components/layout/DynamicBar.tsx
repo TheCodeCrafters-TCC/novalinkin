@@ -23,7 +23,25 @@ const FixedNav = styled.nav`
   justify-content: center;
   align-items: center;
 
+  @media screen and (max-width: ${getDevice("dxxl")}) {
+    width: 485px;
+  }
+  @media screen and (max-width: ${getDevice("dxl")}) {
+    width: 465px;
+  }
+  @media screen and (max-width: ${getDevice("dlg")}) {
+    width: 430px;
+  }
+  @media screen and (max-width: ${getDevice("dxs")}) {
+    width: 390px;
+  }
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 375px;
+  }
+  @media screen and (max-width: ${getDevice("xxm")}) {
+    width: 380px;
+  }
   @media screen and (max-width: ${getDevice("lg")}) {
-    width: 300px;
+    width: 200px;
   }
 `;
