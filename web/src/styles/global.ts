@@ -1,7 +1,7 @@
 "use client";
 import { DeviceType } from "@/types";
 import { Inter, Poller_One, Poppins, Roboto } from "next/font/google";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 const inter = Inter({ subsets: ["latin"] });
 const poppinsLight = Poppins({ subsets: ["latin"], weight: "300" });
 const poppinsNormal = Poppins({ subsets: ["latin"], weight: "400" });
@@ -201,3 +201,9 @@ export const getDevice = (size: DeviceType) => {
       return screens.xtraXtraLarge;
   }
 };
+
+export const FlexBetween = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;

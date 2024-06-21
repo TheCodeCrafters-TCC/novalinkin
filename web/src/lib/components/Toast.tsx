@@ -5,7 +5,6 @@ import { VscError } from "react-icons/vsc";
 import { MdErrorOutline, MdOutlineDone } from "react-icons/md";
 import { colors, poppins } from "@/styles/global";
 import { IoClose } from "react-icons/io5";
-import styled from "styled-components";
 
 const getPosition = (position: ToastType["position"]) => {
   switch (position) {
@@ -95,17 +94,6 @@ const Toast: React.FC<ToastType> = ({
         </InfoWrap>
         <IoClose size={25} onClick={endToast} className="close" />
       </IToast>
-      <ToastLoder
-        id="toast_con"
-        className={isHovered ? "" : "loadToast"}
-        style={{
-          background: getColor(variant),
-          // width: toasterLoadWith,
-          // borderBottomRightRadius: loaderRadius,
-        }}
-      >
-        .
-      </ToastLoder>
     </StyledToast>
   );
 };

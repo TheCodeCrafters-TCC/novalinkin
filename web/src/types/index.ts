@@ -2,6 +2,7 @@ import React from "react";
 
 export type SystemTypes = {
   theme: string;
+  query: string | any;
 };
 
 export type ThemeType = {
@@ -17,6 +18,7 @@ export type DeviceType =
   | "lg"
   | "mt"
   | "xxm"
+  | "tab"
   | "xl"
   | "dxs"
   | "dsm"

@@ -1,11 +1,12 @@
 import { colors } from "@/styles/global";
 import { SystemTypes } from "@/types";
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 // use global?. when trying to access localstorage
 
 const initialState: SystemTypes = {
   theme: "light",
+  query: "",
 };
 
 const systemSlice = createSlice({
@@ -25,9 +26,13 @@ const systemSlice = createSlice({
       const storedTheme = global?.localStorage?.getItem("theme");
       state.theme = storedTheme ? JSON.parse(storedTheme) : "light";
     },
+    setQuery: (state, action: PayloadAction) => {
+      const searched = action.payload;
+      state.query = searched;
+    },
   },
 });
 
 export default systemSlice.reducer;
 
-export const { toggleTheme, updateTheme } = systemSlice.actions;
+export const { toggleTheme, updateTheme, setQuery } = systemSlice.actions;

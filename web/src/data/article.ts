@@ -1,6 +1,6 @@
 import { GT, firstUser, seconduser } from "@/assets";
 
-export const articles = [
+export const articlesdata = [
   {
     profile: firstUser,
     userName: "Alice Simple",

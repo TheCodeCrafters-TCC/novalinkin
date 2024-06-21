@@ -1,12 +1,48 @@
 import { DynaBarContainer } from "@/styles/components/styled";
 import { colors, getDevice } from "@/styles/global";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
+const Home = dynamic(() => import("../dynamic/HomeDynamics"), { ssr: false });
+const Profile = dynamic(() => import("../dynamic/ProfileDynamics"), {
+  ssr: false,
+});
+const Community = dynamic(() => import("../dynamic/CommunityDynamics"), {
+  ssr: false,
+});
+const Chat = dynamic(() => import("../dynamic/ChatDynamics"), { ssr: false });
+const Notificaton = dynamic(() => import("../dynamic/NotificationDynamics"), {
+  ssr: false,
+});
+const Explore = dynamic(() => import("../dynamic/ExploreDynamics"), {
+  ssr: false,
+});
+
+const getBar = (path: any) => {
+  if (path.pathname === "/") {
+    return <Home />;
+  } else if (path.pathname === "/explore") {
+    return <Explore />;
+  } else if (path.pathname === "/chats") {
+    return <Chat />;
+  } else if (path.pathname === "/notifications") {
+    return <Notificaton />;
+  } else if (path.pathname.startsWith("/profile/")) {
+    return <Profile />;
+  } else if (path.pathname === "/community") {
+    return <Community />;
+  } else {
+    return <Home />;
+  }
+};
+
 const DynamicBar = () => {
+  const path = useRouter();
   return (
     <DynaBarContainer>
-      <FixedNav className="__dynamic_bar">DynamicBar</FixedNav>
+      <FixedNav className="__dynamic_bar">{getBar(path)}</FixedNav>
     </DynaBarContainer>
   );
 };
@@ -44,4 +80,7 @@ const FixedNav = styled.nav`
   @media screen and (max-width: ${getDevice("lg")}) {
     width: 200px;
   }
+  /* @media screen and (max-width: ${getDevice("lg")}) {
+    width: 300px;
+  } */
 `;

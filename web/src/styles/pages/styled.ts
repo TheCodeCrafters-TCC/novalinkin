@@ -100,6 +100,9 @@ export const MainWrapper = styled.div`
   height: 100%;
   margin-top: 4rem;
 
+  /* @media screen and (max-width: ${getDevice("lg")}) {
+    justify-content: start;
+  } */
   @media screen and (max-width: ${getDevice("md")}) {
     margin-top: 0;
   }
