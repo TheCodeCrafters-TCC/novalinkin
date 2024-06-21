@@ -45,6 +45,19 @@ const colors = {
   dropBg: "rgb(0,0,0,0.5)",
 };
 
+export const IconWrap = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SpaceBetween = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;

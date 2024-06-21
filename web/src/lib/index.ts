@@ -12,5 +12,4 @@ export { default as Divider } from "./components/Divder";
 export { default as MarkdownRenderer } from "./components/MarkdownRenderer";
 export { default as NotIcon } from "./components/NotIcon";
 export { default as Title } from "./components/Title";
-export { default as TruncateText } from "./components/TruncateText";
-export { default as NoData } from "./components/NoData";
+export { default as ActionButton } from "./components/ActionButon";

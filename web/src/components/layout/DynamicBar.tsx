@@ -5,34 +5,28 @@ import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
-const Home = dynamic(() => import("../dynamic/HomeDynamics"), { ssr: false });
-const Profile = dynamic(() => import("../dynamic/ProfileDynamics"), {
+const Home = dynamic(() => import("../dynamic/Home"), { ssr: false });
+const Chats = dynamic(() => import("../dynamic/Chats"), { ssr: false });
+const Community = dynamic(() => import("../dynamic/Community"), { ssr: false });
+const Notifications = dynamic(() => import("../dynamic/Notification"), {
   ssr: false,
 });
-const Community = dynamic(() => import("../dynamic/CommunityDynamics"), {
-  ssr: false,
-});
-const Chat = dynamic(() => import("../dynamic/ChatDynamics"), { ssr: false });
-const Notificaton = dynamic(() => import("../dynamic/NotificationDynamics"), {
-  ssr: false,
-});
-const Explore = dynamic(() => import("../dynamic/ExploreDynamics"), {
-  ssr: false,
-});
+const Explore = dynamic(() => import("../dynamic/Explore"), { ssr: false });
+const Profile = dynamic(() => import("../dynamic/Profile"), { ssr: false });
 
-const getBar = (path: any) => {
+const getCurrentBar = (path: any) => {
   if (path.pathname === "/") {
     return <Home />;
-  } else if (path.pathname === "/explore") {
-    return <Explore />;
-  } else if (path.pathname === "/chats") {
-    return <Chat />;
-  } else if (path.pathname === "/notifications") {
-    return <Notificaton />;
-  } else if (path.pathname.startsWith("/profile/")) {
-    return <Profile />;
+  } else if (path.pathname?.includes("chats")) {
+    return <Chats />;
   } else if (path.pathname === "/community") {
     return <Community />;
+  } else if (path.pathname === "/notifications") {
+    return <Notifications />;
+  } else if (path.pathname === "/explore") {
+    return <Explore />;
+  } else if (path.pathname.includes("profile")) {
+    return <Profile />;
   } else {
     return <Home />;
   }
@@ -42,7 +36,7 @@ const DynamicBar = () => {
   const path = useRouter();
   return (
     <DynaBarContainer>
-      <FixedNav className="__dynamic_bar">{getBar(path)}</FixedNav>
+      <FixedNav className="__dynamic_bar">{getCurrentBar(path)}</FixedNav>
     </DynaBarContainer>
   );
 };

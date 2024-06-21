@@ -47,3 +47,17 @@ export type NavProps = {
   iconVariant: string | any;
   totalNot: number | any;
 };
+
+export type ActionButtonProps = {
+  data: Array<object> | any;
+  icon?: React.ReactElement;
+  title: string;
+  onActionClick?: () => void;
+  variant: "like" | "comments" | "views" | "star";
+};
+
+export type TitleProps = {
+  title: string;
+  className?: React.CSSProperties;
+  styles?: React.CSSProperties;
+};

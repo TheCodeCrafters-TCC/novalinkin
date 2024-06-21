@@ -1,12 +1,11 @@
 import { NotIcon } from "@/lib";
 import { NavLink } from "@/styles/components/styled";
-import { colors } from "@/styles/global";
+import { IconWrap, colors } from "@/styles/global";
 import { NavProps } from "@/types";
 import { Poppins } from "next/font/google";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDynamicFeed } from "react-icons/md";
-import styled from "styled-components";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
@@ -32,6 +31,7 @@ const Nav: React.FC<NavProps> = ({
   }
   return (
     <NavLink
+      title={label}
       onClick={navPush}
       style={{ color: activeColor }}
       className={isActive ? "nav_link" : "__nav_unactive"}
@@ -47,9 +47,3 @@ const Nav: React.FC<NavProps> = ({
 };
 
 export default Nav;
-
-const IconWrap = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`;
