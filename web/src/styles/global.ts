@@ -159,19 +159,45 @@ export const screens = {
   small: "320px",
   medium: "480px",
   large: "768px",
+  mediumTablet: "850px",
+  xxMedium: "960px",
   tablet: "1024px",
-  largeTablet: "1200px",
+  xtraSmallDesktop: "1280px",
+  smallDesktop: "1366px",
+  mediumDesktop: "1440px",
+  largeDesktop: "1600px",
+  xtraLargeDesktop: "1680px",
+  xtraXtraLarge: "1920px",
 };
-
+/**
+ * Queries for device responsiveness
+ * `lg` for devices like Galaxy Tab
+ */
 export const getDevice = (size: DeviceType) => {
   switch (size) {
     case "sm":
-      return "320px";
+      return screens.small;
     case "md":
-      return "480px";
+      return screens.medium;
     case "lg":
-      return "768px";
+      return screens.large;
+    case "mt":
+      return screens.mediumTablet;
+    case "xxm":
+      return screens.xxMedium;
     case "xl":
-      return "1024px";
+      return screens.tablet;
+    case "dxs":
+      return screens.xtraSmallDesktop;
+    case "dsm":
+      return screens.smallDesktop;
+    case "dmd":
+      return screens.mediumDesktop;
+    case "dlg":
+      return screens.largeDesktop;
+    case "dxl":
+      return screens.xtraLargeDesktop;
+    case "dxxl":
+      return screens.xtraXtraLarge;
   }
 };

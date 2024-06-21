@@ -4,3 +4,4 @@ export { default as Button } from "./components/Button";
 export { default as Toast } from "./components/Toast";
 export { default as Divider } from "./components/Divder";
 export { default as MarkdownRenderer } from "./components/MarkdownRenderer";
+export { default as NotIcon } from "./components/NotIcon";

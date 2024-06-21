@@ -65,3 +65,8 @@ export type ToastType = {
     | "bottom-left"
     | "bottom-right";
 };
+
+export type NotIconProps = {
+  varinat?: "primary" | "seconadry";
+  label: number;
+};

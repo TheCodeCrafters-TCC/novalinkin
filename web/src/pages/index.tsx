@@ -1,6 +1,5 @@
-import { DynamicBar, Feed, MobileNavBar, SideBar } from "@/components";
+import { Feed, MobileNavBar } from "@/components";
 import { poppins } from "@/styles/global";
-import { MainWrapper } from "@/styles/pages/styled";
 import Head from "next/head";
 
 export default function Home() {

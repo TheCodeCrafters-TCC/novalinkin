@@ -234,10 +234,34 @@ export const HeaderInfoWrap = styled.div`
 export const SideBarContainer = styled.div`
   width: 625px;
   position: relative;
-  background: red;
+  /* background: red; */
 
+  @media screen and (max-width: ${getDevice("dxxl")}) {
+    width: 1150px;
+  }
+  @media screen and (max-width: ${getDevice("dxl")}) {
+    width: 1000px;
+  }
+  @media screen and (max-width: ${getDevice("dlg")}) {
+    width: 900px;
+  }
+  @media screen and (max-width: ${getDevice("dmd")}) {
+    width: 780px;
+  }
+  @media screen and (max-width: ${getDevice("dsm")}) {
+    width: 700px;
+  }
+  @media screen and (max-width: ${getDevice("dxs")}) {
+    width: 625px;
+  }
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 143px;
+  }
+  @media screen and (max-width: ${getDevice("mt")}) {
+    width: 190px;
+  }
   @media screen and (max-width: ${getDevice("lg")}) {
-    width: 360px;
+    width: 190px;
   }
   @media screen and (max-width: ${getDevice("md")}) {
     display: none;
@@ -248,8 +272,12 @@ export const DynaBarContainer = styled.div`
   width: 460px;
   position: relative;
 
+  @media screen and (max-width: ${getDevice("mt")}) {
+    display: none;
+  }
   @media screen and (max-width: ${getDevice("lg")}) {
-    width: 430px;
+    width: 390px;
+    display: none;
   }
   @media screen and (max-width: ${getDevice("md")}) {
     display: none;
@@ -262,10 +290,38 @@ export const FeedWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: ${getDevice("dxxl")}) {
+    width: 650px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("dxl")}) {
+    width: 550px;
+  }
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 550px;
+    border-left: 0;
+    border-right: 0;
+  }
+  @media screen and (max-width: ${getDevice("xxm")}) {
+    width: 480px;
+  }
+  @media screen and (max-width: ${getDevice("mt")}) {
+    /* width: 480px; */
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("lg")}) {
+    width: 480px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
   @media screen and (max-width: ${getDevice("md")}) {
     width: 100%;
     margin-top: 4.3rem;
     margin-bottom: 5rem;
+    border-left: 0;
+    border-right: 0;
   }
 `;
 
@@ -273,10 +329,13 @@ export const NavLinksWrapper = styled.div`
   position: relative;
   display: flex;
   gap: 1.5rem;
-  /* width: 100%; */
   flex-direction: column;
   transform: translateX(-3rem);
   margin-top: 1rem;
+
+  @media screen and (max-width: ${getDevice("xl")}) {
+    transform: translate(-0.5rem);
+  }
 `;
 
 export const NavLink = styled.div`
@@ -303,6 +362,9 @@ export const NavLink = styled.div`
   }
 
   @media screen and (max-width: ${getDevice("xl")}) {
+    p {
+      display: none;
+    }
   }
 `;
 

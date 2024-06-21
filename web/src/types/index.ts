@@ -11,7 +11,19 @@ export type ThemeType = {
   border: string;
 };
 
-export type DeviceType = "sm" | "md" | "lg" | "xl";
+export type DeviceType =
+  | "sm"
+  | "md"
+  | "lg"
+  | "mt"
+  | "xxm"
+  | "xl"
+  | "dxs"
+  | "dsm"
+  | "dmd"
+  | "dlg"
+  | "dxl"
+  | "dxxl";
 
 export type MobileNavProps = {
   hasUserIcon?: boolean;
@@ -29,4 +41,7 @@ export type NavProps = {
   icon: React.ReactElement;
   push: any;
   isProfile: boolean | any;
+  hasicon: boolean | any;
+  iconVariant: string | any;
+  totalNot: number | any;
 };
