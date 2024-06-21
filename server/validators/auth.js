@@ -21,3 +21,15 @@ export const signUpValidator = [
     .notEmpty()
     .withMessage("Password is required")
 ]
+
+export const signInValidator = [
+    check("email")
+    .isEmail()
+    .withMessage("invalid credentials")
+    .notEmpty()
+    .withMessage("e-mail is required"),
+
+    check("password")
+    .notEmpty()
+    .withMessage("password is required")
+]
