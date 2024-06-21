@@ -1,7 +1,7 @@
 "use client";
 import { DeviceType } from "@/types";
 import { Inter, Poller_One, Poppins, Roboto } from "next/font/google";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 const inter = Inter({ subsets: ["latin"] });
 const poppinsLight = Poppins({ subsets: ["latin"], weight: "300" });
 const poppinsNormal = Poppins({ subsets: ["latin"], weight: "400" });
@@ -44,6 +44,19 @@ const colors = {
   star500: "#FFBC00",
   dropBg: "rgb(0,0,0,0.5)",
 };
+
+export const IconWrap = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SpaceBetween = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const GlobalStyle = createGlobalStyle`
   *{

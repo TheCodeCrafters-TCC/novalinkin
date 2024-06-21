@@ -1,30 +1,18 @@
-import { colors } from "@/styles/global";
+import { ActionButton } from "@/lib";
 import React from "react";
-import { CgComment } from "react-icons/cg";
-import { FaStar } from "react-icons/fa6";
-import { IoMdHeart } from "react-icons/io";
-import { MdInsertChart } from "react-icons/md";
 import styled from "styled-components";
 
 const ActionBar = ({ article }: any) => {
   return (
     <StyledAction>
-      <StyledClick style={{ color: colors.primaryRed }}>
-        <IoMdHeart size={18} />
-        <p>{article.likes}</p>
-      </StyledClick>
-      <StyledClick style={{ color: colors.primaryColor }}>
-        <CgComment size={18} />
-        <p>{article.comment}</p>
-      </StyledClick>
-      <StyledClick>
-        <MdInsertChart size={18} />
-        <p>{article.views}</p>
-      </StyledClick>
-      <StyledClick style={{ color: colors.star500 }}>
-        <FaStar size={18} />
-        <p>{article.stars}</p>
-      </StyledClick>
+      <ActionButton data={article.likes} title="Likes" variant="like" />
+      <ActionButton
+        data={article.comment}
+        title="Comments"
+        variant="comments"
+      />
+      <ActionButton data={article.views} title="Views" variant="views" />
+      <ActionButton data={article.stars} title="Stars" variant="star" />
     </StyledAction>
   );
 };
