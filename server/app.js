@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import router from "./routes/index.js"
-import { connectMongoDb } from "./utils/mongodb.js";
+import { connectMongoDb } from "./init/mongodb.js";
 import errorHandlingMiddleware from "./middlewares/index.js";
 
 //config
