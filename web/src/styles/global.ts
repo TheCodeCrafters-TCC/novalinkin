@@ -157,6 +157,9 @@ export const lightTheme = {
   icon: colors.lightGray,
   nav: colors.neutral300,
   timestamp: colors.primaryGray,
+  search: colors.softGray,
+  info: colors.primaryGray,
+  hero: colors.profileCoverBg,
 };
 export const darkTheme = {
   primary: colors.primaryColor,
@@ -166,6 +169,9 @@ export const darkTheme = {
   icon: colors.darkGray,
   nav: colors.darkGray,
   timestamp: colors.neutral700,
+  search: colors.darkGray,
+  info: colors.neutral600,
+  hero: colors.darkGray,
 };
 
 export const screens = {
@@ -219,4 +225,12 @@ export const FlexBetween = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const DynamicWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 2rem;
+  margin-bottom: 1rem;
 `;

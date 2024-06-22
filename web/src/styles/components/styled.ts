@@ -411,6 +411,7 @@ export const StyledAMenu = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
+  z-index: 200;
 
   @media screen and (max-width: ${getDevice("md")}) {
     position: fixed;

@@ -4,8 +4,9 @@ export const MobileNavBar = dynamic(() => import("./layout/MobileNavBar"), {
   ssr: false,
 });
 
+export const Header = dynamic(() => import("./auth/Header"), { ssr: false });
+
 export { default as AppLayout } from "./layout/AppLayout";
-export { default as Header } from "./auth/Header";
 export { default as AuthInputs } from "./auth/AuthInputs";
 export { default as Info } from "./auth/Info";
 export { default as LoginInfo } from "./auth/LoginInfo";
