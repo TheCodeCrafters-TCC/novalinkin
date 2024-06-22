@@ -34,7 +34,7 @@ const Interactions = () => {
     }
   }
   return (
-    <StyledInteract>
+    <StyledInteract className={poppins.className}>
       <StyledIAction>
         <p
           className={poppins.className}

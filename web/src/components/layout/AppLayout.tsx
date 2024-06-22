@@ -6,9 +6,6 @@ import styled from "styled-components";
 import { poppins } from "@/styles/global";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import NavBar from "./NavBar";
-import MobileTab from "./MobileTab";
-import MobileTabs from "./MobileTabs";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,12 +14,13 @@ interface LayoutProps {
 
 const SideBar = dynamic(() => import("./SideBar"), { ssr: false });
 const DynamicBar = dynamic(() => import("./DynamicBar"), { ssr: false });
+const NavBar = dynamic(() => import("./NavBar"), { ssr: false });
+const MobileTabs = dynamic(() => import("./MobileTabs"), { ssr: false });
 
 const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
   const path = useRouter();
   const hideNav = path.pathname.includes("auth") || isAppLoading;
-  const router = useRouter();
-  // const hideNavs = router.pathname.includes("auth");
+
   return (
     <StyledLayout>
       {isAppLoading ? "" : <NavBar />}

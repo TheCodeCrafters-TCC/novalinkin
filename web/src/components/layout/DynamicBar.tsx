@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
-const Home = dynamic(() => import("../dynamic/Home"), { ssr: false });
+const Home = dynamic(() => import("../dynamic/HomeDynamics"), { ssr: false });
 const Chats = dynamic(() => import("../dynamic/Chats"), { ssr: false });
 const Community = dynamic(() => import("../dynamic/Community"), { ssr: false });
 const Notifications = dynamic(() => import("../dynamic/Notification"), {

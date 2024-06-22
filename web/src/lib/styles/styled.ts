@@ -120,6 +120,11 @@ export const StyledToast = styled.div`
   /* Load effect */
   .loadToast {
     animation: load 3s ease infinite;
+    width: 300px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 11px;
+    transform: translateY(-13.5px) translateX(-1px);
   }
 
   @keyframes load {
