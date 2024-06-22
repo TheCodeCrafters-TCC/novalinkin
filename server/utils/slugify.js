@@ -8,3 +8,7 @@ export function slugify(firstName, lastName) {
     .replace(/\s+/g, "-") // Replace spaces with hyphens
     .replace(/--+/g, "-"); // Replace multiple hyphens with a single hyphen
 }
+
+// function slugify(firstName, lastName) {
+//   return `${firstName}-${lastName}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+// }
