@@ -1,20 +1,27 @@
-import { MobileNavBar, Profile } from "@/components";
+import { Profile } from "@/components";
 import Head from "next/head";
 import React from "react";
 import { GetServerSideProps } from "next";
+import { InfoPageHeader } from "@/lib";
+import { useAppDispatch } from "@/hooks/state";
+import { setProfileQuery } from "@/redux/systemSlice";
+import { capitalizeAndRemoveHyphen } from "@/lib/hooks";
 
 interface SlugProps {
   slug: string | null;
 }
 
 const Slug: React.FC<SlugProps> = ({ slug }) => {
+  const dispatch = useAppDispatch();
+  dispatch(setProfileQuery(slug as any));
+  const Name = capitalizeAndRemoveHyphen(slug as string);
   return (
     <>
       <Head>
-        <title>{slug} | Connectify</title>
+        <title>{Name} | Connectify</title>
       </Head>
       <div>
-        <MobileNavBar infoPage hasFilterIcon />
+        <InfoPageHeader filter />
         <Profile />
       </div>
     </>
@@ -23,8 +30,6 @@ const Slug: React.FC<SlugProps> = ({ slug }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.query;
-
-  console.log("Found:", slug);
 
   return {
     props: { slug },

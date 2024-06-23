@@ -5,7 +5,11 @@ import ConnectUser from "./ConnectUser";
 import { colors, poppinsNormal } from "@/styles/global";
 import { useRouter } from "next/router";
 
-const ConnectWithUser = () => {
+interface BarProps {
+  pushPath: string;
+}
+
+const ConnectWithUser: React.FC<BarProps> = ({ pushPath }) => {
   const router = useRouter();
   return (
     <StyledConnect>
@@ -16,7 +20,7 @@ const ConnectWithUser = () => {
           <ConnectUser user={user} key={index} />
         ))}
       <SeeMore
-        onClick={() => router.push("/connect")}
+        onClick={() => router.push(pushPath)}
         className={poppinsNormal.className}
       >
         See more

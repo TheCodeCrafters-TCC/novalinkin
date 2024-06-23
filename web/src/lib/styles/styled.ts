@@ -236,3 +236,18 @@ export const DSearchInput = styled.input`
     caret-color: ${colors.primaryColor};
   }
 `;
+
+export const InfoHeader = styled.nav`
+  display: none;
+  justify-content: space-between;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
+  position: fixed;
+  padding: 1rem;
+  width: 100%;
+  z-index: 90;
+  background: ${({ theme }) => theme.colors.background};
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    display: flex;
+  }
+`;

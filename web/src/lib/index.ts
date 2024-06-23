@@ -3,6 +3,10 @@ import dynamic from "next/dynamic";
 export const DSearch = dynamic(() => import("./components/DSearch"), {
   ssr: false,
 });
+export const InfoPageHeader = dynamic(
+  () => import("../lib/components/InfoPageHeader"),
+  { ssr: false }
+);
 
 export { default as AuthInput } from "./components/AuthInput";
 export { default as PasswordInput } from "./components/PasswordInput";
