@@ -58,6 +58,53 @@ export const SpaceBetween = styled.div`
   align-items: center;
 `;
 
+export const screens = {
+  small: "320px",
+  medium: "480px",
+  large: "768px",
+  mediumTablet: "850px",
+  xxMedium: "960px",
+  tablet: "1024px",
+  xtraSmallDesktop: "1280px",
+  smallDesktop: "1366px",
+  mediumDesktop: "1440px",
+  largeDesktop: "1600px",
+  xtraLargeDesktop: "1680px",
+  xtraXtraLarge: "1920px",
+};
+/**
+ * Queries for device responsiveness
+ * `lg` for devices like Galaxy Tab
+ */
+export const getDevice = (size: DeviceType) => {
+  switch (size) {
+    case "sm":
+      return screens.small;
+    case "md":
+      return screens.medium;
+    case "lg":
+      return screens.large;
+    case "mt":
+      return screens.mediumTablet;
+    case "xxm":
+      return screens.xxMedium;
+    case "xl":
+      return screens.tablet;
+    case "dxs":
+      return screens.xtraSmallDesktop;
+    case "dsm":
+      return screens.smallDesktop;
+    case "dmd":
+      return screens.mediumDesktop;
+    case "dlg":
+      return screens.largeDesktop;
+    case "dxl":
+      return screens.xtraLargeDesktop;
+    case "dxxl":
+      return screens.xtraXtraLarge;
+  }
+};
+
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -86,7 +133,7 @@ const GlobalStyle = createGlobalStyle`
       border-left: 1px solid ${({ theme }) => theme.colors.nav};
     }
     .nav_link{
-      background: ${({ theme }) => theme.colors.icon};
+      /* background: ${({ theme }) => theme.colors.icon}; */
     }
     .__nav_unactive{
       &:hover{
@@ -114,6 +161,11 @@ const GlobalStyle = createGlobalStyle`
           background: ${({ theme }) => theme.colors.icon};
         }
       }
+  }
+  .__profile_page{
+    @media screen and (max-width:${getDevice("md")}){
+      margin-top: 2.5rem;
+    }
   }
 
   ::-webkit-scrollbar{
@@ -174,53 +226,6 @@ export const darkTheme = {
   hero: colors.darkGray,
 };
 
-export const screens = {
-  small: "320px",
-  medium: "480px",
-  large: "768px",
-  mediumTablet: "850px",
-  xxMedium: "960px",
-  tablet: "1024px",
-  xtraSmallDesktop: "1280px",
-  smallDesktop: "1366px",
-  mediumDesktop: "1440px",
-  largeDesktop: "1600px",
-  xtraLargeDesktop: "1680px",
-  xtraXtraLarge: "1920px",
-};
-/**
- * Queries for device responsiveness
- * `lg` for devices like Galaxy Tab
- */
-export const getDevice = (size: DeviceType) => {
-  switch (size) {
-    case "sm":
-      return screens.small;
-    case "md":
-      return screens.medium;
-    case "lg":
-      return screens.large;
-    case "mt":
-      return screens.mediumTablet;
-    case "xxm":
-      return screens.xxMedium;
-    case "xl":
-      return screens.tablet;
-    case "dxs":
-      return screens.xtraSmallDesktop;
-    case "dsm":
-      return screens.smallDesktop;
-    case "dmd":
-      return screens.mediumDesktop;
-    case "dlg":
-      return screens.largeDesktop;
-    case "dxl":
-      return screens.xtraLargeDesktop;
-    case "dxxl":
-      return screens.xtraXtraLarge;
-  }
-};
-
 export const FlexBetween = styled.div`
   display: flex;
   align-items: center;
@@ -232,5 +237,20 @@ export const DynamicWrap = styled.div`
   flex-direction: column;
   position: relative;
   gap: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3.5rem;
+`;
+
+export const StyledBar = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  gap: 1rem;
+`;
+
+export const StyledBarWrap = styled.div`
+  width: auto;
+  height: 350px;
+  border-radius: 12px;
+  background: ${({ theme }) => theme.colors.search};
 `;

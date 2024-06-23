@@ -13,6 +13,7 @@ const Notifications = dynamic(() => import("../dynamic/Notification"), {
 });
 const Explore = dynamic(() => import("../dynamic/Explore"), { ssr: false });
 const Profile = dynamic(() => import("../dynamic/Profile"), { ssr: false });
+const Connect = dynamic(() => import("../dynamic/Connect"), { ssr: false });
 
 const getCurrentBar = (path: any) => {
   if (path.pathname === "/") {
@@ -27,6 +28,8 @@ const getCurrentBar = (path: any) => {
     return <Explore />;
   } else if (path.pathname.includes("profile")) {
     return <Profile />;
+  } else if (path.pathname.includes("connect")) {
+    return <Connect />;
   } else {
     return <Home />;
   }

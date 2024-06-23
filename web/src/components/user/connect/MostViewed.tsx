@@ -2,21 +2,22 @@ import { StyledBar, StyledBarWrap, poppinsSemibold } from "@/styles/global";
 import React from "react";
 import styled from "styled-components";
 import ConnectWithUser from "./ConnectWithUser";
+import MostViewedUser from "./MostViewedUsers";
 
-const ConnectBar = () => {
+const MostViewed = () => {
   return (
     <StyledBar>
       <StyledConnect className={poppinsSemibold.className}>
-        Connect with
+        Most viewed
       </StyledConnect>
       <StyledBarWrap>
-        <ConnectWithUser />
+        <MostViewedUser />
       </StyledBarWrap>
     </StyledBar>
   );
 };
 
-export default ConnectBar;
+export default MostViewed;
 
 const StyledConnect = styled.h1`
   text-align: center;

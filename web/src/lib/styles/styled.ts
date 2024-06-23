@@ -227,6 +227,7 @@ export const DSearchInput = styled.input`
   outline: none;
   border: none;
   background: transparent;
+  color: ${({ theme }) => theme.colors.text};
 
   ::placeholder {
     color: ${colors.primaryGray};

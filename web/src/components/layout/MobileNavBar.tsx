@@ -24,6 +24,7 @@ const MobileNavBar: React.FC<MobileNavProps> = ({
   label,
   infoPage,
 }) => {
+  const isUser = true;
   const theme = useAppSelector((state) => state.system.theme);
   const isLight = theme === "light";
   const dispatch = useAppDispatch();
@@ -43,7 +44,7 @@ const MobileNavBar: React.FC<MobileNavProps> = ({
       )}
       <StyledActionHeader>
         {hasSearchIcon && <FiSearch size={25} />}
-        {hasFilterIcon && <VscSettings size={25} />}
+        {hasFilterIcon && isUser && <VscSettings size={25} />}
         {hasModeIcon && <ModeIcon isLight={isLight} dispatch={handleTheme} />}
       </StyledActionHeader>
     </StyledHeaderNav>

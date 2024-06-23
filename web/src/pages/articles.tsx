@@ -1,3 +1,4 @@
+import { MobileNavBar } from "@/components";
 import Item from "@/components/article/Item";
 import { articlesdata } from "@/data/article";
 import { FeedWrapper } from "@/styles/components/styled";
@@ -15,6 +16,7 @@ const articles = () => {
       <Head>
         <title>Query | Connectify</title>
       </Head>
+      <MobileNavBar hasUserIcon hasSearchIcon hasModeIcon />
       <FeedWrapper className={poppins.className}>
         {articlesdata
           .filter((a) => a.desc.toLowerCase().includes(query as string))
