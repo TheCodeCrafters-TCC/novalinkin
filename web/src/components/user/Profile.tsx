@@ -9,7 +9,7 @@ const UserInfo = dynamic(() => import("./Info"), { ssr: false });
 
 const Profile = () => {
   return (
-    <FeedWrapper>
+    <FeedWrapper className="__profile_page">
       <Hero />
       <UserInfo />
       <Divider />

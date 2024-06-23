@@ -42,7 +42,7 @@ const SideBar = () => {
           />
           <TbScriptPlus
             className="_mobile_share_article __nav_unactive"
-            size={30}
+            size={35}
           />
         </NavLinksWrapper>
       </FixedNav>
@@ -64,6 +64,10 @@ const FixedNav = styled.nav`
 
   @media screen and (max-width: ${getDevice("dxxl")}) {
     width: 450px;
+
+    ._mobile_share_article {
+      display: none;
+    }
   }
   @media screen and (max-width: ${getDevice("dxl")}) {
     width: 410px;
@@ -76,5 +80,15 @@ const FixedNav = styled.nav`
   }
   @media screen and (max-width: ${getDevice("xl")}) {
     width: 90px;
+
+    .__share_btn {
+      display: none;
+    }
+    ._mobile_share_article {
+      display: block;
+      padding: 5px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
   }
 `;

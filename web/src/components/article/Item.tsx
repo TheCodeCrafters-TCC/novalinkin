@@ -137,10 +137,11 @@ const ArticleImg = styled(Image)`
 `;
 const FullImg = styled(Image)`
   width: 50%;
-  height: 50%;
+  height: 58%;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-radius: 9px;
 
   @media screen and (max-width: ${getDevice("md")}) {
     width: 100%;

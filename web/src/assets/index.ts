@@ -6,6 +6,22 @@ import seconduser from "./seconduser.png";
 import GT from "./2022_McLaren_GT.jpg";
 import UProfile from "./Rectangle 79.png";
 import NoDataImg from "./undraw_no_data_re_kwbl.svg";
+import Robert from "./Ellipse 1.png";
+import Daniel from "./Ellipse 2.png";
+import David from "./Ellipse 3.png";
+import Michael from "./Micheal.png";
+import Sophia from "./Sofia.png";
+import James from "./James.png";
+import William from "./Ellipse 8.png";
+import Ethan from "./Ellipse 9.png";
+import Olivia from "./Ellipse 10.png";
+import Mia from "./Ellipse 25.png";
+import Isabella from "./Ellipse 26.png";
+import Henry from "./Ellipse 27.png";
+import Charlotte from "./Ellipse 29.png";
+import Lucas from "./Ellipse 30.png";
+import Amelia from "./Ellipse 32.png";
+import Mason from "./Ellipse 33.png";
 
 export {
   LogoImg,
@@ -16,4 +32,20 @@ export {
   GT,
   UProfile,
   NoDataImg,
+  Robert,
+  Daniel,
+  David,
+  Michael,
+  Sophia,
+  Ethan,
+  William,
+  Olivia,
+  James,
+  Mia,
+  Isabella,
+  Mason,
+  Lucas,
+  Amelia,
+  Henry,
+  Charlotte,
 };

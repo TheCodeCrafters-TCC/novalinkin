@@ -6,7 +6,17 @@ import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/hooks/state";
 import { setQuery } from "@/redux/systemSlice";
 
-const DSearch = () => {
+interface SearchProps {
+  queryPage: string;
+  placeholder: string;
+  isConnect?: boolean;
+}
+
+const DSearch: React.FC<SearchProps> = ({
+  queryPage,
+  placeholder,
+  isConnect,
+}) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string | any>("");
@@ -19,13 +29,15 @@ const DSearch = () => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     if (e.target.value) {
-      router.push(`/articles?query=${e.target.value}`);
+      router.push(`/${queryPage}?query=${e.target.value}`);
     }
   };
 
   useEffect(() => {
-    if (!searchQuery) {
+    if (!isConnect && !searchQuery) {
       router.replace("/");
+    } else if (isConnect && !searchQuery) {
+      router.replace("/connect");
     }
   }, [searchQuery]);
 
@@ -34,7 +46,7 @@ const DSearch = () => {
       <IoSearchOutline size={30} />
       <DSearchInput
         className={poppins.className}
-        placeholder="Search article..."
+        placeholder={placeholder}
         value={searchQuery}
         onChange={handleSearch}
       />
