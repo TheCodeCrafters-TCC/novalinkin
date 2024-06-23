@@ -512,3 +512,31 @@ export const InFlex = styled.div`
 export const InfoTag = styled.p`
   font-size: 12px;
 `;
+
+export const StyledConnectWrap = styled.div`
+  padding: 2rem;
+  gap: 1.5rem;
+  flex-direction: column;
+  display: flex;
+`;
+
+export const StyledConnectUser = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+`;
+export const ConnectUserImage = styled(Image)`
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+`;
+
+export const ConnectUserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  /* span {
+    font-size: 15px;
+  } */
+`;

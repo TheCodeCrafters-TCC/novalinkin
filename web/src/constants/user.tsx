@@ -23,7 +23,6 @@ import {
 const getRandomViews = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-// Users array with random views added
 export const Users = [
   {
     name: "David Willson",
@@ -31,6 +30,7 @@ export const Users = [
     image: David,
     connection: 1203,
     views: getRandomViews(100, 10000),
+    description: "JavaScript enthusiast with a passion for web development.",
   },
   {
     name: "Robert Brown",
@@ -38,6 +38,7 @@ export const Users = [
     image: Robert,
     connection: 566,
     views: getRandomViews(100, 10000),
+    description: "Full-stack developer specializing in Node.js and React.",
   },
   {
     name: "Daniel Lewis",
@@ -45,6 +46,7 @@ export const Users = [
     image: Daniel,
     connection: 705,
     views: getRandomViews(100, 10000),
+    description: "Python developer with experience in data analysis and AI.",
   },
   {
     name: "Alice Smith",
@@ -52,6 +54,8 @@ export const Users = [
     image: firstUser,
     connection: 15600,
     views: getRandomViews(100, 10000),
+    description:
+      "Cloud computing expert and AWS certified solutions architect.",
   },
   {
     name: "Emma Johnson",
@@ -59,6 +63,7 @@ export const Users = [
     image: seconduser,
     connection: 1283,
     views: getRandomViews(100, 10000),
+    description: "Frontend developer with a love for creating beautiful UIs.",
   },
   {
     name: "Michael Davis",
@@ -66,6 +71,7 @@ export const Users = [
     image: Michael,
     connection: 12,
     views: getRandomViews(100, 10000),
+    description: "DevOps engineer skilled in CI/CD and automation tools.",
   },
   {
     name: "Olivia Martinez",
@@ -73,6 +79,7 @@ export const Users = [
     image: Olivia,
     connection: 984,
     views: getRandomViews(100, 10000),
+    description: "Cybersecurity specialist with a knack for ethical hacking.",
   },
   {
     name: "James Anderson",
@@ -80,6 +87,7 @@ export const Users = [
     image: James,
     connection: 1734,
     views: getRandomViews(100, 10000),
+    description: "Backend developer proficient in Java and microservices.",
   },
   {
     name: "Sophia Lee",
@@ -87,6 +95,7 @@ export const Users = [
     image: Sophia,
     connection: 289,
     views: getRandomViews(100, 10000),
+    description: "UX/UI designer focused on creating user-centric designs.",
   },
   {
     name: "William Garcia",
@@ -94,6 +103,7 @@ export const Users = [
     image: William,
     connection: 875,
     views: getRandomViews(100, 10000),
+    description: "Machine learning engineer with a background in statistics.",
   },
   {
     name: "Mia Rodriguez",
@@ -101,6 +111,7 @@ export const Users = [
     image: Mia,
     connection: 432,
     views: getRandomViews(100, 10000),
+    description: "Mobile app developer experienced in iOS and Android.",
   },
   {
     name: "Ethan Wilson",
@@ -108,6 +119,7 @@ export const Users = [
     image: Ethan,
     connection: 620,
     views: getRandomViews(100, 10000),
+    description: "Blockchain developer and cryptocurrency enthusiast.",
   },
   {
     name: "Isabella Martinez",
@@ -115,6 +127,7 @@ export const Users = [
     image: Isabella,
     connection: 1472,
     views: getRandomViews(100, 10000),
+    description: "Data scientist with expertise in big data and analytics.",
   },
   {
     name: "Henry Walker",
@@ -122,6 +135,8 @@ export const Users = [
     image: Henry,
     connection: 78,
     views: getRandomViews(100, 10000),
+    description:
+      "Software tester with a focus on automation and quality assurance.",
   },
   {
     name: "Charlotte Harris",
@@ -129,6 +144,8 @@ export const Users = [
     image: Charlotte,
     connection: 953,
     views: getRandomViews(100, 10000),
+    description:
+      "Game developer with a passion for creating immersive experiences.",
   },
   {
     name: "Lucas Clark",
@@ -136,6 +153,7 @@ export const Users = [
     image: Lucas,
     connection: 1160,
     views: getRandomViews(100, 10000),
+    description: "AR/VR developer exploring the future of augmented reality.",
   },
   {
     name: "Amelia Lewis",
@@ -143,6 +161,7 @@ export const Users = [
     image: Amelia,
     connection: 520,
     views: getRandomViews(100, 10000),
+    description: "IT consultant with experience in network infrastructure.",
   },
   {
     name: "Mason Robinson",
@@ -150,5 +169,6 @@ export const Users = [
     image: Mason,
     connection: 1347,
     views: getRandomViews(100, 10000),
+    description: "Robotics engineer with a passion for AI and automation.",
   },
 ];

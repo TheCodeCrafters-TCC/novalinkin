@@ -3,6 +3,7 @@ import { DeviceType } from "@/types";
 import { Inter, Poller_One, Poppins, Roboto } from "next/font/google";
 import styled, { createGlobalStyle } from "styled-components";
 const inter = Inter({ subsets: ["latin"] });
+const interNormal = Inter({ subsets: ["latin"], weight: "400" });
 const poppinsLight = Poppins({ subsets: ["latin"], weight: "300" });
 const poppinsNormal = Poppins({ subsets: ["latin"], weight: "400" });
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
@@ -164,7 +165,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .__profile_page{
     @media screen and (max-width:${getDevice("md")}){
-      margin-top: 2.5rem;
+      margin-top: 2.4rem;
     }
   }
 
@@ -199,6 +200,7 @@ export {
   poppinsLight,
   poppinsNormal,
   poppinsSemibold,
+  interNormal,
 };
 
 export const lightTheme = {

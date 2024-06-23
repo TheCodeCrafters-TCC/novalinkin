@@ -10,7 +10,7 @@ const ConnectBar = () => {
         Connect with
       </StyledConnect>
       <StyledBarWrap>
-        <ConnectWithUser />
+        <ConnectWithUser pushPath="/connect" />
       </StyledBarWrap>
     </StyledBar>
   );

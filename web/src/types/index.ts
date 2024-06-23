@@ -1,8 +1,14 @@
 import React from "react";
 
+type QueryProps = {
+  profileSlug: string | any;
+  communitySlug: string | any;
+};
+
 export type SystemTypes = {
   theme: string;
-  query: string | any;
+  query: QueryProps;
+  currentPage: string | any;
 };
 
 export type ThemeType = {

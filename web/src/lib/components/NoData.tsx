@@ -5,9 +5,13 @@ import React from "react";
 import styled from "styled-components";
 const open = Open_Sans({ subsets: ["latin"] });
 
-const NoData = () => {
+interface NodataProps {
+  style?: React.CSSProperties;
+}
+
+const NoData: React.FC<NodataProps> = ({ style }) => {
   return (
-    <NDWrap>
+    <NDWrap style={style}>
       <StyledNOWrap src={NoDataImg} alt="No_data-FOUND" />
 
       <p className={open.className}>No data found</p>

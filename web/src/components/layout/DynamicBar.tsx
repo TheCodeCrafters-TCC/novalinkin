@@ -1,3 +1,4 @@
+import { useAppSelector } from "@/hooks/state";
 import { DynaBarContainer } from "@/styles/components/styled";
 import { colors, getDevice } from "@/styles/global";
 import dynamic from "next/dynamic";
@@ -14,8 +15,13 @@ const Notifications = dynamic(() => import("../dynamic/Notification"), {
 const Explore = dynamic(() => import("../dynamic/Explore"), { ssr: false });
 const Profile = dynamic(() => import("../dynamic/Profile"), { ssr: false });
 const Connect = dynamic(() => import("../dynamic/Connect"), { ssr: false });
+const Connections = dynamic(() => import("../dynamic/Connections"), {
+  ssr: false,
+});
 
 const getCurrentBar = (path: any) => {
+  // console.log("Current path:", path.pathname);
+
   if (path.pathname === "/") {
     return <Home />;
   } else if (path.pathname?.includes("chats")) {
@@ -26,11 +32,13 @@ const getCurrentBar = (path: any) => {
     return <Notifications />;
   } else if (path.pathname === "/explore") {
     return <Explore />;
-  } else if (path.pathname.includes("profile")) {
+  } else if (path.pathname === "/profile/[slug]") {
     return <Profile />;
-  } else if (path.pathname.includes("connect")) {
+  } else if (path.pathname === "connect") {
     return <Connect />;
-  } else {
+  } else if (path.pathname === "/profile/[slug]/connections")
+    return <Connections />;
+  else {
     return <Home />;
   }
 };

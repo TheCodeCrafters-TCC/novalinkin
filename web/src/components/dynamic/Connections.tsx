@@ -4,18 +4,18 @@ import { DynamicWrap } from "@/styles/global";
 import React from "react";
 import UsersConnections from "../user/connect/UsersConnections";
 
-const Profile = () => {
+const Connections = () => {
   const queryState = useAppSelector((state) => state.system.query.profileSlug);
   return (
     <DynamicWrap>
       <DSearch
         placeholder="Search Connection"
         queryPage={`profile/${queryState}/connections`}
-        isProfile
+        isConnection
       />
       <UsersConnections />
     </DynamicWrap>
   );
 };
 
-export default Profile;
+export default Connections;

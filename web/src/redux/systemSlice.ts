@@ -6,7 +6,11 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: SystemTypes = {
   theme: "light",
-  query: "",
+  query: {
+    profileSlug: "",
+    communitySlug: "",
+  },
+  currentPage: "",
 };
 
 const systemSlice = createSlice({
@@ -26,13 +30,18 @@ const systemSlice = createSlice({
       const storedTheme = global?.localStorage?.getItem("theme");
       state.theme = storedTheme ? JSON.parse(storedTheme) : "light";
     },
-    setQuery: (state, action: PayloadAction) => {
+    setProfileQuery: (state, action: PayloadAction) => {
       const searched = action.payload;
-      state.query = searched;
+      state.query.profileSlug = searched;
+    },
+    setCurrntPage: (state, action: PayloadAction) => {
+      const page = action.payload;
+      state.currentPage = page;
     },
   },
 });
 
 export default systemSlice.reducer;
 
-export const { toggleTheme, updateTheme, setQuery } = systemSlice.actions;
+export const { toggleTheme, updateTheme, setProfileQuery, setCurrntPage } =
+  systemSlice.actions;

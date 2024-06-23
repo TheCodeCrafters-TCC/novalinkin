@@ -1,5 +1,10 @@
 import { Button } from "@/lib";
-import { SpaceBetween, colors, poppins } from "@/styles/global";
+import {
+  SpaceBetween,
+  colors,
+  poppins,
+  poppinsSemibold,
+} from "@/styles/global";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -12,7 +17,7 @@ const ConnectUser = ({ user }: any) => {
     <SpaceBetween>
       <FlexUser onClick={() => router.push(`/profile/${user.name}`)}>
         <UserProfile src={user?.image} alt={user.name} />
-        <p className={poppins.className}>{user.name}</p>
+        <p className={poppinsSemibold.className}>{user.name}</p>
         {user?.isVerified && (
           <MdVerified size={25} color={colors.primaryColor} />
         )}
@@ -22,7 +27,7 @@ const ConnectUser = ({ user }: any) => {
         variant="primary"
         radius="sm"
         width="100px"
-        height="40px"
+        height="35px"
       />
     </SpaceBetween>
   );
@@ -38,13 +43,13 @@ const FlexUser = styled.div`
   cursor: pointer;
 
   svg {
-    transform: translateX(-7px);
+    transform: translateX(-11px);
   }
 
   p {
     font-size: 17px;
-    white-space: nowrap; /* Prevents the text from wrapping to the next line */
-    overflow: hidden; /* Hides any text that overflows the container */
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
     width: 120px;
   }

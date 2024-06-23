@@ -4,27 +4,26 @@ import { IoSearchOutline } from "react-icons/io5";
 import { poppins } from "@/styles/global";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/hooks/state";
-import { setQuery } from "@/redux/systemSlice";
 
 interface SearchProps {
   queryPage: string;
   placeholder: string;
   isConnect?: boolean;
+  isProfile?: boolean;
+  isConnection?: boolean;
 }
 
 const DSearch: React.FC<SearchProps> = ({
   queryPage,
   placeholder,
   isConnect,
+  isProfile,
+  isConnection,
 }) => {
-  const dispatch = useAppDispatch();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string | any>("");
   const queryState = useAppSelector((state) => state.system.query);
-
-  useEffect(() => {
-    dispatch(setQuery(searchQuery));
-  }, [searchQuery, dispatch]);
+  const pQuery = queryState.profileSlug;
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -34,10 +33,14 @@ const DSearch: React.FC<SearchProps> = ({
   };
 
   useEffect(() => {
-    if (!isConnect && !searchQuery) {
+    if (!isConnect && !isProfile && !isConnection && !searchQuery) {
       router.replace("/");
     } else if (isConnect && !searchQuery) {
       router.replace("/connect");
+    } else if (isProfile && !searchQuery) {
+      router.replace(`/profile/${pQuery}`);
+    } else if (isConnection && !searchQuery) {
+      router.replace(`/profile/${pQuery}/connections`);
     }
   }, [searchQuery]);
 
