@@ -6,8 +6,7 @@ import { poppins } from "@/styles/global";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
-
-const articles = () => {
+const Articles = () => {
   const router = useRouter();
   const { query } = router.query;
   console.log("queryFound:", query);
@@ -28,4 +27,4 @@ const articles = () => {
   );
 };
 
-export default articles;
+export default Articles;
