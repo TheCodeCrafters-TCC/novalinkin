@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <>
       <Head>
-        <title>Login | Connectify</title>
+        <title>Login | NovaLinkin</title>
       </Head>
       <AuthContainer>
         <Header />

@@ -67,6 +67,7 @@ export const ButtonInterFace = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   &:hover {
     opacity: 0.75;

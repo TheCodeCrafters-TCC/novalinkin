@@ -12,7 +12,7 @@ const Register = () => {
   return (
     <>
       <Head>
-        <title>Register| Connectify</title>
+        <title>Register| NovaLinkin</title>
       </Head>
       <AuthContainer>
         <Header />

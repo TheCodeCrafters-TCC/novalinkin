@@ -7,7 +7,7 @@ const Chats = () => {
   return (
     <>
       <Head>
-        <title>Chats | Connectify</title>
+        <title>Chats | NovaLinkin</title>
       </Head>
       <MobileNavBar hasModeIcon hasUserIcon />
       <ComingSoon />

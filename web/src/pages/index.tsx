@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Feed | Connectify</title>
+        <title>Feed | NovaLinkin</title>
         <meta
           name="description"
-          content="Connectify: Your Centralized Platform for Global Developer Collaboration"
+          content="NovaLinkin: Your Centralized Platform for Global Developer Collaboration"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
