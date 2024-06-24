@@ -34,7 +34,7 @@ const getCurrentBar = (path: any) => {
     return <Explore />;
   } else if (path.pathname === "/profile/[slug]") {
     return <Profile />;
-  } else if (path.pathname === "connect") {
+  } else if (path.pathname === "/connect") {
     return <Connect />;
   } else if (path.pathname === "/profile/[slug]/connections")
     return <Connections />;

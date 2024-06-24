@@ -22,6 +22,12 @@ import Charlotte from "./Ellipse 29.png";
 import Lucas from "./Ellipse 30.png";
 import Amelia from "./Ellipse 32.png";
 import Mason from "./Ellipse 33.png";
+import SentMail from "./email.svg";
+import Andriod from "./Rectangle 88.png";
+import Py from "./Rectangle 89.png";
+import ReactImg from "./Rectangle 90.png";
+import NodeJsImg from "./Rectangle 91.png";
+import Confirmed from "./confirmed.svg";
 
 export {
   LogoImg,
@@ -48,4 +54,10 @@ export {
   Amelia,
   Henry,
   Charlotte,
+  SentMail,
+  Andriod,
+  NodeJsImg,
+  ReactImg,
+  Py,
+  Confirmed,
 };

@@ -71,6 +71,9 @@ export const ButtonInterFace = styled.button`
   &:hover {
     opacity: 0.75;
   }
+  &:disabled {
+    opacity: 0.5;
+  }
 
   @media screen and (max-width: ${getDevice("xl")}) {
     height: 75px;
@@ -93,6 +96,9 @@ export const QText = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+  @media screen and (max-width: ${getDevice("md")}) {
+    margin-bottom: 1rem;
   }
 `;
 

@@ -11,6 +11,7 @@ const initialState: SystemTypes = {
     communitySlug: "",
   },
   currentPage: "",
+  isReturningUser: global.localStorage?.getItem("isReturningUser") || false,
 };
 
 const systemSlice = createSlice({
@@ -38,10 +39,19 @@ const systemSlice = createSlice({
       const page = action.payload;
       state.currentPage = page;
     },
+    setReturnedUser: (state) => {
+      state.isReturningUser = true;
+      global.localStorage?.setItem("isReturningUser", state.isReturningUser);
+    },
   },
 });
 
 export default systemSlice.reducer;
 
-export const { toggleTheme, updateTheme, setProfileQuery, setCurrntPage } =
-  systemSlice.actions;
+export const {
+  toggleTheme,
+  updateTheme,
+  setProfileQuery,
+  setCurrntPage,
+  setReturnedUser,
+} = systemSlice.actions;

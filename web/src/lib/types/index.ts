@@ -7,12 +7,16 @@ import React from "react";
  */
 export type AuthInputType = {
   type?: string;
-  value: string;
+  value: string | number;
   onValueChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   placeholder: string;
   label?: string;
   icon: React.ReactElement;
+  Reqlength?: boolean | any;
+  validCase?: boolean | any;
+  validChar?: boolean | any;
+  invalidMail?: boolean | any;
 };
 
 /**
@@ -49,6 +53,8 @@ export type ButtonProps = {
   width: string;
   height?: string;
   className?: React.CSSProperties | string;
+  style?: React.CSSProperties;
+  validating?: boolean;
 };
 
 export type ToastType = {
@@ -78,4 +84,10 @@ export type TruncateTextProps = {
   maxLength: number | any;
   className: React.CSSProperties | string | any;
   showClass: React.CSSProperties | string | any;
+};
+
+export type ValidatorProps = {
+  error: boolean;
+  valid: boolean;
+  label: string;
 };

@@ -10,7 +10,7 @@ const Connect = () => {
         <title>Connect | Connectify</title>
       </Head>
       <InfoPageHeader filter />
-      <Container />
+      <Container header="Connect" />
     </>
   );
 };

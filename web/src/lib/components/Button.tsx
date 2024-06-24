@@ -3,6 +3,7 @@ import { ButtonProps } from "../types";
 import { ButtonInterFace } from "../styles/styled";
 import { colors, poppins } from "@/styles/global";
 import { ClipLoader } from "react-spinners";
+import { Bounce } from "./Loaders";
 
 const getBackgroundColor = (variant: ButtonProps["variant"]) => {
   switch (variant) {
@@ -55,20 +56,36 @@ const Button: React.FC<ButtonProps> = ({
   radius,
   height,
   className,
+  style,
+  validating,
 }) => {
-  const loadAction = Loading ? "not-allowed" : "pointer";
+  const loadAction =
+    Loading || disabled || validating ? "not-allowed" : "pointer";
   if (Loading && typeof Loading !== "boolean") {
     throw new Error("Action failed: Loading props must be assigned to boolean");
   }
   if (onActionClick && typeof onActionClick !== "function") {
     throw new Error("Action terminated: onAction can only be a function");
   }
+
+  const validateInterface = validating ? (
+    <Bounce color="white" size={15} />
+  ) : (
+    label
+  );
+  const loadInterface = Loading ? (
+    <ClipLoader color="white" size={20} />
+  ) : (
+    label
+  );
+
   return (
     <ButtonInterFace
       disabled={disabled}
       className={`${className} ${poppins.className}`}
       onClick={onActionClick}
       style={{
+        ...style,
         cursor: loadAction,
         background: getBackgroundColor(variant),
         borderRadius: getBorderRadius(radius),
@@ -76,7 +93,7 @@ const Button: React.FC<ButtonProps> = ({
         height: height,
       }}
     >
-      {Loading ? <ClipLoader color="white" size={20} /> : label}
+      {validateInterface || loadInterface}
     </ButtonInterFace>
   );
 };

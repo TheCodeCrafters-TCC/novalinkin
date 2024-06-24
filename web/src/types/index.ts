@@ -9,6 +9,7 @@ export type SystemTypes = {
   theme: string;
   query: QueryProps;
   currentPage: string | any;
+  isReturningUser: boolean | any;
 };
 
 export type ThemeType = {
@@ -66,4 +67,26 @@ export type TitleProps = {
   title: string;
   className?: React.CSSProperties;
   styles?: React.CSSProperties;
+};
+
+type StateInput = {
+  email: string | any;
+  firstName: string | any;
+  lastName: string | any;
+  password: string | any;
+};
+
+export type AuthStateProps = {
+  name: string;
+  email: string;
+  slug: string;
+  profile: string;
+  verificationStatus: "verified" | "pending" | "";
+  userLoaded: boolean;
+  loginStatus: "pending" | "successful" | "failed" | "";
+  registerStatus: "pending" | "successful" | "failed" | "";
+  userProfile: object | null;
+  isVerified: boolean;
+  gender: "male" | "female" | "";
+  onHold: StateInput;
 };
