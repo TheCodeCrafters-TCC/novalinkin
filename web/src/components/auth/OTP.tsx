@@ -103,9 +103,9 @@ const OTP = () => {
                 onClick={handleResendOTP}
                 className={requested ? "disable__send" : "__resend_btn"}
               >
-                Resend
+                Resend in
               </p>
-              {requested && <span>{time}</span>}
+              {requested && <span>{time}s</span>}
             </ResendWrap>
             <Button
               label="Verify"
