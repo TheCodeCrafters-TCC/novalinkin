@@ -7,6 +7,7 @@ import {
   ALabel,
 } from "../styles/styled";
 import { colors, poppins } from "@/styles/global";
+import styled from "styled-components";
 
 const AuthInput: React.FC<AuthInputType> = ({
   type,
@@ -16,6 +17,7 @@ const AuthInput: React.FC<AuthInputType> = ({
   placeholder,
   label,
   icon,
+  invalidMail,
 }) => {
   const [val, setVal] = useState(false);
   function setBor() {
@@ -25,6 +27,7 @@ const AuthInput: React.FC<AuthInputType> = ({
     setVal(false);
   }
   const showBorder = val ? `2px solid ${colors.primaryColor}` : "";
+
   return (
     <AInputWrapper>
       <ALabel className={poppins.className}>{label}</ALabel>
@@ -43,8 +46,20 @@ const AuthInput: React.FC<AuthInputType> = ({
           placeholder={placeholder}
         />
       </AInputContainer>
+      {invalidMail ? (
+        <VaildateError className={poppins.className}>
+          * Invalid mail *
+        </VaildateError>
+      ) : (
+        ""
+      )}
     </AInputWrapper>
   );
 };
 
 export default AuthInput;
+
+const VaildateError = styled.p`
+  font-size: 13px;
+  color: ${colors.primaryRed};
+`;

@@ -5,7 +5,7 @@ import { store } from "@/redux/store";
 import { updateTheme } from "@/redux/systemSlice";
 import { GlobalStyle, darkTheme, lightTheme } from "@/styles/global";
 import type { AppProps } from "next/app";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
@@ -20,9 +20,23 @@ export default function App({ Component, pageProps, router }: AppProps) {
 }
 
 function ThemedApp({ Component, pageProps, router }: AppProps) {
-  const currentTheme: string = useAppSelector((state) => state.system.theme);
+  const systemState = useAppSelector((state) => state.system);
+  const currentTheme: string = systemState.theme;
+  const isReturningUser = systemState.isReturningUser;
   const themed = currentTheme;
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isReturningUser) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 5000);
+      // Handle articles dispatch here
+    } else {
+      setIsLoading(false);
+    }
+  }, [isReturningUser]);
 
   const theme: any = {
     dark: {

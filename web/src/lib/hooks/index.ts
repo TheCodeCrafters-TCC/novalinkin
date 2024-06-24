@@ -26,3 +26,13 @@ export const capitalizeAndRemoveHyphen = (str: string) => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 };
+
+function containsUppercaseAndSpecialCharacter(value: string) {
+  const uppercaseRegex = /[A-Z]/;
+  const specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+  const hasUppercase = uppercaseRegex.test(value);
+  const hasSpecialCharacter = specialCharacterRegex.test(value);
+
+  return hasUppercase && hasSpecialCharacter;
+}

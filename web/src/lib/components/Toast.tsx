@@ -16,6 +16,8 @@ const getPosition = (position: ToastType["position"]) => {
       return { bottom: "10px", left: "16px" };
     case "bottom-right":
       return { bottom: "10px", right: "16px" };
+    default:
+      return { right: "16px", top: "10px" };
   }
 };
 const getIcon = (variant: ToastType["variant"]) => {
@@ -59,15 +61,15 @@ const Toast: React.FC<ToastType> = ({
   endToast,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [loadWidth, setLoadWidth] = useState("");
-  const toasterLoadWith = isHovered ? loadWidth : "auto";
-  const loaderRadius = isHovered ? 0 : 10;
+  // const [loadWidth, setLoadWidth] = useState("");
+  // const toasterLoadWith = isHovered ? loadWidth : "auto";
+  // const loaderRadius = isHovered ? 0 : 10;
 
   function holdToast() {
     setIsHovered(true);
-    const element: HTMLElement | any = document.getElementById("toast_con");
-    const currentWidth = window.getComputedStyle(element).width;
-    setLoadWidth(currentWidth);
+    // const element: HTMLElement | any = document.getElementById("toast_con");
+    // const currentWidth = window.getComputedStyle(element).width;
+    // setLoadWidth(currentWidth);
   }
   function leaveToast() {
     setIsHovered(false);
