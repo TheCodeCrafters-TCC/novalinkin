@@ -3,7 +3,7 @@ import { AuthContainer, LoginAuthWrapper } from "@/styles/pages/styled";
 import Head from "next/head";
 import React from "react";
 
-const login = () => {
+const Login = () => {
   return (
     <>
       <Head>
@@ -20,4 +20,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

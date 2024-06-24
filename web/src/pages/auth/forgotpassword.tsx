@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
-const forgotpassword = () => {
+const ForgotPassword = () => {
   const router = useRouter();
   const { email } = router.query;
   return (
@@ -31,7 +31,7 @@ const forgotpassword = () => {
   );
 };
 
-export default forgotpassword;
+export default ForgotPassword;
 const ForgotPassWrapper = styled.div`
   display: flex;
   align-items: center;
