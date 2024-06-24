@@ -7,7 +7,7 @@ const Community = () => {
   return (
     <>
       <Head>
-        <title>Community | Connectify</title>
+        <title>Community | NovaLinkin</title>
       </Head>
       <InfoPageHeader filter />
       <CommunityContainer />

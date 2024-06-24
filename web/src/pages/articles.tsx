@@ -13,7 +13,7 @@ const Articles = () => {
   return (
     <>
       <Head>
-        <title>Query | Connectify</title>
+        <title>Query | NovaLinkin</title>
       </Head>
       <MobileNavBar hasUserIcon hasSearchIcon hasModeIcon />
       <FeedWrapper className={poppins.className}>

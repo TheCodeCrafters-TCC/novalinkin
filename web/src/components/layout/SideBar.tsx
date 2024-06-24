@@ -37,7 +37,7 @@ const SideBar = () => {
             label="Share article"
             variant="primary"
             radius="sm"
-            width="auto"
+            width="100%"
             className="__share_btn"
           />
           <TbScriptPlus
@@ -61,6 +61,11 @@ const FixedNav = styled.nav`
   padding: 1rem;
   justify-content: flex-end;
   z-index: 80;
+
+  .__share_btn {
+    position: absolute;
+    bottom: 4.5rem;
+  }
 
   @media screen and (max-width: ${getDevice("dxxl")}) {
     width: 450px;

@@ -6,7 +6,7 @@ const Explore = () => {
   return (
     <>
       <Head>
-        <title>Explore | Connectify</title>
+        <title>Explore | NovaLinkin</title>
       </Head>
       <MobileNavBar hasModeIcon hasUserIcon />
       <ExploreContainer />

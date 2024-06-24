@@ -12,7 +12,7 @@ const Connections = () => {
   return (
     <>
       <Head>
-        <title>{Name} - Connections | Connectify</title>
+        <title>{Name} - Connections | NovaLinkin</title>
       </Head>
       <InfoPageHeader filter />
       <Container header={`All ${Name} Connections`} hasNavBack />

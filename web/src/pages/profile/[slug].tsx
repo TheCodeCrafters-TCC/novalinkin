@@ -18,7 +18,7 @@ const Slug: React.FC<SlugProps> = ({ slug }) => {
   return (
     <>
       <Head>
-        <title>{Name} | Connectify</title>
+        <title>{Name} | NovaLinkin</title>
       </Head>
       <div>
         <InfoPageHeader filter />

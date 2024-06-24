@@ -7,7 +7,7 @@ const Connect = () => {
   return (
     <>
       <Head>
-        <title>Connect | Connectify</title>
+        <title>Connect | NovaLinkin</title>
       </Head>
       <InfoPageHeader filter />
       <Container header="Connect" />

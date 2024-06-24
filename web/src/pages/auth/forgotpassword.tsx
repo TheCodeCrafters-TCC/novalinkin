@@ -12,7 +12,7 @@ const ForgotPassword = () => {
   return (
     <>
       <Head>
-        <title>Forgot Password | Connectify</title>
+        <title>Forgot Password | NovaLinkin</title>
       </Head>
       <AuthContainer>
         <Header />
