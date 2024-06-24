@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { poppins } from "@/styles/global";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -27,7 +29,11 @@ const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
       <MainWrapper>
         {hideNav ? "" : <SideBar />}
         <MobileLayout>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <StyledComponentsRegistry>
+            {children}
+            <Analytics />
+            <SpeedInsights />
+          </StyledComponentsRegistry>
         </MobileLayout>
         {hideNav ? "" : <DynamicBar />}
       </MainWrapper>
