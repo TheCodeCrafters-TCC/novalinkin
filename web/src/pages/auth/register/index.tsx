@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const register = () => {
+const Register = () => {
   const [checked, setChecked] = useState(false);
   const router = useRouter();
   const { stage } = router.query;
@@ -31,4 +31,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;
