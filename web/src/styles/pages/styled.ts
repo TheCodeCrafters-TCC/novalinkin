@@ -22,6 +22,7 @@ export const AuthHeader = styled.div`
     padding-top: 16px;
     padding-right: 1.3rem;
     padding-left: 0.75rem;
+    display: none;
 
     img {
       display: none;
@@ -61,6 +62,10 @@ export const AuthWrapper = styled.div`
     width: 100%;
     align-items: center;
     height: 85vh;
+  }
+  @media screen and (max-width: ${getDevice("md")}) {
+    height: 90vh;
+    width: 100%;
   }
 `;
 

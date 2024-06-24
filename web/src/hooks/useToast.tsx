@@ -17,7 +17,7 @@ type PositionType =
 type VariantProps = "error" | "info" | "success";
 
 interface ToasterContextProps {
-  toast: (variant: string, msg: string, position: string) => void;
+  toast: (variant: string, msg: string, position?: string) => void;
 }
 
 const ToasterContext = createContext<ToasterContextProps | undefined>(
@@ -35,7 +35,7 @@ export const ToasterProvider: FC<ToasterProviderProps> = ({ children }) => {
     useState<PositionType>("top-center");
   const [showToast, setShowToast] = useState<boolean>(false);
 
-  const toast = (variant: string, msg: string, position: string) => {
+  const toast = (variant: string, msg: string, position?: string) => {
     setToastVariant(variant as VariantProps);
     setToastMessage(msg);
     setToastPosition(position as PositionType);

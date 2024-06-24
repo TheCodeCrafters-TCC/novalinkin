@@ -31,7 +31,7 @@ const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
         </MobileLayout>
         {hideNav ? "" : <DynamicBar />}
       </MainWrapper>
-      <MobileTabs />
+      {hideNav ? "" : <MobileTabs />}
     </StyledLayout>
   );
 };

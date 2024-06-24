@@ -40,10 +40,15 @@ const LoginInputs = () => {
         disabled={isLoading}
       />
       <QText className={poppins.className}>
+        <span onClick={() => router.push("/auth/forgotpassword")}>
+          Forgot password?
+        </span>
+      </QText>
+      <QText className={poppins.className}>
         <p>
           Already have an account?
           {""}
-          <span onClick={() => router.push("/auth/register")}>Sign-Up</span>
+          <span onClick={() => router.push("/auth/register")}> Sign-Up</span>
         </p>
       </QText>
     </AuthInputContainer>

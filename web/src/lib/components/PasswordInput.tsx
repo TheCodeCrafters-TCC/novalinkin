@@ -7,6 +7,7 @@ import {
   ALabel,
 } from "../styles/styled";
 import { colors, poppins } from "@/styles/global";
+import ValidatorText from "./ValidatorText";
 
 const PasswordInput: React.FC<AuthInputType> = ({
   type,
@@ -16,6 +17,9 @@ const PasswordInput: React.FC<AuthInputType> = ({
   placeholder,
   label,
   icon,
+  Reqlength,
+  validCase,
+  validChar,
 }) => {
   const [val, setVal] = useState(false);
   function setBor() {
@@ -25,6 +29,7 @@ const PasswordInput: React.FC<AuthInputType> = ({
     setVal(false);
   }
   const showBorder = val ? `2px solid ${colors.primaryColor}` : "";
+
   return (
     <AInputWrapper>
       <ALabel className={poppins.className}>{label}</ALabel>
@@ -43,6 +48,21 @@ const PasswordInput: React.FC<AuthInputType> = ({
           placeholder={placeholder}
         />
       </AInputContainer>
+      <ValidatorText
+        label="*Password should be min of 6*"
+        error={!Reqlength}
+        valid={Reqlength}
+      />
+      {/* <ValidatorText
+        label="*Password must contain one UpperCase*"
+        error={!validCase}
+        valid={validCase}
+      /> */}
+      <ValidatorText
+        label="*Password must contain Special character*"
+        error={!validChar}
+        valid={validChar}
+      />
     </AInputWrapper>
   );
 };

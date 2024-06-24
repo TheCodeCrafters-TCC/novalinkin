@@ -1,5 +1,11 @@
 import { FC } from "react";
-import { HashLoader, PuffLoader, RingLoader, SyncLoader } from "react-spinners";
+import {
+  BeatLoader,
+  HashLoader,
+  PuffLoader,
+  RingLoader,
+  SyncLoader,
+} from "react-spinners";
 
 type LoaderProps = {
   size: string | boolean | any;
@@ -17,4 +23,7 @@ export const RingSpinLoader: FC<LoaderProps> = ({ size, color }) => {
 };
 export const HLoader: FC<LoaderProps> = ({ size, color }) => {
   return <HashLoader size={size} color={color} />;
+};
+export const Bounce: FC<LoaderProps> = ({ size, color }) => {
+  return <BeatLoader size={size} color={color} />;
 };

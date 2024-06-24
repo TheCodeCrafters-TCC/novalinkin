@@ -1,5 +1,13 @@
 export const infoData = {
   wel: "Where innovation meets connectivity, connect with developers around the world and share your ideas",
+  _f_desc:
+    "No worries! Enter your registered email address below, and we'll send you instructions on how to reset your password.",
+  sent_:
+    "We've sent you an email with instructions to reset your password. Please check your inbox.",
+  code_sent:
+    "We've sent a verification code to your email address. Please check your inbox and enter the code below to verify your account.",
+  confirmed:
+    "Congratulations! Your account has been confirmed. Welcome to Connectify! You will now be redirected to start exploring.",
 };
 
 export const profileInfo = {
