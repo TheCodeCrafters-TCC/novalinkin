@@ -7,7 +7,7 @@ const ArticleLoader = () => {
   return (
     <FeedWrapper>
       {length.map((load, index) => (
-        <ArticleLoading />
+        <ArticleLoading key={index} />
       ))}
     </FeedWrapper>
   );

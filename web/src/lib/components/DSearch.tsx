@@ -55,7 +55,16 @@ const DSearch: React.FC<SearchProps> = ({
     } else if (isCommunity && !searchQuery) {
       router.replace("/community");
     }
-  }, [searchQuery, isCommunity, isConnect, isConnection, isExplore, isProfile]);
+  }, [
+    searchQuery,
+    isCommunity,
+    isConnect,
+    isConnection,
+    isExplore,
+    isProfile,
+    pQuery,
+    router,
+  ]);
 
   return (
     <DSearchContainer>
