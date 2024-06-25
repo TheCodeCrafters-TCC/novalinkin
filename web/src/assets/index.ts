@@ -28,6 +28,11 @@ import Py from "./Rectangle 89.png";
 import ReactImg from "./Rectangle 90.png";
 import NodeJsImg from "./Rectangle 91.png";
 import Confirmed from "./confirmed.svg";
+import StachHub from "./Rectangle 96.png";
+import SteveJs from "./Rectangle 92.png";
+import JSM from "./Rectangle 93.png";
+import NB from "./Rectangle 82.png";
+import Not_Found from "./not_found_404.svg";
 
 export {
   LogoImg,
@@ -60,4 +65,9 @@ export {
   ReactImg,
   Py,
   Confirmed,
+  NB,
+  JSM,
+  StachHub,
+  SteveJs,
+  Not_Found,
 };

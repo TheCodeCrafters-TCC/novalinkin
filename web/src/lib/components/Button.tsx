@@ -79,6 +79,8 @@ const Button: React.FC<ButtonProps> = ({
     label
   );
 
+  const MainInterface = Loading ? loadInterface : validateInterface;
+
   return (
     <ButtonInterFace
       disabled={disabled}
@@ -93,7 +95,7 @@ const Button: React.FC<ButtonProps> = ({
         height: height,
       }}
     >
-      {validateInterface || loadInterface}
+      {MainInterface}
     </ButtonInterFace>
   );
 };

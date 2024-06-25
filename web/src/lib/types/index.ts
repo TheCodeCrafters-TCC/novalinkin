@@ -91,3 +91,18 @@ export type ValidatorProps = {
   valid: boolean;
   label: string;
 };
+
+export type SkeletonProps = {
+  height: string;
+  width?: string;
+  borderradius?: string;
+  style?: React.CSSProperties | any;
+};
+
+export type FilterSwitchProps = {
+  label: string;
+  onActionClick: (e: React.MouseEvent<HTMLParagraphElement>) => void;
+  className?: React.CSSProperties | string | any;
+  style: React.CSSProperties;
+  isfetching?: boolean;
+};

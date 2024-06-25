@@ -4,27 +4,44 @@ import styled from "styled-components";
 import ConnectUser from "./ConnectUser";
 import { colors, poppinsNormal } from "@/styles/global";
 import { useRouter } from "next/router";
+import { SkeletonImage } from "@/lib";
 
 interface BarProps {
   pushPath: string;
+  isfetching?: boolean;
 }
 
-const ConnectWithUser: React.FC<BarProps> = ({ pushPath }) => {
+const ConnectWithUser: React.FC<BarProps> = ({ pushPath, isfetching }) => {
   const router = useRouter();
   return (
     <StyledConnect>
-      {Users.filter((user) => user.connection > 100)
-        .sort((a, b) => a.connection - b.connection)
-        .slice(0, 4)
-        .map((user, index) => (
-          <ConnectUser user={user} key={index} />
-        ))}
-      <SeeMore
-        onClick={() => router.push(pushPath)}
-        className={poppinsNormal.className}
-      >
-        See more
-      </SeeMore>
+      {isfetching && (
+        <SkeletonImage height="40px" width="100%" borderradius="10px" />
+      )}
+      {isfetching && (
+        <SkeletonImage height="40px" width="100%" borderradius="10px" />
+      )}
+      {isfetching && (
+        <SkeletonImage height="40px" width="100%" borderradius="10px" />
+      )}
+      {isfetching && (
+        <SkeletonImage height="40px" width="100%" borderradius="10px" />
+      )}
+      {!isfetching &&
+        Users.filter((user) => user.connection > 100)
+          .sort((a, b) => a.connection - b.connection)
+          .slice(0, 4)
+          .map((user, index) => <ConnectUser user={user} key={index} />)}
+      {isfetching ? (
+        <SkeletonImage height="20px" width="50%" borderradius="5px" />
+      ) : (
+        <SeeMore
+          onClick={() => router.push(pushPath)}
+          className={poppinsNormal.className}
+        >
+          See more
+        </SeeMore>
+      )}
     </StyledConnect>
   );
 };

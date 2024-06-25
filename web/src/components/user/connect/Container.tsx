@@ -6,7 +6,7 @@ import styled from "styled-components";
 import User from "./User";
 import { useRouter } from "next/router";
 import { FaArrowLeft } from "react-icons/fa6";
-import { NoData } from "@/lib";
+import { NoData, Not_Found_404 } from "@/lib";
 import { useAppSelector } from "@/hooks/state";
 
 interface ContainerProps {
@@ -45,7 +45,7 @@ const Container: React.FC<ContainerProps> = ({ hasNavBack, header }) => {
       </ConnectHeader>
       <StyledConnectWrap>
         {notFound ? (
-          <NoData style={{ height: "70vh" }} />
+          <Not_Found_404 style={{ height: "70vh" }} />
         ) : (
           MapUsers?.map((user, index) => <User key={index} user={user} />)
         )}
@@ -69,7 +69,7 @@ const ConnectHeader = styled.div`
     padding: 8px;
     border-radius: 6px;
     &:hover {
-      background: ${({ theme }) => theme.colors.nav};
+      background: ${({ theme }) => theme.colors.icon};
     }
   }
 

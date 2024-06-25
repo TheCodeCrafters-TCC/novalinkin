@@ -11,6 +11,8 @@ interface SearchProps {
   isConnect?: boolean;
   isProfile?: boolean;
   isConnection?: boolean;
+  isExplore?: boolean;
+  isCommunity?: boolean;
 }
 
 const DSearch: React.FC<SearchProps> = ({
@@ -19,6 +21,8 @@ const DSearch: React.FC<SearchProps> = ({
   isConnect,
   isProfile,
   isConnection,
+  isExplore,
+  isCommunity,
 }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string | any>("");
@@ -33,7 +37,14 @@ const DSearch: React.FC<SearchProps> = ({
   };
 
   useEffect(() => {
-    if (!isConnect && !isProfile && !isConnection && !searchQuery) {
+    if (
+      !isConnect &&
+      !isProfile &&
+      !isExplore &&
+      !isCommunity &&
+      !isConnection &&
+      !searchQuery
+    ) {
       router.replace("/");
     } else if (isConnect && !searchQuery) {
       router.replace("/connect");
@@ -41,6 +52,8 @@ const DSearch: React.FC<SearchProps> = ({
       router.replace(`/profile/${pQuery}`);
     } else if (isConnection && !searchQuery) {
       router.replace(`/profile/${pQuery}/connections`);
+    } else if (isCommunity && !searchQuery) {
+      router.replace("/community");
     }
   }, [searchQuery]);
 

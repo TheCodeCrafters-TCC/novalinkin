@@ -9,9 +9,10 @@ import { capitalizeAndRemoveHyphen } from "@/lib/hooks";
 
 interface SlugProps {
   slug: string | null;
+  isLoading: boolean;
 }
 
-const Slug: React.FC<SlugProps> = ({ slug }) => {
+const Slug: React.FC<SlugProps> = ({ slug, isLoading }) => {
   const dispatch = useAppDispatch();
   dispatch(setProfileQuery(slug as any));
   const Name = capitalizeAndRemoveHyphen(slug as string);
@@ -22,7 +23,7 @@ const Slug: React.FC<SlugProps> = ({ slug }) => {
       </Head>
       <div>
         <InfoPageHeader filter />
-        <Profile />
+        <Profile isfetching={isLoading} />
       </div>
     </>
   );
@@ -30,9 +31,10 @@ const Slug: React.FC<SlugProps> = ({ slug }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.query;
+  let isLoading = true;
 
   return {
-    props: { slug },
+    props: { slug, isLoading },
   };
 };
 
