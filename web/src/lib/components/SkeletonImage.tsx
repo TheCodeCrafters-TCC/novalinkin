@@ -10,10 +10,12 @@ const SkeletonImage: React.FC<SkeletonProps> = ({
 }) => {
   return (
     <SkeletonImageLoad
-      height={height}
-      width={width}
-      borderradius={borderradius}
-      style={style}
+      style={{
+        ...style,
+        height: height,
+        width: width,
+        borderRadius: borderradius,
+      }}
     />
   );
 };
@@ -45,7 +47,7 @@ const SkeletonElement = styled.div`
 `;
 
 const SkeletonImageLoad = styled(SkeletonElement)`
-  width: ${(props) => props?.width};
-  height: ${(props) => props?.height};
-  border-radius: ${(props) => props?.borderradius};
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
 `;

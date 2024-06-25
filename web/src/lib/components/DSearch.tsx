@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import { DSearchContainer, DSearchInput } from "../styles/styled";
 import { IoSearchOutline } from "react-icons/io5";
 import { poppins } from "@/styles/global";
@@ -37,24 +37,26 @@ const DSearch: React.FC<SearchProps> = ({
   };
 
   useEffect(() => {
-    if (
-      !isConnect &&
-      !isProfile &&
-      !isExplore &&
-      !isCommunity &&
-      !isConnection &&
-      !searchQuery
-    ) {
-      router.replace("/");
-    } else if (isConnect && !searchQuery) {
-      router.replace("/connect");
-    } else if (isProfile && !searchQuery) {
-      router.replace(`/profile/${pQuery}`);
-    } else if (isConnection && !searchQuery) {
-      router.replace(`/profile/${pQuery}/connections`);
-    } else if (isCommunity && !searchQuery) {
-      router.replace("/community");
-    }
+    startTransition(() => {
+      if (
+        !isConnect &&
+        !isProfile &&
+        !isExplore &&
+        !isCommunity &&
+        !isConnection &&
+        !searchQuery
+      ) {
+        router.replace("/");
+      } else if (isConnect && !searchQuery) {
+        router.replace("/connect");
+      } else if (isProfile && !searchQuery) {
+        router.replace(`/profile/${pQuery}`);
+      } else if (isConnection && !searchQuery) {
+        router.replace(`/profile/${pQuery}/connections`);
+      } else if (isCommunity && !searchQuery) {
+        router.replace("/community");
+      }
+    });
   }, [
     searchQuery,
     isCommunity,
@@ -63,7 +65,7 @@ const DSearch: React.FC<SearchProps> = ({
     isExplore,
     isProfile,
     pQuery,
-    router,
+    // router,
   ]);
 
   return (
