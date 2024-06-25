@@ -7,7 +7,7 @@ import {
 } from "@/styles/components/styled";
 import { colors, poppins } from "@/styles/global";
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const LoadingScreen = () => {
   const messages = [
@@ -17,17 +17,21 @@ const LoadingScreen = () => {
   ];
   const [currentMessage, setCurrentMessage] = useState(messages[0]);
 
-  useEffect(() => {
-    const ActionInterval = setInterval(() => {
+  const createActionMessage = useMemo(() => {
+    return () => {
       setCurrentMessage((prev) => {
         const currentAction = messages.indexOf(prev);
         const nextAction = (currentAction + 1) % messages.length;
         return messages[nextAction];
       });
-    }, 2000);
+    };
+  }, [messages]);
+
+  useEffect(() => {
+    const ActionInterval = setInterval(createActionMessage, 2000);
 
     return () => clearInterval(ActionInterval);
-  }, [messages]);
+  }, [createActionMessage]);
 
   return (
     <>

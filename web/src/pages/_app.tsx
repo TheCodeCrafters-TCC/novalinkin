@@ -32,7 +32,7 @@ function ThemedApp({ Component, pageProps, router }: AppProps) {
       setTimeout(() => {
         setIsLoading(false);
       }, 5000);
-      // Handle articles dispatch here
+      // Handle articles dispatch here.
     } else {
       setIsLoading(false);
     }

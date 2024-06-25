@@ -30,7 +30,7 @@ const Container: React.FC<ContainerProps> = ({ hasNavBack, header }) => {
     } else {
       setNotFound(false);
     }
-  }, [query]);
+  }, [query, MapUsers.length]);
 
   return (
     <FeedWrapper className="__profile_page">

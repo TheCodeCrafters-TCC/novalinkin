@@ -61,17 +61,19 @@ const OTP = () => {
         `/auth/register?stage=verification&email=${authState.email}&status=verified`
       );
     }
-  }, [otp]);
+  }, [otp, authState.email, router, toast]);
 
   const { status } = router.query;
 
   useEffect(() => {
     if (status === "verified") {
       toast("success", "Account confirmed!");
-      dispatch(setReturnedUser());
-      router.replace("/");
+      setTimeout(() => {
+        dispatch(setReturnedUser());
+        router.replace("/");
+      }, 3000);
     }
-  }, [status]);
+  }, [status, dispatch, router, toast]);
 
   return (
     <StyledMail className={poppins.className}>
@@ -103,7 +105,7 @@ const OTP = () => {
                 onClick={handleResendOTP}
                 className={requested ? "disable__send" : "__resend_btn"}
               >
-                Resend in
+                {requested ? "Resend in" : "Resend OTP"}
               </p>
               {requested && <span>{time}s</span>}
             </ResendWrap>
