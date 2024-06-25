@@ -21,3 +21,7 @@ export { default as TruncateText } from "./components/TruncateText";
 export { default as NoData } from "./components/NoData";
 export { default as ComingSoon } from "./components/ComingSoon";
 export { default as ValidatorText } from "./components/ValidatorText";
+export { default as SkeletonImage } from "./components/SkeletonImage";
+export { default as FilterSwitch } from "./components/FilterSwitch";
+export { default as ArticleLoader } from "./components/ArticleLoader";
+export { default as Not_Found_404 } from "./components/Not_Found_404";

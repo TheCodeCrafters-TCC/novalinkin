@@ -540,3 +540,105 @@ export const ConnectUserInfo = styled.div`
     font-size: 15px;
   } */
 `;
+
+export const BelongedWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  align-items: center;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
+
+  svg {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px;
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.icon};
+    }
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    padding: 1rem;
+  }
+`;
+
+export const BelongedContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: ${({ theme }) => theme.colors.search};
+  border-radius: 10px;
+  padding: 10px;
+  height: auto;
+  width: 100%;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const InCommunityImage = styled(Image)`
+  width: 100px;
+  height: 100px;
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 80px;
+    height: 80px;
+  }
+`;
+
+export const AllCommunityContainer = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 2rem;
+  gap: 2rem;
+  flex-direction: column;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    padding: 1rem;
+  }
+`;
+
+export const AllCommunityWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const CommDetailsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  .__comm_desc {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    gap: 0;
+  }
+`;
+
+export const CommInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const CommImage = styled(Image)`
+  width: 100px;
+  height: 100px;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 80px;
+    height: 80px;
+  }
+`;

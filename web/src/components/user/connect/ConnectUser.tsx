@@ -11,7 +11,12 @@ import React from "react";
 import { MdVerified } from "react-icons/md";
 import styled from "styled-components";
 
-const ConnectUser = ({ user }: any) => {
+interface CUProps {
+  user: any;
+  isfetching?: boolean;
+}
+
+const ConnectUser: React.FC<CUProps> = ({ user }) => {
   const router = useRouter();
   return (
     <SpaceBetween>
@@ -19,7 +24,7 @@ const ConnectUser = ({ user }: any) => {
         <UserProfile src={user?.image} alt={user.name} />
         <p className={poppinsSemibold.className}>{user.name}</p>
         {user?.isVerified && (
-          <MdVerified size={25} color={colors.primaryColor} />
+          <MdVerified size={20} color={colors.primaryColor} />
         )}
       </FlexUser>
       <Button

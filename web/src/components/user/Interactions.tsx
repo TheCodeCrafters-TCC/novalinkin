@@ -5,8 +5,10 @@ import styled from "styled-components";
 import Articles from "./other/Articles";
 import Photos from "./other/Photos";
 import Videos from "./other/Videos";
+import { ProfileProps } from "./Profile";
+import { FilterSwitch } from "@/lib";
 
-const Interactions = () => {
+const Interactions: React.FC<ProfileProps> = ({ isfetching }) => {
   const [articles, setArticles] = useState(true);
   const [photos, setPhotos] = useState(false);
   const [videos, setVideos] = useState(false);
@@ -36,29 +38,29 @@ const Interactions = () => {
   return (
     <StyledInteract className={poppins.className}>
       <StyledIAction>
-        <p
+        <FilterSwitch
+          isfetching={isfetching}
+          label="Articles"
           className={poppins.className}
-          onClick={handleSwicth}
+          onActionClick={handleSwicth}
           style={{ borderBottom: isArticleFocus, color: hasArtColor }}
-        >
-          Articles
-        </p>
-        <p
+        />
+        <FilterSwitch
+          isfetching={isfetching}
+          label="Photos"
           className={poppins.className}
-          onClick={handleSwicth}
+          onActionClick={handleSwicth}
           style={{ borderBottom: isPhotosFocus, color: hasPhColor }}
-        >
-          Photos
-        </p>
-        <p
+        />
+        <FilterSwitch
+          isfetching={isfetching}
+          label="Videos"
           className={poppins.className}
-          onClick={handleSwicth}
+          onActionClick={handleSwicth}
           style={{ borderBottom: isVideosFocus, color: hasVdColor }}
-        >
-          Videos
-        </p>
+        />
       </StyledIAction>
-      {articles && <Articles />}
+      {articles && <Articles isfetching={isfetching} />}
       {photos && <Photos />}
       {videos && <Videos />}
     </StyledInteract>

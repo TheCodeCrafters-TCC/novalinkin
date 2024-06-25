@@ -172,12 +172,18 @@ const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar{
     /* background: ${colors.primaryGray}; */
     background: ${({ theme }) => theme.colors.nav};
-    width: 13px;
+    width: 10px;
   }
   ::-webkit-scrollbar-thumb{
     background: ${colors.primaryColor};
     border-radius: 6px;
     border: 2px solid ${({ theme }) => theme.colors.nav};
+  }
+
+  .__c_page{
+    @media screen and (max-width:${getDevice("md")}){
+      margin-top: 3.5rem;
+    }
   }
   
   `;
@@ -252,7 +258,8 @@ export const StyledBar = styled.div`
 
 export const StyledBarWrap = styled.div`
   width: auto;
-  height: 350px;
+  height: auto;
   border-radius: 12px;
   background: ${({ theme }) => theme.colors.search};
+  overflow-y: auto;
 `;

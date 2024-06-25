@@ -20,7 +20,7 @@ export { default as DynamicBar } from "./layout/DynamicBar";
 export { default as Profile } from "./user/Profile";
 export { default as Container } from "./user/connect/Container";
 export { default as ExploreContainer } from "../components/explore/Container";
-export { default as CommunityContainer } from "../components/community/All";
+export { default as CommunityContainer } from "../components/community/Container";
 export { default as RequestReset } from "../components/auth/RequestReset";
 export { default as EmailSent } from "../components/auth/EmailSent";
 export { default as OTP } from "../components/auth/OTP";

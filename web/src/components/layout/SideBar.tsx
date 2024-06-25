@@ -82,6 +82,11 @@ const FixedNav = styled.nav`
   }
   @media screen and (max-width: ${getDevice("dxs")}) {
     width: 338px;
+    margin-top: -0.4rem;
+
+    .__share_btn {
+      bottom: 3rem;
+    }
   }
   @media screen and (max-width: ${getDevice("xl")}) {
     width: 90px;
