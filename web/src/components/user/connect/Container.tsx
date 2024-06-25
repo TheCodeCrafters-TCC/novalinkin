@@ -1,7 +1,7 @@
 import { Users } from "@/constants/user";
 import { FeedWrapper, StyledConnectWrap } from "@/styles/components/styled";
 import { getDevice, inter, poppins } from "@/styles/global";
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import styled from "styled-components";
 import User from "./User";
 import { useRouter } from "next/router";
@@ -25,11 +25,13 @@ const Container: React.FC<ContainerProps> = ({ hasNavBack, header }) => {
     : Users;
 
   useEffect(() => {
-    if (query && MapUsers.length === 0) {
-      setNotFound(true);
-    } else {
-      setNotFound(false);
-    }
+    startTransition(() => {
+      if (query && MapUsers.length === 0) {
+        setNotFound(true);
+      } else {
+        setNotFound(false);
+      }
+    });
   }, [query, MapUsers.length]);
 
   return (
