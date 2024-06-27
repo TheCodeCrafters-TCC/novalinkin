@@ -8,6 +8,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { useLayoutRef } from "@/context/useLayoutRef";
+import { useMobileSideNav } from "@/context/useMobileNav";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,9 +24,20 @@ const MobileTabs = dynamic(() => import("./MobileTabs"), { ssr: false });
 const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
   const path = useRouter();
   const hideNav = path.pathname.includes("auth") || isAppLoading;
+  const { layoutRef } = useLayoutRef();
+  const { Onclose } = useMobileSideNav();
+
+  function closeNav() {
+    if (layoutRef?.current) {
+      // console.log("LayoutRef", layoutRef?.current);
+      Onclose();
+    } else {
+      console.log("Naaah: Layout ref not found");
+    }
+  }
 
   return (
-    <StyledLayout>
+    <StyledLayout ref={layoutRef} onClick={closeNav}>
       {isAppLoading ? "" : <NavBar />}
       <MainWrapper>
         {hideNav ? "" : <SideBar />}
@@ -50,6 +63,4 @@ const MobileLayout = styled.div`
   width: 100%;
   flex-direction: column;
   height: 100%;
-  /* justify-content: center; */
-  /* align-items: center; */
 `;

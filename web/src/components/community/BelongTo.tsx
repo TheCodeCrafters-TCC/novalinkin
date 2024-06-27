@@ -7,7 +7,6 @@ import {
 } from "@/styles/components/styled";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import styled, { keyframes } from "styled-components";
 
 interface BelongProps {
   isfetching?: boolean;
@@ -26,6 +25,9 @@ const BelongTo: React.FC<BelongProps> = ({ isfetching }) => {
 
   const canScroll = belongdata.length >= 4;
 
+  const currentWidth = global?.window?.innerWidth;
+  const loadWidth = currentWidth <= 450 ? "80px" : "100px";
+
   return (
     <BelongedWrapper>
       {isfetching ? (
@@ -36,10 +38,10 @@ const BelongTo: React.FC<BelongProps> = ({ isfetching }) => {
       <BelongedContainer ref={scrollContainerRef}>
         {isfetching && (
           <>
-            <SkeletonImage height="100px" />
-            <SkeletonImage height="100px" />
-            <SkeletonImage height="100px" />
-            <SkeletonImage height="100px" />
+            <SkeletonImage height={loadWidth} width={loadWidth} />
+            {/* <SkeletonImage height={loadWidth} width={loadWidth} /> */}
+            <SkeletonImage height={loadWidth} width={loadWidth} />
+            <SkeletonImage height={loadWidth} width={loadWidth} />
           </>
         )}
         {!isfetching &&

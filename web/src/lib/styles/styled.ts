@@ -227,6 +227,10 @@ export const DSearchContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+  }
 `;
 
 export const DSearchInput = styled.input`
@@ -253,6 +257,27 @@ export const InfoHeader = styled.nav`
   width: 100%;
   z-index: 90;
   background: ${({ theme }) => theme.colors.background};
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    display: flex;
+  }
+`;
+
+export const GlobalSearchWrapper = styled.div`
+  background: ${({ theme }) => theme.colors.background};
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  padding: 1rem;
+
+  .__close_search_icon {
+    padding: 8px;
+    border-radius: 5px;
+    background: ${({ theme }) => theme.colors.icon};
+  }
 
   @media screen and (max-width: ${getDevice("md")}) {
     display: flex;

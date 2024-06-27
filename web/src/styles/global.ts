@@ -165,8 +165,11 @@ const GlobalStyle = createGlobalStyle`
   }
   .__profile_page{
     @media screen and (max-width:${getDevice("md")}){
-      margin-top: 2.4rem;
+      margin-top: 3rem;
     }
+  }
+  .__articles_user{
+    margin-top: 0;
   }
 
   ::-webkit-scrollbar{

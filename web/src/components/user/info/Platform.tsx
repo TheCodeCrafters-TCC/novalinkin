@@ -1,5 +1,6 @@
 import { InFlex, InfoIconsWrap, InfoTag } from "@/styles/components/styled";
 import { poppins, poppinsNormal } from "@/styles/global";
+import { useRouter } from "next/router";
 import React from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
@@ -9,6 +10,7 @@ import { MdArticle } from "react-icons/md";
 import { TbWorld } from "react-icons/tb";
 
 const Platform = ({ profileInfo }: any) => {
+  const router = useRouter();
   return (
     <InfoIconsWrap>
       <InFlex>
@@ -31,9 +33,9 @@ const Platform = ({ profileInfo }: any) => {
           {profileInfo.location}
         </InfoTag>
       </InFlex>
-      <InFlex>
+      <InFlex onClick={() => router.push(`/profile/noah-moore/connections`)}>
         <IoPeople size={20} />
-        <InfoTag className={poppins.className}>Connections:</InfoTag>
+        <InfoTag className={poppins.className}>Networks:</InfoTag>
         <InfoTag className={poppinsNormal.className}>
           {profileInfo.connections}
         </InfoTag>

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { VscSettings } from "react-icons/vsc";
 import styled from "styled-components";
 import { poppins, poppinsSemibold } from "@/styles/global";
+import { useMobileSearch } from "@/context/useMobileSearch";
 
 interface HeaderProps {
   filter: boolean;
@@ -14,6 +15,7 @@ interface HeaderProps {
 
 const InfoPageHeader: React.FC<HeaderProps> = ({ filter, label }) => {
   const router = useRouter();
+  const { Onsearch } = useMobileSearch();
   const isUser = true;
   return (
     <InfoHeader>
@@ -22,7 +24,7 @@ const InfoPageHeader: React.FC<HeaderProps> = ({ filter, label }) => {
         {label && <p className={poppinsSemibold.className}>{label}</p>}
       </Wrap>
       <AsycnAction>
-        <IoSearch size={25} />
+        <IoSearch size={25} onClick={Onsearch} />
         {filter && isUser && <VscSettings size={25} />}
       </AsycnAction>
     </InfoHeader>

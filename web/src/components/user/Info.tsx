@@ -16,6 +16,7 @@ import { ProfileProps } from "./Profile";
 const Info: React.FC<ProfileProps> = ({ isfetching }) => {
   const [connecting, setConnecting] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
+  const isProfile = true;
 
   function toastTitle() {
     setShowTitle(true);

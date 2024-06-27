@@ -5,6 +5,10 @@ export const MobileNavBar = dynamic(() => import("./layout/MobileNavBar"), {
 });
 
 export const Header = dynamic(() => import("./auth/Header"), { ssr: false });
+export const MobileSideBar = dynamic(() => import("./layout/MobileSideBar"), {
+  ssr: false,
+});
+export const Share = dynamic(() => import("./article/Share"), { ssr: false });
 
 export { default as AppLayout } from "./layout/AppLayout";
 export { default as AuthInputs } from "./auth/AuthInputs";
@@ -24,3 +28,10 @@ export { default as CommunityContainer } from "../components/community/Container
 export { default as RequestReset } from "../components/auth/RequestReset";
 export { default as EmailSent } from "../components/auth/EmailSent";
 export { default as OTP } from "../components/auth/OTP";
+export { default as MobileSearch } from "../components/search/MobileSearch";
+export { default as NetworksResult } from "../components/search/NetworksResult";
+export { default as CommunityResult } from "../components/search/CommunityResult";
+export { default as ExploreResult } from "../components/search/ExploreResult";
+export { default as UserNetworkResult } from "../components/search/UserNetworkResult";
+export { default as CreateContainer } from "../components/create/Container";
+// export { default as Share } from "../components/article/Share";

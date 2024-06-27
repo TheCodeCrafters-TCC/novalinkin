@@ -1,4 +1,7 @@
 import { AppLayout, LoadingScreen } from "@/components";
+import { LayoutRefProvider, useLayoutRef } from "@/context/useLayoutRef";
+import { MobileSideNavProvider } from "@/context/useMobileNav";
+import { MobileSearchProvider } from "@/context/useMobileSearch";
 import { useAppSelector } from "@/hooks/state";
 import { ToasterProvider } from "@/hooks/useToast";
 import { store } from "@/redux/store";
@@ -22,12 +25,13 @@ export default function App({ Component, pageProps, router }: AppProps) {
   };
   return (
     <Provider store={store}>
-      <ThemedApp Component={Component} pageProps={pageProps} router={router} />
-      {/* <ThemeProvider theme={theme["light"]}>
-        <AppLayout isAppLoading={false}>
-          <Component {...pageProps} />
-        </AppLayout>
-      </ThemeProvider> */}
+      <LayoutRefProvider>
+        <ThemedApp
+          Component={Component}
+          pageProps={pageProps}
+          router={router}
+        />
+      </LayoutRefProvider>
     </Provider>
   );
 }
@@ -37,18 +41,6 @@ function ThemedApp({ Component, pageProps, router }: AppProps) {
   const currentTheme: string = systemState.theme;
   const isReturningUser = systemState.isReturningUser;
   const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   if (isReturningUser) {
-  //     setIsLoading(true);
-  //     setTimeout(() => {
-  //       setIsLoading(false);
-  //     }, 5000);
-  //     // Handle articles dispatch here.
-  //   } else {
-  //     setIsLoading(false);
-  //   }
-  // }, [isReturningUser]);
 
   useEffect(() => {
     if (isReturningUser) {
@@ -80,12 +72,16 @@ function ThemedApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
-      <AppLayout isAppLoading={isLoading}>
-        <GlobalStyle />
-        <ToasterProvider>
-          {isLoading ? <LoadingScreen /> : <Component {...pageProps} />}
-        </ToasterProvider>
-      </AppLayout>
+      <ToasterProvider>
+        <MobileSideNavProvider>
+          <AppLayout isAppLoading={isLoading}>
+            <GlobalStyle />
+            <MobileSearchProvider>
+              {isLoading ? <LoadingScreen /> : <Component {...pageProps} />}
+            </MobileSearchProvider>
+          </AppLayout>
+        </MobileSideNavProvider>
+      </ToasterProvider>
     </ThemeProvider>
   );
 }

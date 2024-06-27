@@ -4,16 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { poppins } from "@/styles/global";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/hooks/state";
-
-interface SearchProps {
-  queryPage: string;
-  placeholder: string;
-  isConnect?: boolean;
-  isProfile?: boolean;
-  isConnection?: boolean;
-  isExplore?: boolean;
-  isCommunity?: boolean;
-}
+import { SearchProps } from "../types";
 
 const DSearch: React.FC<SearchProps> = ({
   queryPage,

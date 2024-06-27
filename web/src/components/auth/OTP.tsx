@@ -61,7 +61,7 @@ const OTP = () => {
         `/auth/register?stage=verification&email=${authState.email}&status=verified`
       );
     }
-  }, [otp, authState.email, router, toast]);
+  }, [otp, authState.email, toast]);
 
   const { status } = router.query;
 
@@ -73,7 +73,7 @@ const OTP = () => {
         router.replace("/");
       }, 3000);
     }
-  }, [status, dispatch, router, toast]);
+  }, [status]);
 
   return (
     <StyledMail className={poppins.className}>

@@ -1,5 +1,7 @@
 import { TestPlaceholderImg } from "@/assets";
 import { ModeIcon } from "@/constants";
+import { useMobileSideNav } from "@/context/useMobileNav";
+import { useMobileSearch } from "@/context/useMobileSearch";
 import { useAppDispatch, useAppSelector } from "@/hooks/state";
 import { toggleTheme } from "@/redux/systemSlice";
 import {
@@ -29,13 +31,28 @@ const MobileNavBar: React.FC<MobileNavProps> = ({
   const isLight = theme === "light";
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const { Onopen } = useMobileSideNav();
   function handleTheme() {
     dispatch(toggleTheme());
   }
 
+  const { Onsearch } = useMobileSearch();
+
+  function OpenSideNav(e: React.MouseEvent) {
+    e.stopPropagation();
+    Onopen();
+  }
+
   return (
     <StyledHeaderNav className="nav_bar_top">
-      {hasUserIcon && <HImage src={TestPlaceholderImg} alt="user" priority />}
+      {hasUserIcon && (
+        <HImage
+          onClick={OpenSideNav}
+          src={TestPlaceholderImg}
+          alt="user"
+          priority
+        />
+      )}
       {infoPage && (
         <HeaderInfoWrap>
           <IoArrowBack size={25} onClick={() => router.back()} />
@@ -43,7 +60,7 @@ const MobileNavBar: React.FC<MobileNavProps> = ({
         </HeaderInfoWrap>
       )}
       <StyledActionHeader>
-        {hasSearchIcon && <FiSearch size={25} />}
+        {hasSearchIcon && <FiSearch size={25} onClick={Onsearch} />}
         {hasFilterIcon && isUser && <VscSettings size={25} />}
         {hasModeIcon && <ModeIcon isLight={isLight} dispatch={handleTheme} />}
       </StyledActionHeader>

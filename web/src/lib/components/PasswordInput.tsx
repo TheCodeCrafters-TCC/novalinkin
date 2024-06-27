@@ -48,21 +48,21 @@ const PasswordInput: React.FC<AuthInputType> = ({
           placeholder={placeholder}
         />
       </AInputContainer>
-      <ValidatorText
+      {/* <ValidatorText
         label="*Password should be min of 6*"
         error={!Reqlength}
         valid={Reqlength}
-      />
+      /> */}
       {/* <ValidatorText
         label="*Password must contain one UpperCase*"
         error={!validCase}
         valid={validCase}
       /> */}
-      <ValidatorText
+      {/* <ValidatorText
         label="*Password must contain Special character*"
         error={!validChar}
         valid={validChar}
-      />
+      /> */}
     </AInputWrapper>
   );
 };
