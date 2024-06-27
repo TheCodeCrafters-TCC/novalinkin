@@ -41,8 +41,12 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
       toast("info", "Please accept T&C", "top-right");
     } else if (inval) {
       toast("error", `All fileds are required`, "top-right");
-    } else if (!Reqlength || !validChar || invalidMail) {
-      toast("error", "Please meet the form criteria", "top-right");
+    } else if (!Reqlength || invalidMail) {
+      if (!Reqlength) {
+        toast("error", "Password should be min of 6", "top-right");
+      } else {
+        toast("error", "Please enter a vlid email", "top-right");
+      }
     } else {
       dispatch(holdInfo(form as any));
       toast("success", `OTP have been sent`, "top-right");
@@ -91,7 +95,7 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
         label="Sign Up"
         variant="linear"
         radius="sm"
-        width="auto"
+        width="inherit"
         Loading={isLoading}
         disabled={isLoading}
         onActionClick={signUp}

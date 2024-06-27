@@ -87,6 +87,7 @@ export const AuthInputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  /* width: 300px; */
 `;
 
 export const AuthCofirmWrap = styled.div`
@@ -163,6 +164,7 @@ export const TaskText = styled.p`
 
 export const StyledMobileTabs = styled.nav`
   display: none;
+  background: ${({ theme }) => theme.colors.background};
 
   @media screen and (max-width: ${getDevice("md")}) {
     display: flex;
@@ -176,6 +178,7 @@ export const StyledMobileTabs = styled.nav`
     padding-right: 28px;
     align-items: center;
     background: ${({ theme }) => theme.colors.background};
+    z-index: 90;
   }
 `;
 
@@ -366,6 +369,9 @@ export const NavLinksWrapper = styled.div`
   transform: translateX(-3rem);
   margin-top: 1rem;
 
+  @media screen and (max-width: ${getDevice("dxs")}) {
+    margin-top: 0;
+  }
   @media screen and (max-width: ${getDevice("xl")}) {
     transform: translate(-0.5rem);
   }
@@ -482,6 +488,7 @@ export const InfoContainer = styled.div`
 
   @media screen and (max-width: ${getDevice("md")}) {
     width: 100%;
+    padding: 16px;
   }
 `;
 
@@ -497,6 +504,7 @@ export const InfoIconsWrap = styled.div`
   gap: 2rem;
   color: ${({ theme }) => theme.colors.info};
   flex-wrap: wrap;
+  user-select: none;
 
   .__link {
     cursor: pointer;
@@ -518,6 +526,10 @@ export const StyledConnectWrap = styled.div`
   gap: 1.5rem;
   flex-direction: column;
   display: flex;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    padding: 1rem;
+  }
 `;
 
 export const StyledConnectUser = styled.div`
@@ -640,5 +652,206 @@ export const CommImage = styled(Image)`
   @media screen and (max-width: ${getDevice("md")}) {
     width: 80px;
     height: 80px;
+  }
+`;
+
+export const StyledMSB = styled.div`
+  background: ${({ theme }) => theme.colors.background};
+  position: fixed;
+  height: 100%;
+  width: 260px;
+  border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 250;
+  bottom: 0;
+  left: 0;
+  top: 0;
+`;
+
+export const HeaderSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
+  gap: 11px;
+  user-select: none;
+`;
+
+export const HeaderUserImage = styled(Image)`
+  width: 70px;
+  height: 70px;
+`;
+
+export const UserName = styled.p`
+  font-size: 18px;
+`;
+
+export const StyledLinksWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  gap: 16px;
+  width: 100%;
+`;
+
+export const LinkWrap = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  user-select: none;
+
+  p {
+    font-size: 17px;
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  width: 550px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: ${getDevice("dxxl")}) {
+    width: 650px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("dxl")}) {
+    width: 550px;
+  }
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 550px;
+    border-left: 0;
+    border-right: 0;
+  }
+  @media screen and (max-width: ${getDevice("xxm")}) {
+    width: 480px;
+  }
+  @media screen and (max-width: ${getDevice("mt")}) {
+    /* width: 480px; */
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("lg")}) {
+    width: 480px;
+    border-left: 1px solid ${({ theme }) => theme.colors.nav};
+    border-right: 1px solid ${({ theme }) => theme.colors.nav};
+  }
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    border-left: 0;
+    border-right: 0;
+  }
+`;
+
+export const MobileSearchWrap = styled.div`
+  width: 85%;
+  height: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  background: ${({ theme }) => theme.colors.search};
+  color: ${colors.primaryGray};
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const ResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const N_Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    transform: translateX(-5px);
+  }
+`;
+
+export const N_Image = styled(Image)`
+  width: 55px;
+  height: 55px;
+  border-radius: 30px;
+`;
+
+export const Styled_Share = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  h1 {
+    font-size: 19px;
+  }
+
+  button {
+    /* position: absolute;
+    bottom: 2rem; */
+  }
+`;
+
+export const HeaderWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  svg {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    &:hover {
+      background: ${({ theme }) => theme.colors.icon};
+    }
+  }
+`;
+
+export const StyledShareTA = styled.textarea`
+  width: 100%;
+  height: auto;
+  padding: 2rem;
+  border-radius: 9px;
+  height: 200px;
+`;
+
+export const StyledIconWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 5px;
+`;
+
+export const SelectedImage = styled(Image)`
+  width: 95px;
+  height: 95px;
+  border-radius: 10px;
+`;
+
+export const StyledImageWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  p {
+    transform: translateY(2rem) translateX(2rem);
   }
 `;

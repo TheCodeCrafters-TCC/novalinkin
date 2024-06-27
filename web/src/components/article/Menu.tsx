@@ -3,6 +3,7 @@ import React from "react";
 import { BsBookmarkFill } from "react-icons/bs";
 import { IoLink, IoPrintSharp, IoShareSocialSharp } from "react-icons/io5";
 import { MdGTranslate, MdOutlineConnectWithoutContact } from "react-icons/md";
+import { TbMessageReport } from "react-icons/tb";
 
 const Menu = ({ article }: any) => {
   const truncatedText = "";
@@ -32,11 +33,17 @@ const Menu = ({ article }: any) => {
         <p>Print</p>
       </AMenuItems>
       <AMenuItems className="_a_menuItem">
-        <MdGTranslate size={25} />
-        <p>Translate</p>
+        <TbMessageReport color="red" size={25} />
+        <p style={styles.report}>Report Article</p>
       </AMenuItems>
     </StyledAMenu>
   );
 };
 
 export default Menu;
+
+const styles = {
+  report: {
+    color: "red",
+  },
+};

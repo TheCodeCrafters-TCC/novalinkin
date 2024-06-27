@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 /**
  * Interface for `AUTH` Input
@@ -106,3 +106,15 @@ export type FilterSwitchProps = {
   style: React.CSSProperties;
   isfetching?: boolean;
 };
+
+export interface SearchProps {
+  queryPage: string;
+  placeholder: string | any;
+  isConnect?: boolean;
+  isProfile?: boolean;
+  isConnection?: boolean;
+  isExplore?: boolean;
+  isCommunity?: boolean;
+  setSearchQuery?: Dispatch<SetStateAction<string>> | any;
+  searchQuery?: string | any;
+}

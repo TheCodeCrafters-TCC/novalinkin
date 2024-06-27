@@ -1,5 +1,9 @@
 import { Users } from "@/constants/user";
-import { FeedWrapper, StyledConnectWrap } from "@/styles/components/styled";
+import {
+  ContentWrapper,
+  FeedWrapper,
+  StyledConnectWrap,
+} from "@/styles/components/styled";
 import { getDevice, inter, poppins } from "@/styles/global";
 import React, { startTransition, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -35,7 +39,7 @@ const Container: React.FC<ContainerProps> = ({ hasNavBack, header }) => {
   }, [query, MapUsers.length]);
 
   return (
-    <FeedWrapper className="__profile_page">
+    <ContentWrapper className="__profile_page">
       <ConnectHeader>
         {hasNavBack && (
           <FaArrowLeft
@@ -52,7 +56,7 @@ const Container: React.FC<ContainerProps> = ({ hasNavBack, header }) => {
           MapUsers?.map((user, index) => <User key={index} user={user} />)
         )}
       </StyledConnectWrap>
-    </FeedWrapper>
+    </ContentWrapper>
   );
 };
 
@@ -72,6 +76,10 @@ const ConnectHeader = styled.div`
     border-radius: 6px;
     &:hover {
       background: ${({ theme }) => theme.colors.icon};
+    }
+
+    @media screen and (max-width: ${getDevice("md")}) {
+      display: none;
     }
   }
 

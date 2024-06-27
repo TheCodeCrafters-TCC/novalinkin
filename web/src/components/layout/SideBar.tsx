@@ -39,6 +39,7 @@ const SideBar = () => {
             radius="sm"
             width="100%"
             className="__share_btn"
+            // onActionClick={() => router.push("/create")}
           />
           <TbScriptPlus
             className="_mobile_share_article __nav_unactive"
@@ -85,7 +86,7 @@ const FixedNav = styled.nav`
     margin-top: -0.4rem;
 
     .__share_btn {
-      bottom: 3rem;
+      bottom: 2.8rem;
     }
   }
   @media screen and (max-width: ${getDevice("xl")}) {

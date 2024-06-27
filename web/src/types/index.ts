@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import React from "react";
 
 type QueryProps = {
@@ -90,3 +91,27 @@ export type AuthStateProps = {
   gender: "male" | "female" | "";
   onHold: StateInput;
 };
+
+export type UDataProps = {
+  name: string;
+  /**Change StaticImage once it time for API */
+  image: StaticImageData;
+  desc?: string;
+  isVerified: boolean;
+};
+
+export interface UserProps {
+  user: UDataProps;
+}
+
+export type Community = {
+  name: string;
+  /**Change StaticImage once it time for API */
+  image: StaticImageData;
+  desc?: string;
+  isVerified: boolean;
+};
+
+export interface CommunityProps {
+  community: Community;
+}

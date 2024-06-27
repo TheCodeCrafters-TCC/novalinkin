@@ -33,6 +33,8 @@ import SteveJs from "./Rectangle 92.png";
 import JSM from "./Rectangle 93.png";
 import NB from "./Rectangle 82.png";
 import Not_Found from "./not_found_404.svg";
+import ArticlesImg from "./undraw_sharing_articles_re_jnkp.svg";
+import CommunityImg from "./undraw_connected_re_lmq2.svg";
 
 export {
   LogoImg,
@@ -70,4 +72,6 @@ export {
   StachHub,
   SteveJs,
   Not_Found,
+  ArticlesImg,
+  CommunityImg,
 };
