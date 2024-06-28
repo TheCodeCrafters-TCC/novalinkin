@@ -43,7 +43,7 @@ const ShareArticles = () => {
     setImages(newImages);
   };
 
-  const dropShare = (
+  const DropShare = () => (
     <StyledShareContainer>
       <ContentHeader>
         <h1 className={poppinsSemibold.className}>Share Articles</h1>
@@ -72,7 +72,11 @@ const ShareArticles = () => {
       </ActionsWrap>
     </StyledShareContainer>
   );
-  return <Backdrop children={dropShare} />;
+  return (
+    <Backdrop>
+      <DropShare />
+    </Backdrop>
+  );
 };
 
 export default ShareArticles;

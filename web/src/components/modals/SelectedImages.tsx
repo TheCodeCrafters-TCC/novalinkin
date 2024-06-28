@@ -16,9 +16,9 @@ const SelectedImages: React.FC<SImageProps> = ({ images, onClick }) => {
       {images
         ?.map(
           (img: string | StaticImport, index: React.Key | null | undefined) => (
-            <div>
+            <div key={index}>
               <IoClose size={30} onClick={() => onClick(index)} />
-              <ToShareImages key={index} img={img} />
+              <ToShareImages img={img} />
             </div>
           )
         )
