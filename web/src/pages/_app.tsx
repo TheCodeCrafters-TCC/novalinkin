@@ -1,5 +1,6 @@
 import { AppLayout, LoadingScreen } from "@/components";
-import { LayoutRefProvider, useLayoutRef } from "@/context/useLayoutRef";
+import { ArticleModalProvider } from "@/context/useArticlesModal";
+import { LayoutRefProvider } from "@/context/useLayoutRef";
 import { MobileSideNavProvider } from "@/context/useMobileNav";
 import { MobileSearchProvider } from "@/context/useMobileSearch";
 import { useAppSelector } from "@/hooks/state";
@@ -15,14 +16,6 @@ import { ThemeProvider } from "styled-components";
 store.dispatch(updateTheme());
 
 export default function App({ Component, pageProps, router }: AppProps) {
-  const theme: any = {
-    dark: {
-      colors: darkTheme,
-    },
-    light: {
-      colors: lightTheme,
-    },
-  };
   return (
     <Provider store={store}>
       <LayoutRefProvider>
@@ -74,12 +67,14 @@ function ThemedApp({ Component, pageProps, router }: AppProps) {
     <ThemeProvider theme={theme[currentTheme]}>
       <ToasterProvider>
         <MobileSideNavProvider>
-          <AppLayout isAppLoading={isLoading}>
-            <GlobalStyle />
-            <MobileSearchProvider>
-              {isLoading ? <LoadingScreen /> : <Component {...pageProps} />}
-            </MobileSearchProvider>
-          </AppLayout>
+          <ArticleModalProvider>
+            <AppLayout isAppLoading={isLoading}>
+              <GlobalStyle />
+              <MobileSearchProvider>
+                {isLoading ? <LoadingScreen /> : <Component {...pageProps} />}
+              </MobileSearchProvider>
+            </AppLayout>
+          </ArticleModalProvider>
         </MobileSideNavProvider>
       </ToasterProvider>
     </ThemeProvider>

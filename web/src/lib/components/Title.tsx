@@ -26,4 +26,5 @@ const StyledTitle = styled.span`
   /* left: -3px; */
   font-size: 11px;
   padding: 6px;
+  z-index: 50;
 `;

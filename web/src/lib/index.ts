@@ -26,3 +26,5 @@ export { default as FilterSwitch } from "./components/FilterSwitch";
 export { default as ArticleLoader } from "./components/ArticleLoader";
 export { default as Not_Found_404 } from "./components/Not_Found_404";
 export { default as GlobalSearch } from "./components/GlobalSearch";
+export { default as Backdrop } from "./components/Backdrop";
+export { default as Tags } from "./components/Tags";

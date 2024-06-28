@@ -9,7 +9,7 @@ const Community = () => {
       <Head>
         <title>Community | NovaLinkin</title>
       </Head>
-      <InfoPageHeader filter label="Community" />
+      <InfoPageHeader filter label="Community" hasAdd />
       <CommunityContainer />
     </>
   );

@@ -7,9 +7,11 @@ import { sidenavlink } from "@/constants/nav";
 import { useRouter } from "next/navigation";
 import { Button, NotIcon } from "@/lib";
 import { TbScriptPlus } from "react-icons/tb";
+import { useArticleModal } from "@/context/useArticlesModal";
 
 const SideBar = () => {
   const router = useRouter();
+  const { onOpen } = useArticleModal();
 
   // useEffect(() => {
   //   let screenWidth = window.screen.width;
@@ -39,11 +41,12 @@ const SideBar = () => {
             radius="sm"
             width="100%"
             className="__share_btn"
-            // onActionClick={() => router.push("/create")}
+            onActionClick={onOpen}
           />
           <TbScriptPlus
             className="_mobile_share_article __nav_unactive"
             size={35}
+            onClick={onOpen}
           />
         </NavLinksWrapper>
       </FixedNav>

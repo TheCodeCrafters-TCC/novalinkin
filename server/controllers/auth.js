@@ -49,7 +49,7 @@ export const signInController = async (req, res) => {
     if (!isMatch) return res.status(403).json("Incorrect password");
 
     const token = genAuthToken(user);
-    
+
     res.status(200).json(token);
   } catch (error) {
     console.log(error.message);
@@ -57,41 +57,40 @@ export const signInController = async (req, res) => {
 };
 
 export const verifyEmail = async (req, res, next) => {
-    try {
-        const {email} = req.body;
+  try {
+    const { email } = req.body;
 
-        const user = await UserModel.findOne({email});
+    const user = await UserModel.findOne({ email });
 
-        if (!user) {
-            res.code = 400;
-            throw new Error("User not found");
-        }
-
-        if (user.isVerified) {
-            res.code = 400;
-            throw new Error("User already verified");
-        }
-
-        const code = generateCode(6);
-
-        user.verificationCode = code;
-
-        await user.save();
-
-        await sendEmail({
-            emailTo: user.email,
-            subject: 'Verify Your Connnectify Account',
-            code,
-            content: "Verify Your Connectify Account!"
-        });
-
-        res.status(200).json({
-            code: 200,
-            status: true,
-            message: "Code Sent Successfully"
-        });
-
-    } catch (error) {
-        next(error);
+    if (!user) {
+      res.code = 400;
+      throw new Error("User not found");
     }
+
+    if (user.isVerified) {
+      res.code = 400;
+      throw new Error("User already verified");
+    }
+
+    const code = generateCode(6);
+
+    user.verificationCode = code;
+
+    await user.save();
+
+    await sendEmail({
+      emailTo: user.email,
+      subject: "Verify Your Connnectify Account",
+      code,
+      content: "Verify Your Connectify Account!",
+    });
+
+    res.status(200).json({
+      code: 200,
+      status: true,
+      message: "Code Sent Successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
 };

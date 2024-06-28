@@ -283,3 +283,83 @@ export const GlobalSearchWrapper = styled.div`
     display: flex;
   }
 `;
+
+export const Styled_Backdrop = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgb(0, 0, 0, 0.5);
+  z-index: 500;
+`;
+
+export const TagsConatiner = styled.div`
+  background: ${({ theme }) => theme.colors.background};
+  padding: 1rem;
+  width: 70%;
+  border-radius: 11px;
+  border: 1px solid ${({ theme }) => theme.colors.nav};
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+  }
+`;
+
+export const OpenSelector = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 18px;
+`;
+
+export const Styled_Tags = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+  background: ${({ theme }) => theme.colors.background};
+  border: 1px solid ${({ theme }) => theme.colors.nav};
+  overflow-y: auto;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  bottom: -5px;
+  border-radius: 11px;
+`;
+
+export const TagContent = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  width: 100%;
+  gap: 16px;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.icon};
+    cursor: pointer;
+  }
+`;
+
+export const SelectionsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+`;

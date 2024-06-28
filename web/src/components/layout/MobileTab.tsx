@@ -1,3 +1,4 @@
+import { useArticleModal } from "@/context/useArticlesModal";
 import { useAppSelector } from "@/hooks/state";
 import { StyledTab } from "@/styles/components/styled";
 import { colors, poppins } from "@/styles/global";
@@ -10,17 +11,33 @@ interface TabProps {
   label: string;
   path: any;
   push: any;
+  isArtModal: boolean | any;
 }
 
-const MobileTab: React.FC<TabProps> = ({ icon, label, path, push }) => {
+const MobileTab: React.FC<TabProps> = ({
+  icon,
+  label,
+  path,
+  push,
+  isArtModal,
+}) => {
+  const { onOpen } = useArticleModal();
   const theme = useAppSelector((state) => state.system.theme);
   const isLight = theme === "light";
   const themed = isLight ? colors.black : colors.white;
   const router = useRouter();
   const isActive = router.pathname === path;
   const activeColor = isActive ? colors.primaryColor : themed;
+
+  function visitPage() {
+    if (isArtModal) {
+      onOpen();
+    } else {
+      push(`${path}`);
+    }
+  }
   return (
-    <StyledTab onClick={() => push(`${path}`)} style={{ color: activeColor }}>
+    <StyledTab onClick={visitPage} style={{ color: activeColor }}>
       {icon}
       {isActive ? <p className={poppins.className}>{label}</p> : null}
     </StyledTab>

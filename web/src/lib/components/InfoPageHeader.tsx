@@ -7,13 +7,21 @@ import { VscSettings } from "react-icons/vsc";
 import styled from "styled-components";
 import { poppins, poppinsSemibold } from "@/styles/global";
 import { useMobileSearch } from "@/context/useMobileSearch";
+import { IoMdAdd } from "react-icons/io";
 
 interface HeaderProps {
   filter: boolean;
   label?: string;
+  hasAdd?: boolean;
+  addActionClick?: () => void;
 }
 
-const InfoPageHeader: React.FC<HeaderProps> = ({ filter, label }) => {
+const InfoPageHeader: React.FC<HeaderProps> = ({
+  filter,
+  label,
+  hasAdd,
+  addActionClick,
+}) => {
   const router = useRouter();
   const { Onsearch } = useMobileSearch();
   const isUser = true;
@@ -25,6 +33,7 @@ const InfoPageHeader: React.FC<HeaderProps> = ({ filter, label }) => {
       </Wrap>
       <AsycnAction>
         <IoSearch size={25} onClick={Onsearch} />
+        {hasAdd && <IoMdAdd size={26} onClick={addActionClick} />}
         {filter && isUser && <VscSettings size={25} />}
       </AsycnAction>
     </InfoHeader>

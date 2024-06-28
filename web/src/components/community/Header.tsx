@@ -1,5 +1,6 @@
 import { getDevice, poppins, poppinsSemibold } from "@/styles/global";
 import React from "react";
+import { IoMdAdd } from "react-icons/io";
 import { LuSettings2 } from "react-icons/lu";
 import styled from "styled-components";
 
@@ -7,7 +8,10 @@ const Header = () => {
   return (
     <StyledHeader>
       <h1 className={poppinsSemibold.className}>Community</h1>
-      <LuSettings2 size={36} />
+      <IconWrap>
+        <IoMdAdd size={36} />
+        <LuSettings2 size={36} />
+      </IconWrap>
     </StyledHeader>
   );
 };
@@ -42,4 +46,9 @@ const StyledHeader = styled.div`
       font-size: 19px;
     }
   }
+`;
+const IconWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `;
