@@ -172,6 +172,11 @@ const GlobalStyle = createGlobalStyle`
     margin-top: 0;
   }
 
+  .__tags_track::-webkit-scrollbar {
+    display: none;
+  
+  }
+
   ::-webkit-scrollbar{
     /* background: ${colors.primaryGray}; */
     background: ${({ theme }) => theme.colors.nav};

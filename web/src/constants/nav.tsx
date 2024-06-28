@@ -9,7 +9,7 @@ import { TbScriptPlus } from "react-icons/tb";
 export const MobileTabsData = [
   { url: "/", label: "Home", icon: <AiFillHome size={27} /> },
   { url: "/notifications", label: "Notifications", icon: <FaBell size={27} /> },
-  { url: "/create", label: "Create", icon: <TbScriptPlus size={30} /> },
+  { url: "", label: "Create", isModal: true, icon: <TbScriptPlus size={30} /> },
   {
     url: "/chats",
     label: "Chats",

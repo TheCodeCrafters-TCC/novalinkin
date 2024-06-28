@@ -118,3 +118,9 @@ export interface SearchProps {
   setSearchQuery?: Dispatch<SetStateAction<string>> | any;
   searchQuery?: string | any;
 }
+
+export type BackdropProps = {
+  children?: React.ReactNode;
+  onClose?: () => void;
+  onOpen?: () => void;
+};

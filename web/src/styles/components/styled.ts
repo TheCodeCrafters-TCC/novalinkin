@@ -743,7 +743,7 @@ export const ContentWrapper = styled.div`
   }
   @media screen and (max-width: ${getDevice("md")}) {
     width: 100%;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-bottom: 5rem;
     border-left: 0;
     border-right: 0;
@@ -841,7 +841,7 @@ export const StyledIconWrap = styled.div`
 `;
 
 export const SelectedImage = styled(Image)`
-  width: 95px;
+  width: 105px;
   height: 95px;
   border-radius: 10px;
 `;
@@ -851,7 +851,112 @@ export const StyledImageWrapper = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
 
-  p {
-    transform: translateY(2rem) translateX(2rem);
+  svg {
+    padding: 5px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    background: ${({ theme }) => theme.colors.icon};
+    position: absolute;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
   }
+
+  @media screen and (max-width: ${getDevice("xl")}) {
+    p {
+      transform: translateY(2rem) translateX(2rem);
+    }
+  }
+`;
+
+export const Styled_Article = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgb(0, 0, 0, 0.5);
+  z-index: 500;
+`;
+
+export const StyledShareContainer = styled.div`
+  width: 45%;
+  background: ${({ theme }) => theme.colors.background};
+  height: auto;
+  border-radius: 11px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 65%;
+  }
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 95%;
+  }
+`;
+
+export const ContentHeader = styled.div`
+  padding: 1rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 20px;
+  }
+
+  svg {
+    padding: 5px;
+    border-radius: 4px;
+    &:hover {
+      background: ${({ theme }) => theme.colors.icon};
+      cursor: pointer;
+    }
+  }
+`;
+
+export const ActionsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+`;
+
+export const ActionInput = styled.textarea`
+  width: 100%;
+  height: 120px;
+  padding: 1rem;
+  border-radius: 11px;
+  outline: none;
+  border: none;
+  background: ${({ theme }) => theme.colors.search};
+`;
+
+export const IconsWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  svg {
+    color: rgb(59 130 246);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const ITWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
 `;

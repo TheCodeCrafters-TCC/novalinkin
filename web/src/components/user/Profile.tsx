@@ -1,5 +1,5 @@
 import React, { startTransition, useEffect, useState } from "react";
-import { FeedWrapper } from "@/styles/components/styled";
+import { ContentWrapper, FeedWrapper } from "@/styles/components/styled";
 import dynamic from "next/dynamic";
 import { Divider } from "@/lib";
 
@@ -24,12 +24,12 @@ const Profile: React.FC<ProfileProps> = () => {
   }, []);
 
   return (
-    <FeedWrapper className="__profile_page">
+    <ContentWrapper className="__profile_page">
       <Hero isfetching={isfetching} />
       <UserInfo isfetching={isfetching} />
       <Divider />
       <Interactions isfetching={isfetching} />
-    </FeedWrapper>
+    </ContentWrapper>
   );
 };
 

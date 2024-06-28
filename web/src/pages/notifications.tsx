@@ -1,7 +1,15 @@
+import Head from "next/head";
 import React from "react";
 
 const Notifications = () => {
-  return <div>Notifications</div>;
+  return (
+    <>
+      <Head>
+        <title>Notifications | NovaLinkin</title>
+      </Head>
+      <div>Notifications</div>
+    </>
+  );
 };
 
 export default Notifications;
