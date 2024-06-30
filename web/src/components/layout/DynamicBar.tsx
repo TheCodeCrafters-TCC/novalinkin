@@ -9,6 +9,9 @@ import styled from "styled-components";
 const Home = dynamic(() => import("../dynamic/HomeDynamics"), { ssr: false });
 const Chats = dynamic(() => import("../dynamic/Chats"), { ssr: false });
 const Community = dynamic(() => import("../dynamic/Community"), { ssr: false });
+const CommunityView = dynamic(() => import("../dynamic/CommunityView"), {
+  ssr: false,
+});
 const Notifications = dynamic(() => import("../dynamic/Notification"), {
   ssr: false,
 });
@@ -36,9 +39,11 @@ const getCurrentBar = (path: any) => {
     return <Profile />;
   } else if (path.pathname === "/connect") {
     return <Connect />;
-  } else if (path.pathname === "/profile/[slug]/connections")
+  } else if (path.pathname === "/profile/[slug]/connections") {
     return <Connections />;
-  else {
+  } else if (path.pathname === "/community/[slug]") {
+    return <CommunityView />;
+  } else {
     return <Home />;
   }
 };

@@ -7,6 +7,10 @@ export const InfoPageHeader = dynamic(
   () => import("../lib/components/InfoPageHeader"),
   { ssr: false }
 );
+export const NotificationHeader = dynamic(
+  () => import("./components/NotificationHeader"),
+  { ssr: false }
+);
 
 export { default as AuthInput } from "./components/AuthInput";
 export { default as PasswordInput } from "./components/PasswordInput";
@@ -28,3 +32,4 @@ export { default as Not_Found_404 } from "./components/Not_Found_404";
 export { default as GlobalSearch } from "./components/GlobalSearch";
 export { default as Backdrop } from "./components/Backdrop";
 export { default as Tags } from "./components/Tags";
+export { default as COptions } from "./components/COptions";

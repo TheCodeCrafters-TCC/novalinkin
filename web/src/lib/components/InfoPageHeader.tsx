@@ -5,13 +5,13 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { useRouter } from "next/router";
 import { VscSettings } from "react-icons/vsc";
 import styled from "styled-components";
-import { poppins, poppinsSemibold } from "@/styles/global";
+import { poppinsSemibold } from "@/styles/global";
 import { useMobileSearch } from "@/context/useMobileSearch";
 import { IoMdAdd } from "react-icons/io";
 
 interface HeaderProps {
-  filter: boolean;
-  label?: string;
+  filter?: boolean;
+  label?: string | any;
   hasAdd?: boolean;
   addActionClick?: () => void;
 }
@@ -25,6 +25,7 @@ const InfoPageHeader: React.FC<HeaderProps> = ({
   const router = useRouter();
   const { Onsearch } = useMobileSearch();
   const isUser = true;
+
   return (
     <InfoHeader>
       <Wrap>

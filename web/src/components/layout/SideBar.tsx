@@ -28,8 +28,10 @@ const SideBar = () => {
               icon={nav.icon}
               label={nav.label}
               push={router.push}
+              isModal={nav.isModal}
               isProfile={nav.isProfile}
               hasicon={nav.hasIcon}
+              hasToast={nav.hasToast}
               iconVariant={nav.iconVariant}
               totalNot={nav.totalNot}
               key={index}

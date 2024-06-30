@@ -1,8 +1,10 @@
 import { AppLayout, LoadingScreen } from "@/components";
 import { ArticleModalProvider } from "@/context/useArticlesModal";
+import { CCModalProvider } from "@/context/useCreateCommunity";
 import { LayoutRefProvider } from "@/context/useLayoutRef";
 import { MobileSideNavProvider } from "@/context/useMobileNav";
 import { MobileSearchProvider } from "@/context/useMobileSearch";
+import { SearchModalProvider } from "@/context/useSearchModal";
 import { useAppSelector } from "@/hooks/state";
 import { ToasterProvider } from "@/hooks/useToast";
 import { store } from "@/redux/store";
@@ -67,14 +69,22 @@ function ThemedApp({ Component, pageProps, router }: AppProps) {
     <ThemeProvider theme={theme[currentTheme]}>
       <ToasterProvider>
         <MobileSideNavProvider>
-          <ArticleModalProvider>
-            <AppLayout isAppLoading={isLoading}>
-              <GlobalStyle />
-              <MobileSearchProvider>
-                {isLoading ? <LoadingScreen /> : <Component {...pageProps} />}
-              </MobileSearchProvider>
-            </AppLayout>
-          </ArticleModalProvider>
+          <SearchModalProvider>
+            <ArticleModalProvider>
+              <AppLayout isAppLoading={isLoading}>
+                <GlobalStyle />
+                <MobileSearchProvider>
+                  <CCModalProvider>
+                    {isLoading ? (
+                      <LoadingScreen />
+                    ) : (
+                      <Component {...pageProps} />
+                    )}
+                  </CCModalProvider>
+                </MobileSearchProvider>
+              </AppLayout>
+            </ArticleModalProvider>
+          </SearchModalProvider>
         </MobileSideNavProvider>
       </ToasterProvider>
     </ThemeProvider>

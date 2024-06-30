@@ -54,6 +54,8 @@ export type NavProps = {
   hasicon: boolean | any;
   iconVariant: string | any;
   totalNot: number | any;
+  isModal?: boolean | any;
+  hasToast?: boolean | any;
 };
 
 export type ActionButtonProps = {
@@ -115,3 +117,28 @@ export type Community = {
 export interface CommunityProps {
   community: Community;
 }
+
+export type Notification = {
+  ownerId?: string;
+  notifyType: string;
+  header: string;
+  body: string;
+  reactId?: string;
+  objectId?: string;
+  seen: boolean;
+  Images: Array<any>;
+};
+
+export type NotificationProps = {
+  not_i: Notification;
+};
+
+export type ContextproviderProps = {
+  children: React.ReactNode;
+};
+
+export type ModalsContextProps = {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+};

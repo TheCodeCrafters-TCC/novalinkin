@@ -20,6 +20,7 @@ const ResultWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
 
   p {
     font-size: 15px;

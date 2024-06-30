@@ -1,3 +1,5 @@
+import { AllNotifications } from "@/components";
+import { NotificationHeader } from "@/lib";
 import Head from "next/head";
 import React from "react";
 
@@ -7,7 +9,8 @@ const Notifications = () => {
       <Head>
         <title>Notifications | NovaLinkin</title>
       </Head>
-      <div>Notifications</div>
+      <NotificationHeader label="Notification" />
+      <AllNotifications />
     </>
   );
 };

@@ -780,6 +780,7 @@ export const N_Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 
   svg {
     transform: translateX(-5px);
@@ -895,6 +896,7 @@ export const StyledShareContainer = styled.div`
   gap: 10px;
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 2px 2px 2px ${({ theme }) => theme.colors.nav};
 
   @media screen and (max-width: ${getDevice("xl")}) {
     width: 65%;
@@ -959,4 +961,82 @@ export const ITWrap = styled.div`
   flex-direction: column;
   position: relative;
   gap: 1rem;
+`;
+
+export const Create_Community = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+
+  @media screen and(max-width:${getDevice("md")}) {
+    padding: 1rem;
+  }
+`;
+
+export const Image_Selector = styled.div`
+  background: ${({ theme }) => theme.colors.icon};
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 9px;
+  cursor: pointer;
+`;
+
+export const Selected_Image = styled(Image)`
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 9px;
+  cursor: pointer;
+`;
+
+export const Create_Between = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+`;
+
+export const Create_Input = styled.input`
+  width: 85%;
+  outline: none;
+  border: none;
+  padding: 15px;
+  background: ${({ theme }) => theme.colors.search};
+  color: ${({ theme }) => theme.colors.text};
+  height: 50px;
+  border-radius: 10px;
+
+  ::placeholder {
+    color: ${colors.primaryGray};
+  }
+  &:focus {
+    caret-color: ${colors.primaryColor};
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+  }
+`;
+
+export const Styled_Create_Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+
+  p {
+    margin-left: 8px;
+    font-size: 13px;
+  }
 `;

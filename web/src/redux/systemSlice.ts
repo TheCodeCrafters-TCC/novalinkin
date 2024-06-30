@@ -43,6 +43,10 @@ const systemSlice = createSlice({
       state.isReturningUser = true;
       global.localStorage?.setItem("isReturningUser", state.isReturningUser);
     },
+    setCommunitySlug: (state, action: PayloadAction) => {
+      const slug = action.payload;
+      state.query.communitySlug = slug;
+    },
   },
 });
 
@@ -54,4 +58,5 @@ export const {
   setProfileQuery,
   setCurrntPage,
   setReturnedUser,
+  setCommunitySlug,
 } = systemSlice.actions;
