@@ -1,9 +1,9 @@
 import { AppLayout, LoadingScreen } from "@/components";
 import { ArticleModalProvider } from "@/context/useArticlesModal";
 import { CCModalProvider } from "@/context/useCreateCommunity";
-import { LayoutRefProvider } from "@/context/useLayoutRef";
 import { MobileSideNavProvider } from "@/context/useMobileNav";
 import { MobileSearchProvider } from "@/context/useMobileSearch";
+import { EditProfileProvider } from "@/context/useProfileEdit";
 import { SearchModalProvider } from "@/context/useSearchModal";
 import { useAppSelector } from "@/hooks/state";
 import { ToasterProvider } from "@/hooks/useToast";
@@ -20,13 +20,7 @@ store.dispatch(updateTheme());
 export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <Provider store={store}>
-      <LayoutRefProvider>
-        <ThemedApp
-          Component={Component}
-          pageProps={pageProps}
-          router={router}
-        />
-      </LayoutRefProvider>
+      <ThemedApp Component={Component} pageProps={pageProps} router={router} />
     </Provider>
   );
 }
@@ -75,11 +69,13 @@ function ThemedApp({ Component, pageProps, router }: AppProps) {
                 <GlobalStyle />
                 <MobileSearchProvider>
                   <CCModalProvider>
-                    {isLoading ? (
-                      <LoadingScreen />
-                    ) : (
-                      <Component {...pageProps} />
-                    )}
+                    <EditProfileProvider>
+                      {isLoading ? (
+                        <LoadingScreen />
+                      ) : (
+                        <Component {...pageProps} />
+                      )}
+                    </EditProfileProvider>
                   </CCModalProvider>
                 </MobileSearchProvider>
               </AppLayout>

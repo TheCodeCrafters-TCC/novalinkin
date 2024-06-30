@@ -1,4 +1,4 @@
-import { MobileSideBar } from "@/components";
+import { MobileSideBar, MobileSideNav } from "@/components";
 import React, { createContext, useContext, useState } from "react";
 
 interface MobileSideNavProviderProps {
@@ -30,7 +30,7 @@ export const MobileSideNavProvider: React.FC<MobileSideNavProviderProps> = ({
   return (
     <MobileSNContext.Provider value={{ isOpen, Onclose, Onopen }}>
       {children}
-      {isOpen && <MobileSideBar />}
+      {isOpen && <MobileSideNav />}
     </MobileSNContext.Provider>
   );
 };

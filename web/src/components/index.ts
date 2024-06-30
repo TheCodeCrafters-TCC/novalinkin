@@ -37,3 +37,5 @@ export { default as AllNotifications } from "./notifications/Notifications";
 export { default as SearchModal } from "./modals/SearchModal";
 export { default as CommunityProfile } from "./community/view/Profile";
 export { default as CreateCommunity } from "./modals/CreateCommunity";
+export { default as ProfileEdit } from "./modals/ProfileEdit";
+export { default as MobileSideNav } from "./modals/MobileSideNav";
