@@ -14,11 +14,13 @@ const DSearch: React.FC<SearchProps> = ({
   isConnection,
   isExplore,
   isCommunity,
+  isCommunityView,
 }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string | any>("");
   const queryState = useAppSelector((state) => state.system.query);
   const pQuery = queryState.profileSlug;
+  const cQuery = queryState.communitySlug;
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -35,6 +37,7 @@ const DSearch: React.FC<SearchProps> = ({
         !isExplore &&
         !isCommunity &&
         !isConnection &&
+        !isCommunityView &&
         !searchQuery
       ) {
         router.replace("/");
@@ -46,11 +49,14 @@ const DSearch: React.FC<SearchProps> = ({
         router.replace(`/profile/${pQuery}/connections`);
       } else if (isCommunity && !searchQuery) {
         router.replace("/community");
+      } else if (isCommunityView && !searchQuery) {
+        router.replace(`/community/${cQuery}`);
       }
     });
   }, [
     searchQuery,
     isCommunity,
+    isCommunityView,
     isConnect,
     isConnection,
     isExplore,

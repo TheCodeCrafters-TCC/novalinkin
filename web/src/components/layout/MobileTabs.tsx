@@ -15,6 +15,7 @@ const MobileTabs = () => {
           key={index}
           icon={nav.icon}
           label={nav.label}
+          hasToast={nav.hasToast}
           isArtModal={nav.isModal}
         />
       ))}

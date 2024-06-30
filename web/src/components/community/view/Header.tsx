@@ -1,18 +1,18 @@
-import { useCreateCommunity } from "@/context/useCreateCommunity";
 import { getDevice, poppins, poppinsSemibold } from "@/styles/global";
+import { useRouter } from "next/router";
 import React from "react";
+import { FaArrowLeft } from "react-icons/fa6";
 import { IoMdAdd } from "react-icons/io";
 import { LuSettings2 } from "react-icons/lu";
 import styled from "styled-components";
 
 const Header = () => {
-  const { onOpen } = useCreateCommunity();
+  const router = useRouter();
   return (
     <StyledHeader>
-      <h1 className={poppinsSemibold.className}>Community</h1>
       <IconWrap>
-        <IoMdAdd size={36} onClick={onOpen} />
-        {/* <LuSettings2 size={36} /> */}
+        <FaArrowLeft size={36} onClick={() => router.back()} />
+        {/* <h1 className={poppinsSemibold.className}>Community</h1> */}
       </IconWrap>
     </StyledHeader>
   );
@@ -23,7 +23,7 @@ export default Header;
 const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
 
@@ -52,5 +52,5 @@ const StyledHeader = styled.div`
 const IconWrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 10px;
 `;

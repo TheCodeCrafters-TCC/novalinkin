@@ -103,7 +103,7 @@ export type FilterSwitchProps = {
   label: string;
   onActionClick: (e: React.MouseEvent<HTMLParagraphElement>) => void;
   className?: React.CSSProperties | string | any;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
   isfetching?: boolean;
 };
 
@@ -115,6 +115,7 @@ export interface SearchProps {
   isConnection?: boolean;
   isExplore?: boolean;
   isCommunity?: boolean;
+  isCommunityView?: boolean;
   setSearchQuery?: Dispatch<SetStateAction<string>> | any;
   searchQuery?: string | any;
 }
@@ -123,4 +124,9 @@ export type BackdropProps = {
   children?: React.ReactNode;
   onClose?: () => void;
   onOpen?: () => void;
+};
+
+export type CCOptionsProps = {
+  label: string;
+  variant: "type" | "join";
 };

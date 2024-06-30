@@ -33,3 +33,7 @@ export { default as CommunityResult } from "../components/search/CommunityResult
 export { default as ExploreResult } from "../components/search/ExploreResult";
 export { default as UserNetworkResult } from "../components/search/UserNetworkResult";
 export { default as ShareArticles } from "./modals/ShareArticles";
+export { default as AllNotifications } from "./notifications/Notifications";
+export { default as SearchModal } from "./modals/SearchModal";
+export { default as CommunityProfile } from "./community/view/Profile";
+export { default as CreateCommunity } from "./modals/CreateCommunity";

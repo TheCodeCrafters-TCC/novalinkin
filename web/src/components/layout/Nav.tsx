@@ -1,3 +1,5 @@
+import { useSearchModal } from "@/context/useSearchModal";
+import { useToaster } from "@/hooks/useToast";
 import { NotIcon } from "@/lib";
 import { NavLink } from "@/styles/components/styled";
 import { IconWrap, colors } from "@/styles/global";
@@ -18,13 +20,21 @@ const Nav: React.FC<NavProps> = ({
   hasicon,
   iconVariant,
   totalNot,
+  isModal,
+  hasToast,
 }) => {
   const router = useRouter();
+  const { onOpen } = useSearchModal();
+  const { toast } = useToaster();
   const isActive = router.pathname === url;
   const activeColor: any = isActive && colors.primaryColor;
   function navPush() {
     if (isProfile) {
       push(`/profile/noah-moore`);
+    } else if (isModal) {
+      onOpen();
+    } else if (hasToast) {
+      toast("info", "Not Available");
     } else {
       push(url);
     }

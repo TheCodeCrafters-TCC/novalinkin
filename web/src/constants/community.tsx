@@ -17,7 +17,7 @@ export const belongdata = [
 ];
 
 export const topcomms = [
-  { image: NodeJsImg, name: "NodeJs Work Yard yyyyyyyyyy", isVerified: true },
+  { image: NodeJsImg, name: "NodeJs Work Yard", isVerified: true },
   { image: StachHub, name: "Stack Hub", isVerified: false },
   { image: Py, name: "Py crafts", isVerified: true },
   { image: ReactImg, name: "Frontend Daily", isVerified: true },

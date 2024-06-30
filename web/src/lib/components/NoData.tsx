@@ -1,4 +1,4 @@
-import { NoDataImg } from "@/assets";
+import { NoDataImg, NoRoom } from "@/assets";
 import { Open_Sans } from "next/font/google";
 import Image from "next/image";
 import React from "react";
@@ -12,7 +12,7 @@ interface NodataProps {
 const NoData: React.FC<NodataProps> = ({ style }) => {
   return (
     <NDWrap style={style}>
-      <StyledNOWrap src={NoDataImg} alt="No_data-FOUND" />
+      <StyledNOWrap src={NoRoom} alt="No_data-FOUND" />
 
       <p className={open.className}>No data found</p>
     </NDWrap>

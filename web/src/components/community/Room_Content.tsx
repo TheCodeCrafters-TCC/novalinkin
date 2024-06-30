@@ -1,19 +1,19 @@
-import { EmptyNotify } from "@/assets";
-import { colors, poppins } from "@/styles/global";
+import { NoRoom } from "@/assets";
+import { poppins, colors } from "@/styles/global";
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
-const In_App = () => {
+const Room_Content = () => {
   return (
     <StyledIn>
-      <StyledImage src={EmptyNotify} alt="Notify" priority />
-      <p className={poppins.className}>No in-app Notification</p>
+      <StyledImage src={NoRoom} alt="Notify" priority />
+      <p className={poppins.className}>No room available</p>
     </StyledIn>
   );
 };
 
-export default In_App;
+export default Room_Content;
 
 export const StyledIn = styled.div`
   width: 100%;

@@ -12,15 +12,26 @@ export const MobileTabsData = [
   { url: "", label: "Create", isModal: true, icon: <TbScriptPlus size={30} /> },
   {
     url: "/chats",
+    hasToast: true,
     label: "Chats",
     icon: <BsFillChatSquareDotsFill size={27} />,
   },
-  { url: "/explore", label: "Explore", icon: <MdExplore size={27} /> },
+  {
+    url: "/explore",
+    hasToast: true,
+    label: "Explore",
+    icon: <MdExplore size={27} />,
+  },
 ];
 
 export const sidenavlink = [
   { url: "/", label: "Feed", icon: <MdDynamicFeed size={27} /> },
-  { url: "/explore", label: "Explore", icon: <MdExplore size={27} /> },
+  {
+    url: "/explore",
+    hasToast: true,
+    label: "Explore",
+    icon: <MdExplore size={27} />,
+  },
   {
     url: "/notifications",
     hasIcon: true,
@@ -35,8 +46,14 @@ export const sidenavlink = [
     hasIcon: false,
     iconVariant: "primary",
     totalNot: 6,
+    hasToast: true,
   },
-  { url: "/search", label: "Search", icon: <FiSearch size={27} /> },
+  {
+    url: "/search",
+    isModal: true,
+    label: "Search",
+    icon: <FiSearch size={27} />,
+  },
   {
     url: "/profile/[slug]",
     label: "Profile",

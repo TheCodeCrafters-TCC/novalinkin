@@ -39,7 +39,7 @@ const BelongTo: React.FC<BelongProps> = ({ isfetching }) => {
         {isfetching && (
           <>
             <SkeletonImage height={loadWidth} width={loadWidth} />
-            {/* <SkeletonImage height={loadWidth} width={loadWidth} /> */}
+            <SkeletonImage height={loadWidth} width={loadWidth} />
             <SkeletonImage height={loadWidth} width={loadWidth} />
             <SkeletonImage height={loadWidth} width={loadWidth} />
           </>

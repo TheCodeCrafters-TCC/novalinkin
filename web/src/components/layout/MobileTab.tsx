@@ -1,5 +1,6 @@
 import { useArticleModal } from "@/context/useArticlesModal";
 import { useAppSelector } from "@/hooks/state";
+import { useToaster } from "@/hooks/useToast";
 import { StyledTab } from "@/styles/components/styled";
 import { colors, poppins } from "@/styles/global";
 import { useRouter } from "next/router";
@@ -12,6 +13,7 @@ interface TabProps {
   path: any;
   push: any;
   isArtModal: boolean | any;
+  hasToast: boolean | any;
 }
 
 const MobileTab: React.FC<TabProps> = ({
@@ -20,8 +22,10 @@ const MobileTab: React.FC<TabProps> = ({
   path,
   push,
   isArtModal,
+  hasToast,
 }) => {
   const { onOpen } = useArticleModal();
+  const { toast } = useToaster();
   const theme = useAppSelector((state) => state.system.theme);
   const isLight = theme === "light";
   const themed = isLight ? colors.black : colors.white;
@@ -32,6 +36,8 @@ const MobileTab: React.FC<TabProps> = ({
   function visitPage() {
     if (isArtModal) {
       onOpen();
+    } else if (hasToast) {
+      toast("info", "Not Available");
     } else {
       push(`${path}`);
     }
