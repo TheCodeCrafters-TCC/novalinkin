@@ -24,20 +24,9 @@ const MobileTabs = dynamic(() => import("./MobileTabs"), { ssr: false });
 const AppLayout: React.FC<LayoutProps> = ({ children, isAppLoading }) => {
   const path = useRouter();
   const hideNav = path.pathname.includes("auth") || isAppLoading;
-  const { layoutRef } = useLayoutRef();
-  const { Onclose } = useMobileSideNav();
-
-  function closeNav() {
-    if (layoutRef?.current) {
-      // console.log("LayoutRef", layoutRef?.current);
-      Onclose();
-    } else {
-      console.log("Naaah: Layout ref not found");
-    }
-  }
 
   return (
-    <StyledLayout ref={layoutRef} onClick={closeNav}>
+    <StyledLayout>
       {isAppLoading ? "" : <NavBar />}
       <MainWrapper>
         {hideNav ? "" : <SideBar />}

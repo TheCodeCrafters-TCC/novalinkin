@@ -108,7 +108,7 @@ export const StyledToast = styled.div`
   height: 60px;
   border-radius: 10px;
   position: fixed;
-  z-index: 400;
+  z-index: 900;
   display: flex;
   /* padding: 16px; */
   flex-direction: column;

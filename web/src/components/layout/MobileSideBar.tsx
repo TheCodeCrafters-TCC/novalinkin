@@ -22,7 +22,7 @@ const MobileSideBar = () => {
     Onclose();
   }
   return (
-    <StyledMSB>
+    <StyledMSB onClick={(e) => e.stopPropagation()}>
       <HeaderSection onClick={goToProfile}>
         <HeaderUserImage src={UProfile} alt="User" priority />
         <CommInfo>

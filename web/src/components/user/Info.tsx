@@ -12,11 +12,13 @@ import { MdVerified } from "react-icons/md";
 import Platform from "./info/Platform";
 import Socails from "./info/Socails";
 import { ProfileProps } from "./Profile";
+import { useProfileEdit } from "@/context/useProfileEdit";
 
 const Info: React.FC<ProfileProps> = ({ isfetching }) => {
   const [connecting, setConnecting] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
-  const isProfile = true;
+  const { onOpen } = useProfileEdit();
+  const isProfile = false;
 
   function toastTitle() {
     setShowTitle(true);
@@ -59,15 +61,28 @@ const Info: React.FC<ProfileProps> = ({ isfetching }) => {
         {isfetching ? (
           <SkeletonImage height="35px" width="110px" borderradius="5px" />
         ) : (
-          <Button
-            variant="primary"
-            radius="xs"
-            label="Connect"
-            width="100px"
-            height="35px"
-            Loading={connecting}
-            onActionClick={connectWith}
-          />
+          <>
+            {isProfile ? (
+              <Button
+                variant="primary"
+                radius="xs"
+                label="Edit profile"
+                width="100px"
+                height="35px"
+                onActionClick={onOpen}
+              />
+            ) : (
+              <Button
+                variant="primary"
+                radius="xs"
+                label="Connect"
+                width="100px"
+                height="35px"
+                Loading={connecting}
+                onActionClick={connectWith}
+              />
+            )}
+          </>
         )}
       </FlexBetween>
       {isfetching ? (
