@@ -1,17 +1,12 @@
 import express from "express";
 import validate from "../validators/validate.js";
-import { signInController, signUpController } from "../controllers/auth.js";
+import { signInController, signUpController, verifyEmail } from "../controllers/index.js";
 import { signInValidator, signUpValidator, emailValidator } from "../validators/auth.js";
-import { verifyEmail } from "../controllers/auth.js";
 
-export const router = express.Router();
+export const authRoutes = express.Router();
 
-router.post("/sign-up", signUpValidator, validate, signUpController);
+authRoutes.post("/sign-up", signUpValidator, validate, signUpController);
 
-router.post("/sign-in", signInValidator, validate, signInController);
+authRoutes.post("/sign-in", signInValidator, validate, signInController);
 
-router.post("/send-verification-email", emailValidator, validate, verifyEmail);
-
-router.get("/", (req, res, next) => {
-  res.send("Hello");
-});
+authRoutes.post("/send-verification-email", emailValidator, validate, verifyEmail);

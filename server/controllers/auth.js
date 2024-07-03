@@ -32,8 +32,8 @@ export const signUpController = async (req, res) => {
 
     res.status(201).json(token);
   } catch (error) {
-    console.log(error.message);
-  }
+    next(error);
+  };
 };
 
 export const signInController = async (req, res) => {
@@ -52,7 +52,7 @@ export const signInController = async (req, res) => {
 
     res.status(200).json(token);
   } catch (error) {
-    console.log(error.message);
+    next(error);
   }
 };
 
@@ -92,5 +92,5 @@ export const verifyEmail = async (req, res, next) => {
     });
   } catch (error) {
     next(error);
-  }
+  };
 };

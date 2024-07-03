@@ -1,3 +1,4 @@
-import { router } from "../routes/authRoutes.js"
+import { authRoutes } from "../routes/authRoutes.js";
+import userRoutes from "./userRoutes.js";
 
-export default router;
+export {authRoutes, userRoutes};
