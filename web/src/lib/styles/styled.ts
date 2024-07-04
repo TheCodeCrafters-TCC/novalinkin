@@ -106,6 +106,7 @@ export const QText = styled.div`
 export const StyledToast = styled.div`
   width: 300px;
   height: 60px;
+  /* max-height: 80px; */
   border-radius: 10px;
   position: fixed;
   z-index: 900;
@@ -132,6 +133,7 @@ export const StyledToast = styled.div`
     border-bottom-left-radius: 10px;
     height: 11px;
     transform: translateY(-13.5px) translateX(-1px);
+    /* transform: translateY(6px) translateX(-1px); */
   }
 
   @keyframes load {

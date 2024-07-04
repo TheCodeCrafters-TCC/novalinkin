@@ -12,6 +12,9 @@ const genAuthToken = (user) => {
       lastName: user.lastName,
       email: user.email,
       slug: user.slugName,
+      isVerified: user.isVerified,
+      userProfile: user.userProfile,
+      hasVerified_email: user.hasVerified_email,
     },
     authKey
   );

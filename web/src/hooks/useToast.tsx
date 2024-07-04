@@ -42,7 +42,7 @@ export const ToasterProvider: FC<ToasterProviderProps> = ({ children }) => {
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
-    }, 3000); // Hide toast after 3 seconds
+    }, 2950); // Hide toast after 3 seconds
   };
 
   return (

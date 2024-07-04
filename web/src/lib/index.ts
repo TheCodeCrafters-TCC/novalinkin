@@ -33,3 +33,4 @@ export { default as GlobalSearch } from "./components/GlobalSearch";
 export { default as Backdrop } from "./components/Backdrop";
 export { default as Tags } from "./components/Tags";
 export { default as COptions } from "./components/COptions";
+export { default as ToastContainer } from "./components/ToastContainer";

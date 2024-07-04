@@ -10,6 +10,7 @@ import { toggleTheme } from "@/redux/systemSlice";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/hooks/state";
 import { useRouter } from "next/router";
+import { logOut } from "@/redux/authSlice";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const NavBar = () => {
           <IoMdSunny onClick={() => dispatch(toggleTheme())} size={30} />
         )}
         <IoMdSettings size={30} />
-        <FiLogOut size={30} />
+        <FiLogOut size={30} onClick={() => dispatch(logOut())} />
       </ActionBarWrap>
     </StyledNav>
   );

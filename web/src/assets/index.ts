@@ -37,6 +37,7 @@ import ArticlesImg from "./undraw_sharing_articles_re_jnkp.svg";
 import CommunityImg from "./undraw_connected_re_lmq2.svg";
 import EmptyNotify from "./in_app_notify.svg";
 import NoRoom from "./room.svg";
+import PlaceholderImg from "./Placeholder.png";
 
 export {
   LogoImg,
@@ -78,4 +79,5 @@ export {
   CommunityImg,
   EmptyNotify,
   NoRoom,
+  PlaceholderImg,
 };

@@ -72,26 +72,39 @@ export type TitleProps = {
   styles?: React.CSSProperties;
 };
 
-type StateInput = {
-  email: string | any;
-  firstName: string | any;
-  lastName: string | any;
-  password: string | any;
-};
-
 export type AuthStateProps = {
-  name: string;
+  token: string | any;
+  firstName: string;
+  lastName: string;
   email: string;
   slug: string;
-  profile: string;
-  verificationStatus: "verified" | "pending" | "";
+  userId: string;
   userLoaded: boolean;
-  loginStatus: "pending" | "successful" | "failed" | "";
+  loginStatus?: "pending" | "successful" | "failed" | "";
+  loginError?: string | any;
   registerStatus: "pending" | "successful" | "failed" | "";
-  userProfile: object | null;
+  verifying_mail_status: "pending" | "successful" | "failed" | "";
+  verifying_mail_error: string | any;
+  req_reset_status: "pending" | "successful" | "failed" | "";
+  req_res_error: string | any;
+  registerError?: string | any;
+  userProfile: string;
   isVerified: boolean;
-  gender: "male" | "female" | "";
-  onHold: StateInput;
+  hasVerified_email: boolean;
+  gender?: "male" | "female" | "";
+  code: "";
+};
+
+export type UserType = {
+  token: string | any;
+  firstName: string;
+  lastName: string;
+  userId: string;
+  slug: string;
+  email: string;
+  isVerified: boolean | any;
+  userProfile?: string;
+  hasVerified_email: boolean;
 };
 
 export type UDataProps = {
@@ -142,3 +155,11 @@ export type ModalsContextProps = {
   onOpen: () => void;
   onClose: () => void;
 };
+
+export interface FormProps {
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  password: string;
+  image?: StaticImageData | string;
+}
