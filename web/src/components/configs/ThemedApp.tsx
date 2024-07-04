@@ -8,11 +8,9 @@ import { SearchModalProvider } from "@/context/useSearchModal";
 import { useAppSelector } from "@/hooks/state";
 import { ToasterProvider } from "@/hooks/useToast";
 import { ToastContainer } from "@/lib";
-import { store } from "@/redux/store";
 import { darkTheme, lightTheme, GlobalStyle } from "@/styles/global";
 import { AppProps } from "next/app";
 import { useState, useEffect, startTransition } from "react";
-import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
 const ThemedApp = ({ Component, pageProps, router }: AppProps) => {

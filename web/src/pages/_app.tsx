@@ -2,7 +2,7 @@ import { store } from "@/redux/store";
 import { updateTheme } from "@/redux/systemSlice";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
-import ThemedApp from "./configs/ThemedApp";
+import ThemedApp from "../components/configs/ThemedApp";
 import { loadUser } from "@/redux/authSlice";
 
 store.dispatch(updateTheme());
