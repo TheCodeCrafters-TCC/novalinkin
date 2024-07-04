@@ -1,6 +1,6 @@
 import mongoose, { mongo } from "mongoose";
 
-const UserSchema = mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -16,6 +16,7 @@ const UserSchema = mongoose.Schema(
     community: { type: Array, default: [] },
     connections: { type: Array, default: [] },
     notifications: { type: Array, default: [] },
+    requests: { type: Array, default: [] },
     chats: { type: Array, default: [] },
     resetPasswordToken: String,
   },

@@ -10,7 +10,7 @@ import Cloud from "../utils/cloudinary.js";
 import crypto from "crypto";
 import resetLink from "../utils/emails/resetLink.js";
 
-export const signUpController = async (req, res) => {
+export const signUpController = async (req, res, next) => {
   try {
     const { firstName, lastName, email, password, image } = req.body;
     const uploadRes = await Cloud.uploader.upload(image, {
@@ -61,7 +61,7 @@ export const signUpController = async (req, res) => {
   }
 };
 
-export const signInController = async (req, res) => {
+export const signInController = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
