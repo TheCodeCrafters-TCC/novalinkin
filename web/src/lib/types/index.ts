@@ -41,7 +41,7 @@ export type ButtonProps = {
   /**
    *@param onActionClick - Custom interface click event `OnClick` handler
    */
-  onActionClick?: (e: React.ChangeEvent) => void;
+  onActionClick?: () => void;
   /**
    *@param variant - is used to define the background color
    */
