@@ -5,7 +5,9 @@ import { useAppDispatch, useAppSelector } from "@/hooks/state";
 import { useToaster } from "@/hooks/useToast";
 import { AuthInput, Button } from "@/lib";
 import { RingSpinLoader } from "@/lib/components/Loaders";
+import { onToast } from "@/lib/components/ToastContainer";
 import { setReturnedUser } from "@/redux/systemSlice";
+import { ResendOTP, VerifyEmail } from "@/redux/thunks/auth";
 import { colors, getDevice, poppins } from "@/styles/global";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -17,17 +19,18 @@ const OTP = () => {
   const { toast } = useToaster();
   const [otp, setOtp] = useState("");
   const nums = numsArray;
-  const [validating, setValidating] = useState(false);
   const otpIcon = <MdOutlinePassword size={25} />;
   const [time, setTime] = useState(nums[0]);
   const [requested, setRequested] = useState(false);
   const router = useRouter();
-  const authState = useAppSelector((state) => state.auth.onHold);
+  const authState = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const verifying = authState.verifying_mail_status === "pending";
+  const { email } = router.query;
 
   function handleResendOTP() {
     setRequested(true);
-    toast("success", "OTP resent.");
+    dispatch(ResendOTP(email as any));
   }
 
   useEffect(() => {
@@ -54,14 +57,18 @@ const OTP = () => {
 
   useEffect(() => {
     if (otp.length === 6) {
-      setValidating(true);
-      //Code validation logic here
-      toast("success", "OTP verified.");
-      router.push(
-        `/auth/register?stage=verification&email=${authState.email}&status=verified`
-      );
+      dispatch(VerifyEmail({ email, otp }));
+      if (
+        authState.verifying_mail_status !== "pending" &&
+        authState.verifying_mail_status !== "failed"
+      ) {
+        // onToast("info", "is not pneding");
+        router.push(
+          `/auth/register?stage=verification&email=${authState.email}&status=verified`
+        );
+      }
     }
-  }, [otp, authState.email, toast]);
+  }, [otp, email, otp]);
 
   const { status } = router.query;
 
@@ -71,7 +78,7 @@ const OTP = () => {
       setTimeout(() => {
         dispatch(setReturnedUser());
         router.replace("/");
-      }, 3000);
+      }, 5000);
     }
   }, [status]);
 
@@ -98,7 +105,7 @@ const OTP = () => {
               placeholder="Enter OTP"
               icon={otpIcon}
               onValueChange={(e) => setOtp(e.target.value)}
-              disabled={validating}
+              disabled={verifying}
             />
             <ResendWrap>
               <p
@@ -114,9 +121,10 @@ const OTP = () => {
               variant="linear"
               radius="sm"
               width="inherit"
-              validating={validating}
+              validating={verifying}
               className="__verify_btn"
-            />{" "}
+              // onActionClick={() => console.log("email:", email)}
+            />
           </>
         )}
       </>

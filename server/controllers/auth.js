@@ -4,11 +4,18 @@ import genAuthToken from "../utils/genAuthToken.js";
 import hashPassword from "../utils/hashedPassword.js";
 import { slugify } from "../utils/slugify.js";
 import { generateCode } from "../utils/generateCode.js";
-import sendEmail from "../utils/sendEmail.js";
+import welcomeUser from "../utils/emails/welcome.js";
+import sendEmail from "../utils/emails/sendEmail.js";
+import Cloud from "../utils/cloudinary.js";
+import crypto from "crypto";
+import resetLink from "../utils/emails/resetLink.js";
 
 export const signUpController = async (req, res, next) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, image } = req.body;
+    const uploadRes = await Cloud.uploader.upload(image, {
+      upload_preset: "NovaLinkin_Users_Profile",
+    });
 
     const isEmailExist = await UserModel.findOne({ email });
 
@@ -18,22 +25,40 @@ export const signUpController = async (req, res, next) => {
 
     const hashedPassword = await hashPassword(password);
 
+    const code = generateCode(6);
+
+    await welcomeUser({
+      emailTo: email,
+      subject: `Welcome onboard ${firstName}!`,
+      name: firstName,
+    });
+
     const User = new UserModel({
       firstName,
       lastName,
       email,
+      userProfile: uploadRes.url,
       password: hashedPassword,
       slugName: slugify(firstName, lastName),
+      verificationCode: code,
     });
 
     const user = await User.save();
+
+    await sendEmail({
+      emailTo: user.email,
+      subject: "Verify Your NovaLinkin Account",
+      code,
+      content: "Verify Your NovaLinkin Account!",
+    });
 
     const token = genAuthToken(user);
 
     res.status(201).json(token);
   } catch (error) {
-    next(error);
-  };
+    console.log(error);
+    // console.log({ error: error.message });
+  }
 };
 
 export const signInController = async (req, res, next) => {
@@ -52,7 +77,7 @@ export const signInController = async (req, res, next) => {
 
     res.status(200).json(token);
   } catch (error) {
-    next(error);
+    console.log({ error: error.message });
   }
 };
 
@@ -67,7 +92,7 @@ export const verifyEmail = async (req, res, next) => {
       throw new Error("User not found");
     }
 
-    if (user.isVerified) {
+    if (user.hasVerified_email) {
       res.code = 400;
       throw new Error("User already verified");
     }
@@ -80,17 +105,50 @@ export const verifyEmail = async (req, res, next) => {
 
     await sendEmail({
       emailTo: user.email,
-      subject: "Verify Your Connnectify Account",
+      subject: "Verify Your NovaLinkin Account",
       code,
-      content: "Verify Your Connectify Account!",
+      content: "Verify Your NovaLinkin Account!",
     });
 
-    res.status(200).json({
-      code: 200,
-      status: true,
-      message: "Code Sent Successfully",
-    });
+    res.status(200).json(code);
   } catch (error) {
     next(error);
-  };
+  }
+};
+
+export const findCodeAndVerifyEmail = async (req, res) => {
+  try {
+    const { email, code } = req.body;
+    const user = await UserModel.findOne({ email });
+
+    if (!user) return res.status(404).json("User not found");
+
+    if (user.verificationCode === code) {
+      user.hasVerified_email = true;
+      return res.status(200).json("Email verified");
+    } else {
+      return res.status(403).json("Invalidcode");
+    }
+  } catch (error) {
+    console.log({ error: error.message });
+  }
+};
+
+export const forgottenPassword = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await UserModel.findOne({ email });
+    if (!user) return res.status(404).json("User not found");
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    user.resetPasswordToken = resetToken;
+    await user.save();
+    const resetUrl = `http://localhost:3000/auth/reset-password/${resetToken}`;
+    await resetLink({
+      emailTo: email,
+      resetUrl: resetUrl,
+    });
+    res.status(200).json("Token sent");
+  } catch (error) {
+    console.log({ error: error.message });
+  }
 };

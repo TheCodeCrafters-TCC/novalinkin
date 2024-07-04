@@ -88,6 +88,11 @@ export const AuthInputContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   /* width: 300px; */
+
+  .__auth_log_error {
+    color: ${colors.primaryRed};
+    font-size: 14px;
+  }
 `;
 
 export const AuthCofirmWrap = styled.div`

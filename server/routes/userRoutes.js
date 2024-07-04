@@ -1,12 +1,17 @@
 import express from "express";
-import { allUsersController, findBySlug, findById,  connectionRequest, deleteAccount } from "../controllers/index.js";
-
+import {
+  allUsersController,
+  findBySlug,
+  findById,
+  connectionRequest,
+  deleteAccount,
+} from "../controllers/index.js";
 
 const userRoutes = express.Router();
 
 userRoutes.get("/", allUsersController);
 
-userRoutes.get("/find-by-slug/:slugName", findBySlug);
+userRoutes.get("/find/:slugName", findBySlug);
 
 userRoutes.get("/find-by-id/:id", findById);
 

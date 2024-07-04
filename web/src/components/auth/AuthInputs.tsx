@@ -3,13 +3,18 @@ import { QText } from "@/lib/styles/styled";
 import { AuthInputContainer } from "@/styles/components/styled";
 import { poppins } from "@/styles/global";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaAddressCard } from "react-icons/fa";
 import { MdAlternateEmail, MdEditSquare, MdPassword } from "react-icons/md";
 import MAC from "../MAC";
-import { useToaster } from "@/hooks/useToast";
-import { useAppDispatch } from "@/hooks/state";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
 import { holdInfo } from "@/redux/authSlice";
+import { onToast } from "@/lib/components/ToastContainer";
+import { SignUp } from "@/redux/thunks/auth";
+
+const ImgPath =
+  "https://res.cloudinary.com/dv4mozbaz/image/upload/v1720055040/Placeholder_e1sths.png";
+// const ImgPath = "../../assets/Placeholder.png";
 
 interface CheckProps {
   checked: boolean;
@@ -17,14 +22,37 @@ interface CheckProps {
 }
 
 const AuthInputs = ({ checked, setCheck }: CheckProps) => {
+  const [base64Image, setBase64Image] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const response = await fetch(ImgPath);
+        const blob = await response.blob();
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          setBase64Image(reader.result as string);
+        };
+
+        reader.readAsDataURL(blob);
+      } catch (error) {
+        console.error("Error fetching the image:", error);
+      }
+    };
+
+    fetchImage();
+  }, [base64Image]);
+
   const router = useRouter();
-  const { toast } = useToaster();
   const dispatch = useAppDispatch();
+  const image = ImgPath;
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
+    // image: image,
   });
 
   const inval =
@@ -33,27 +61,40 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
   const upperCase = /[A-Z]/;
   const specialChar = /[!#$@,.:*&]/;
   const Reqlength = form.password.length >= 6;
-  // const validCase = upperCase.test(form.password);
   const validChar = specialChar.test(form.password);
+  const user = useAppSelector((state) => state.auth);
 
   function signUp() {
     if (!checked) {
-      toast("info", "Please accept T&C", "top-right");
+      onToast("info", "Please accept T&C", "top-right");
     } else if (inval) {
-      toast("error", `All fileds are required`, "top-right");
+      onToast("error", `All fileds are required`, "top-right");
     } else if (!Reqlength || invalidMail) {
       if (!Reqlength) {
-        toast("error", "Password should be min of 6", "top-right");
+        onToast("error", "Password should be min of 6", "top-right");
       } else {
-        toast("error", "Please enter a vlid email", "top-right");
+        onToast("error", "Please enter a vlid email", "top-right");
       }
     } else {
-      dispatch(holdInfo(form as any));
-      toast("success", `OTP have been sent`, "top-right");
-      router.push(`/auth/register?stage=verification&email=${form.email}`);
+      dispatch(SignUp({ form, image }));
+      setTimeout(() => {
+        onToast("success", "OTP have been sent", "top-right");
+        router.push(`/auth/register?stage=verification&email=${form.email}`);
+      }, 3000);
     }
   }
-  const isLoading = false;
+
+  // function signUp(e: React.ChangeEvent) {
+  //   e.preventDefault();
+  //   if (!checked) {
+  //     onToast("info", "Please accept T&C", "top-right");
+  //   } else {
+  //     dispatch(SignUp({ form, image }));
+  //     console.log("form:", form);
+  //   }
+  // }
+
+  const isLoading = user.registerStatus === "pending";
   const nameIcon = <FaAddressCard size={25} />;
   const editIcon = <MdEditSquare size={25} />;
   const emailIcon = <MdAlternateEmail size={25} />;

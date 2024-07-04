@@ -41,7 +41,7 @@ export type ButtonProps = {
   /**
    *@param onActionClick - Custom interface click event `OnClick` handler
    */
-  onActionClick?: () => void;
+  onActionClick?: (e: React.ChangeEvent) => void;
   /**
    *@param variant - is used to define the background color
    */
@@ -130,3 +130,29 @@ export type CCOptionsProps = {
   label: string;
   variant: "type" | "join";
 };
+
+export type ToastContainerProps = {
+  variant?: "error" | "info" | "success";
+  position?:
+    | "top-center"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
+  message?: string;
+};
+
+export type PositionProps =
+  | "top-center"
+  | "top-left"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-right";
+
+export type VaraintType = "error" | "info" | "success";
+
+export type ToastProps = (
+  variant: VaraintType,
+  message: string,
+  position?: PositionProps
+) => void;
