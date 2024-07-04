@@ -6,7 +6,7 @@ import { slugify } from "../utils/slugify.js";
 import { generateCode } from "../utils/generateCode.js";
 import sendEmail from "../utils/sendEmail.js";
 
-export const signUpController = async (req, res) => {
+export const signUpController = async (req, res, next) => {
   try {
     const { firstName, lastName, email, password } = req.body;
 
@@ -36,7 +36,7 @@ export const signUpController = async (req, res) => {
   };
 };
 
-export const signInController = async (req, res) => {
+export const signInController = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
