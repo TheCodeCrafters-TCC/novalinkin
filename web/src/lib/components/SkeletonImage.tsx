@@ -32,13 +32,8 @@ const loadingAnimation = keyframes`
 `;
 
 const SkeletonElement = styled.div`
-  background: #e0e0e0;
-  background-image: linear-gradient(
-    90deg,
-    #e0e0e0 0px,
-    #f5f5f5 40px,
-    #e0e0e0 80px
-  );
+  background: ${({ theme }) => theme.colors.buffer_bg};
+  background-image: ${({ theme }) => theme.colors.buffer_img};
   background-size: 200px 100%;
   animation: ${loadingAnimation} 1.5s infinite linear;
   border-radius: 4px;

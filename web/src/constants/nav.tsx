@@ -8,7 +8,12 @@ import { TbScriptPlus } from "react-icons/tb";
 
 export const MobileTabsData = [
   { url: "/", label: "Home", icon: <AiFillHome size={27} /> },
-  { url: "/notifications", label: "Notifications", icon: <FaBell size={27} /> },
+  {
+    url: "/notifications",
+    hasIcon: true,
+    label: "Notifications",
+    icon: <FaBell size={27} />,
+  },
   { url: "", label: "Create", isModal: true, icon: <TbScriptPlus size={30} /> },
   {
     url: "/chats",
@@ -37,7 +42,6 @@ export const sidenavlink = [
     hasIcon: true,
     label: "Notification",
     icon: <FaBell size={25} />,
-    totalNot: 16,
   },
   {
     url: "/chats",
@@ -63,6 +67,7 @@ export const sidenavlink = [
   {
     url: "/community",
     label: "Community",
+    hasToast: true,
     icon: <HiMiniUserGroup size={27} />,
   },
 ];

@@ -15,12 +15,12 @@ function TruncateText({
   };
 
   const truncatedText =
-    text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+    text?.length > maxLength ? text?.slice(0, maxLength) + "..." : text;
 
   return (
     <FlexTruncate>
       <p className={className}>{isTruncated ? truncatedText : text}</p>
-      {text.length > maxLength && (
+      {text?.length > maxLength && (
         <StyledTrunTag className={showClass} onClick={toggleTruncate}>
           {isTruncated ? "Show more" : "Show less"}
         </StyledTrunTag>

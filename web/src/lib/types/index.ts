@@ -29,7 +29,7 @@ export type ButtonProps = {
    *  Button text only accept string `values`
    *@param label -  Rendered on the button interface.
    */
-  label: string;
+  label: string | any;
   /**
    *@param Loading - Optional boolean to indicate a loading state
    */
@@ -41,11 +41,11 @@ export type ButtonProps = {
   /**
    *@param onActionClick - Custom interface click event `OnClick` handler
    */
-  onActionClick?: () => void;
+  onActionClick?: (e?: any) => void;
   /**
    *@param variant - is used to define the background color
    */
-  variant: "primary" | "secondary" | "success" | "danger" | "linear";
+  variant: "primary" | "secondary" | "success" | "danger" | "linear" | "border";
   /**
    * @param radius - Border radius triming for button interface
    */
@@ -77,6 +77,7 @@ export type ToastType = {
 export type NotIconProps = {
   varinat?: "primary" | "seconadry";
   label: number;
+  style?: React.CSSProperties;
 };
 
 export type TruncateTextProps = {
@@ -156,3 +157,13 @@ export type ToastProps = (
   message: string,
   position?: PositionProps
 ) => void;
+
+export type ImageUploaderProp = {
+  setImage: Dispatch<SetStateAction<string | ArrayBuffer | any>>;
+  image: string | any;
+  hasButton?: boolean;
+  ButtonAction?: (e: React.ChangeEvent) => void;
+  buttonLabel?: string;
+  buttonLoader?: boolean;
+  buttonDisable?: boolean;
+};

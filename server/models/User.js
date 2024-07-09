@@ -19,6 +19,11 @@ const UserSchema = new mongoose.Schema(
     requests: { type: Array, default: [] },
     chats: { type: Array, default: [] },
     resetPasswordToken: String,
+    location: String,
+    website: String,
+    description: String,
+    twitter_url: String,
+    linkedin_url: String,
   },
   { timestamps: true }
 );

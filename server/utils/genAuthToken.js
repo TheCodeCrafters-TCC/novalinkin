@@ -15,6 +15,11 @@ const genAuthToken = (user) => {
       isVerified: user.isVerified,
       userProfile: user.userProfile,
       hasVerified_email: user.hasVerified_email,
+      location: user.location,
+      website: user.website,
+      description: user.description,
+      twitter_url: user.twitter_url,
+      linkedin_url: user.linkedin_url,
     },
     authKey
   );

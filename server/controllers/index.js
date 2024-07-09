@@ -5,6 +5,8 @@ import {
   findById,
   connectionRequest,
   deleteAccount,
+  updateProfile,
+  getUserRequests,
 } from "./users.js";
 
 export {
@@ -16,4 +18,6 @@ export {
   findById,
   connectionRequest,
   deleteAccount,
+  updateProfile,
+  getUserRequests,
 };

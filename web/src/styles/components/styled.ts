@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import { colors, getDevice, poppins, screens } from "../global";
 import Image from "next/image";
+import Link from "next/link";
 
 export const StyledLayout = styled.div`
   position: relative;
@@ -456,6 +457,12 @@ export const StyledHeroWrapper = styled.div`
   flex-direction: column;
   position: relative;
   width: 100%;
+
+  .__camera_profile {
+    &:hover {
+      opacity: 0.75;
+    }
+  }
 `;
 
 export const StyledHeroBg = styled.div`
@@ -471,6 +478,39 @@ export const StyledProfileImage = styled(Image)`
   margin-left: 2rem;
   position: absolute;
   bottom: -3rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const ExImageContainer = styled.div`
+  /* background: rgb(0, 0, 0, 0.5); */
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${({ theme }) => theme.colors.dropBg};
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+`;
+
+export const ExImage = styled(Image)`
+  width: 350px;
+  height: 350px;
+  border-radius: 9999px;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+    height: 50%;
+    border-radius: 0;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -526,6 +566,19 @@ export const InfoTag = styled.p`
   font-size: 12px;
 `;
 
+export const InfoLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.info};
+`;
+
+export const InFlexLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.info};
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
 export const StyledConnectWrap = styled.div`
   padding: 2rem;
   gap: 1.5rem;
@@ -541,6 +594,9 @@ export const StyledConnectUser = styled.div`
   display: flex;
   gap: 1rem;
   width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 export const ConnectUserImage = styled(Image)`
   width: 50px;
@@ -552,6 +608,7 @@ export const ConnectUserInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0;
+  width: 100%;
 
   /* span {
     font-size: 15px;
@@ -901,7 +958,7 @@ export const StyledShareContainer = styled.div`
   gap: 10px;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 2px 2px 2px ${({ theme }) => theme.colors.nav};
+  border: 2px solid ${({ theme }) => theme.colors.nav};
 
   @media screen and (max-width: ${getDevice("xl")}) {
     width: 65%;
@@ -1044,4 +1101,114 @@ export const Styled_Create_Wrap = styled.div`
     margin-left: 8px;
     font-size: 13px;
   }
+`;
+
+export const StyledEditContainer = styled.div`
+  width: 50%;
+  background: ${({ theme }) => theme.colors.background};
+  height: 85%;
+  border-radius: 11px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid ${({ theme }) => theme.colors.nav};
+
+  @media screen and (max-width: ${getDevice("xl")}) {
+    width: 70%;
+  }
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 95%;
+    height: 80%;
+  }
+`;
+
+export const StyledInputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  width: 100%;
+  padding: 2rem;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    padding: 1rem;
+  }
+`;
+export const SpaceInputs = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+`;
+
+export const InputWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  p {
+    font-size: 13px;
+  }
+`;
+export const NameInput = styled.input`
+  width: 100%;
+  padding: 1rem;
+  height: 60px;
+  border-radius: 11px;
+  background: ${({ theme }) => theme.colors.search};
+  outline: none;
+  border: none;
+  color: ${({ theme }) => theme.colors.text};
+
+  ::placeholder {
+    color: ${colors.primaryGray};
+  }
+  &:focus {
+    caret-color: ${colors.primaryColor};
+  }
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+  }
+`;
+
+export const DescWrap = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  height: 60px;
+  border-radius: 11px;
+  background: ${({ theme }) => theme.colors.search};
+  gap: 20px;
+`;
+
+export const DescInput = styled.input`
+  padding: 1rem;
+  height: 60px;
+  border-radius: 11px;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: ${({ theme }) => theme.colors.text};
+
+  ::placeholder {
+    color: ${colors.primaryGray};
+  }
+  &:focus {
+    caret-color: ${colors.primaryColor};
+  }
+`;
+
+export const EditButtonWrap = styled.div`
+  padding: 1rem;
+  display: flex;
+  width: 100%;
 `;
