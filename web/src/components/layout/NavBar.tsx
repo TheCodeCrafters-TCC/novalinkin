@@ -15,6 +15,7 @@ import { logOut } from "@/redux/authSlice";
 const NavBar = () => {
   const dispatch = useDispatch();
   const theme = useAppSelector((state) => state.system.theme);
+  const auth = useAppSelector((state) => state.auth);
   const isLight = theme === "light";
   const path = useRouter();
   const hideNav = path.pathname.includes("auth");
@@ -28,8 +29,12 @@ const NavBar = () => {
         ) : (
           <IoMdSunny onClick={() => dispatch(toggleTheme())} size={30} />
         )}
-        <IoMdSettings size={30} />
-        <FiLogOut size={30} onClick={() => dispatch(logOut())} />
+        {auth.userLoaded ? (
+          <>
+            <IoMdSettings size={30} />
+            <FiLogOut size={30} onClick={() => dispatch(logOut())} />
+          </>
+        ) : null}
       </ActionBarWrap>
     </StyledNav>
   );

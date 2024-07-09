@@ -39,3 +39,5 @@ export { default as CommunityProfile } from "./community/view/Profile";
 export { default as CreateCommunity } from "./modals/CreateCommunity";
 export { default as ProfileEdit } from "./modals/ProfileEdit";
 export { default as MobileSideNav } from "./modals/MobileSideNav";
+export { default as UserNetwork } from "./user/connect/UserNetwork";
+export { default as ProfileUpdate } from "./modals/ProfileUpdate";

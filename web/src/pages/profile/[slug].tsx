@@ -2,10 +2,13 @@ import { Profile } from "@/components";
 import Head from "next/head";
 import React, { startTransition, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
-import { InfoPageHeader } from "@/lib";
-import { useAppDispatch } from "@/hooks/state";
+import { InfoPageHeader, NetworkDown } from "@/lib";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
 import { setProfileQuery } from "@/redux/systemSlice";
-import { capitalizeAndRemoveHyphen } from "@/lib/hooks";
+import { getCurrentUser } from "@/redux/thunks/user";
+import { onToast } from "@/lib/components/ToastContainer";
+import { useRouter } from "next/router";
+import { ContentWrapper } from "@/styles/components/styled";
 
 interface SlugProps {
   slug: string | null;
@@ -13,13 +16,29 @@ interface SlugProps {
 
 const Slug: React.FC<SlugProps> = ({ slug }) => {
   const dispatch = useAppDispatch();
-  const Name = capitalizeAndRemoveHyphen(slug as string);
+  const auth = useAppSelector((state) => state.auth);
+  const userState = useAppSelector((state) => state.user);
+  const netErr = userState.fetching_current_status === "failed";
+  const currentUser = userState.currentUser;
+  const Name = currentUser.firstName + " " + currentUser.lastName;
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!auth.userLoaded) {
+      onToast("error", "Not authorized");
+      router.replace("/auth/login");
+    }
+  }, [slug]);
 
   useEffect(() => {
     startTransition(() => {
       dispatch(setProfileQuery(slug as any));
     });
   }, [dispatch, slug]);
+
+  useEffect(() => {
+    dispatch(getCurrentUser(slug));
+  }, [slug]);
 
   return (
     <>
@@ -28,7 +47,13 @@ const Slug: React.FC<SlugProps> = ({ slug }) => {
       </Head>
       <div>
         <InfoPageHeader filter />
-        <Profile />
+        {netErr ? (
+          <ContentWrapper>
+            <NetworkDown />
+          </ContentWrapper>
+        ) : (
+          <Profile />
+        )}
       </div>
     </>
   );

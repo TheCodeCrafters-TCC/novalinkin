@@ -40,10 +40,19 @@ const colors = {
   ghostWhite: "#f8f8ff",
   whisper: "#e5e5e5",
   linear: "linear-gradient(to right, #1821F3, #0F0F0F)",
+  sk_img_dark: "linear-gradient(90deg,#b0b0b0 0px,#d0d0d0 40px,#b0b0b0 80px)",
+  sk_img_light: "linear-gradient(90deg,#e0e0e0 0px,#f5f5f5 40px,#e0e0e0 80px)",
+  dark_sk_img: "#b0b0b0",
+  light_sk_img: "#e0e0e0",
   red500: "rgb(239 68 68)",
   red600: "rgb(220 38 38)",
   star500: "#FFBC00",
   dropBg: "rgb(0,0,0,0.5)",
+  green100: "rgb(220 252 231)",
+  green200: "rgb(187 247 208)",
+  green400: "rgb(74 222 128)",
+  green500: "rgb(34 197 94)",
+  green600: "rgb(22 163 74)",
 };
 
 export const IconWrap = styled.div`
@@ -228,6 +237,10 @@ export const lightTheme = {
   search: colors.softGray,
   info: colors.primaryGray,
   hero: colors.profileCoverBg,
+  buffer_bg: colors.light_sk_img,
+  buffer_img: colors.sk_img_light,
+  bodyText: colors.primaryGray,
+  dropBg: "rgba(255, 255, 255, 0.6)",
 };
 export const darkTheme = {
   primary: colors.primaryColor,
@@ -240,6 +253,10 @@ export const darkTheme = {
   search: colors.darkGray,
   info: colors.neutral600,
   hero: colors.darkGray,
+  buffer_bg: colors.dark_sk_img,
+  buffer_img: colors.sk_img_dark,
+  bodyText: colors.darkGray,
+  dropBg: "rgb(0, 0, 0, 0.5)",
 };
 
 export const FlexBetween = styled.div`

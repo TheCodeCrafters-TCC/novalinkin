@@ -3,7 +3,7 @@ import { NotIconProps } from "../types";
 import { colors, poppins } from "@/styles/global";
 import styled from "styled-components";
 
-const NotIcon = ({ varinat, label }: NotIconProps) => {
+const NotIcon = ({ varinat, label, style }: NotIconProps) => {
   const getColor = (variant: NotIconProps["varinat"]) => {
     switch (variant) {
       case "primary":
@@ -15,12 +15,16 @@ const NotIcon = ({ varinat, label }: NotIconProps) => {
     }
   };
   return (
-    <StyledIcon
-      className={poppins.className}
-      style={{ background: getColor(varinat) }}
-    >
-      {label}
-    </StyledIcon>
+    <>
+      {label >= 1 && (
+        <StyledIcon
+          className={poppins.className}
+          style={{ ...style, background: getColor(varinat) }}
+        >
+          {label}
+        </StyledIcon>
+      )}
+    </>
   );
 };
 

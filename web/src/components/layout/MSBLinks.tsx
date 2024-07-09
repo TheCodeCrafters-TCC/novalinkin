@@ -8,6 +8,7 @@ import { HiOutlineSaveAs } from "react-icons/hi";
 import { IoMdSettings } from "react-icons/io";
 import { RiFeedbackFill } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
+import { useAppSelector } from "@/hooks/state";
 
 const MSBLinks = () => {
   const icons = {
@@ -18,11 +19,12 @@ const MSBLinks = () => {
     settings: <IoMdSettings size={23} />,
     feedback: <RiFeedbackFill size={23} />,
   };
+  const user = useAppSelector((state) => state.auth);
   return (
     <StyledLinksWrapper>
       <MSBLink_Content
         label="Profile"
-        url="/profile/noah-moore"
+        url={`/profile/${user.slug}`}
         hasLink
         icon={icons.profile}
       />
@@ -30,7 +32,7 @@ const MSBLinks = () => {
       <MSBLink_Content
         label="Community"
         url="/community"
-        hasLink
+        // hasLink
         icon={icons.community}
       />
       <MSBLink_Content

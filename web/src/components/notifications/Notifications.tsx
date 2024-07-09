@@ -2,13 +2,29 @@ import { notdata } from "@/constants/notify";
 import { ContentWrapper } from "@/styles/components/styled";
 import { getDevice, poppins } from "@/styles/global";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import styled from "styled-components";
 import Not_Item from "./Not_Item";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
+import NotificationBuffer from "../skeleton/NotificationBuffer";
+import { Empty, NetworkDown } from "@/lib";
+import { getNotifications } from "@/redux/thunks/notifications";
 
 const Notifications = () => {
   const router = useRouter();
+  const notState = useAppSelector((state) => state.notifications);
+  const isLoading = notState.fetch_status === "pending";
+  const noAlert = notState?.all?.length < 1;
+  const Alert = notState?.all && notState?.all;
+  const auth = useAppSelector((state) => state.auth);
+  const netError = notState.fetch_status === "failed";
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getNotifications(auth.userId));
+  }, []);
+
   return (
     <ContentWrapper>
       <ConnectHeader>
@@ -16,9 +32,18 @@ const Notifications = () => {
         <h1 className={poppins.className}>Notifications</h1>
       </ConnectHeader>
       <Styled_Not_Wrap>
-        {notdata.map((not, index) => (
-          <Not_Item key={index} not_i={not} />
-        ))}
+        {netError ? (
+          <NetworkDown />
+        ) : noAlert && isLoading ? (
+          <>
+            <NotificationBuffer />
+            <NotificationBuffer />
+          </>
+        ) : noAlert ? (
+          <Empty label="You don't have any notifications" />
+        ) : (
+          Alert?.map((not, index) => <Not_Item key={index} not_i={not} />)
+        )}
       </Styled_Not_Wrap>
     </ContentWrapper>
   );
@@ -60,11 +85,10 @@ const ConnectHeader = styled.div`
 `;
 
 export const Styled_Not_Wrap = styled.div`
-  gap: 1.5rem;
   flex-direction: column;
   display: flex;
 
   @media screen and (max-width: ${getDevice("md")}) {
-    margin-top: 5rem;
+    margin-top: 3.8rem;
   }
 `;

@@ -1,4 +1,5 @@
 import { useAppSelector } from "@/hooks/state";
+import { ServerDown } from "@/lib";
 import { DynaBarContainer } from "@/styles/components/styled";
 import { colors, getDevice } from "@/styles/global";
 import dynamic from "next/dynamic";
@@ -50,9 +51,15 @@ const getCurrentBar = (path: any) => {
 
 const DynamicBar = () => {
   const path = useRouter();
+  const Users = useAppSelector((state) => state.user);
+  const netError =
+    Users.fetching_status === "failed" ||
+    Users.fetching_current_status === "failed";
   return (
     <DynaBarContainer>
-      <FixedNav className="__dynamic_bar">{getCurrentBar(path)}</FixedNav>
+      <FixedNav className="__dynamic_bar">
+        {netError ? <ServerDown /> : getCurrentBar(path)}
+      </FixedNav>
     </DynaBarContainer>
   );
 };

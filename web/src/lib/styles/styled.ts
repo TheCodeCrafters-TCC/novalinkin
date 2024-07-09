@@ -1,4 +1,5 @@
 import { colors, getDevice } from "@/styles/global";
+import Image from "next/image";
 import styled from "styled-components";
 
 export const AInputWrapper = styled.div`
@@ -61,7 +62,7 @@ export const AInput = styled.input`
 
 export const ButtonInterFace = styled.button`
   height: 50px;
-  color: white;
+  /* color: white; */
   outline: none;
   border: none;
   display: flex;
@@ -298,8 +299,11 @@ export const Styled_Backdrop = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgb(0, 0, 0, 0.5);
   z-index: 500;
+  background: ${({ theme }) => theme.colors.dropBg};
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
 `;
 
 export const TagsConatiner = styled.div`
@@ -364,4 +368,46 @@ export const SelectionsWrapper = styled.div`
     flex-direction: column;
     gap: 1rem;
   }
+`;
+
+export const StyledUploader = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  background: ${({ theme }) => theme.colors.background};
+  border: 2px dashed ${({ theme }) => theme.colors.nav};
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 16px;
+
+  .__svg_upload {
+    background: ${colors.green200};
+    padding: 6px;
+    border-radius: 9999px;
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.bodyText};
+    text-align: center;
+    font-size: 14px;
+  }
+`;
+
+export const ClickToUploadWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .__upload__click {
+    color: ${colors.green500};
+  }
+`;
+
+export const SelectedImage = styled(Image)`
+  width: 110px;
+  height: 110px;
+  border-radius: 9999px;
 `;

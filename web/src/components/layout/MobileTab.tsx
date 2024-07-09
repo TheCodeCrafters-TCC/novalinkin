@@ -1,8 +1,9 @@
 import { useArticleModal } from "@/context/useArticlesModal";
 import { useAppSelector } from "@/hooks/state";
 import { useToaster } from "@/hooks/useToast";
+import { NotIcon } from "@/lib";
 import { StyledTab } from "@/styles/components/styled";
-import { colors, poppins } from "@/styles/global";
+import { colors, IconWrap, poppins } from "@/styles/global";
 import { useRouter } from "next/router";
 import React from "react";
 import { AiFillHome } from "react-icons/ai";
@@ -14,6 +15,9 @@ interface TabProps {
   push: any;
   isArtModal: boolean | any;
   hasToast: boolean | any;
+  totalNot: number | string | any;
+  iconVariant?: string | any;
+  hasIcon: boolean | any;
 }
 
 const MobileTab: React.FC<TabProps> = ({
@@ -23,6 +27,9 @@ const MobileTab: React.FC<TabProps> = ({
   push,
   isArtModal,
   hasToast,
+  totalNot,
+  iconVariant,
+  hasIcon,
 }) => {
   const { onOpen } = useArticleModal();
   const { toast } = useToaster();
@@ -44,7 +51,10 @@ const MobileTab: React.FC<TabProps> = ({
   }
   return (
     <StyledTab onClick={visitPage} style={{ color: activeColor }}>
-      {icon}
+      <IconWrap>
+        {hasIcon && <NotIcon label={totalNot} varinat={iconVariant} />}
+        {icon}
+      </IconWrap>
       {isActive ? <p className={poppins.className}>{label}</p> : null}
     </StyledTab>
   );

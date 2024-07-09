@@ -32,14 +32,14 @@ export const signUpController = async (req, res, next) => {
       subject: `Welcome onboard ${firstName}!`,
       name: firstName,
     });
-
+    const slugText = firstName + " " + lastName;
     const User = new UserModel({
       firstName,
       lastName,
       email,
       userProfile: uploadRes.url,
       password: hashedPassword,
-      slugName: slugify(firstName, lastName),
+      slugName: slugify(slugText),
       verificationCode: code,
     });
 

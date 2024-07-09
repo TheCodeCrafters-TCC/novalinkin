@@ -17,8 +17,36 @@ const getBackgroundColor = (variant: ButtonProps["variant"]) => {
       return "red";
     case "linear":
       return colors.linear;
+    case "border":
+      return "transparent";
     default:
       return colors.primaryColor;
+  }
+};
+const getBorder = (variant: ButtonProps["variant"]) => {
+  switch (variant) {
+    case "primary":
+      return "none";
+    case "secondary":
+      return "none";
+    case "success":
+      return "none";
+    case "danger":
+      return "none";
+    case "linear":
+      return "none";
+    case "border":
+      return `2px solid ${colors.primaryColor}`;
+    default:
+      return colors.primaryColor;
+  }
+};
+const getColors = (variant: ButtonProps["variant"]) => {
+  switch (variant) {
+    case "border":
+      return colors.primaryColor;
+    default:
+      return "white";
   }
 };
 
@@ -93,6 +121,8 @@ const Button: React.FC<ButtonProps> = ({
         borderRadius: getBorderRadius(radius),
         width: width,
         height: height,
+        border: getBorder(variant),
+        color: getColors(variant),
       }}
     >
       {MainInterface}

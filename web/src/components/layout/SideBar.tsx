@@ -1,23 +1,40 @@
 import { NavLinksWrapper, SideBarContainer } from "@/styles/components/styled";
 import { colors, getDevice } from "@/styles/global";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Nav from "./Nav";
 import { sidenavlink } from "@/constants/nav";
 import { useRouter } from "next/navigation";
 import { Button, NotIcon } from "@/lib";
-import { TbScriptPlus } from "react-icons/tb";
+import { TbLogin, TbScriptPlus } from "react-icons/tb";
 import { useArticleModal } from "@/context/useArticlesModal";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
+import { getUnreadNot } from "@/helper/get";
+import { setUnread } from "@/redux/notificationSlice";
 
 const SideBar = () => {
   const router = useRouter();
   const { onOpen } = useArticleModal();
+  const auth = useAppSelector((state) => state.auth);
+  const [notifications, setNotifications] = useState([]);
+  const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   let screenWidth = window.screen.width;
-  //   alert("Screen Width: " + screenWidth);
-  // }, []);
+  useEffect(() => {
+    const getRes = async () => {
+      const res = await getUnreadNot(auth.userId);
+      dispatch(setUnread(res));
+      setNotifications(res);
+    };
+    getRes();
+  }, [notifications]);
 
+  function handleShare() {
+    if (auth.userLoaded) {
+      onOpen();
+    } else {
+      router.replace("/auth/login");
+    }
+  }
   return (
     <SideBarContainer>
       <FixedNav className="side_nav">
@@ -33,23 +50,31 @@ const SideBar = () => {
               hasicon={nav.hasIcon}
               hasToast={nav.hasToast}
               iconVariant={nav.iconVariant}
-              totalNot={nav.totalNot}
+              totalNot={notifications?.length}
               key={index}
             />
           ))}
           <Button
-            label="Share article"
+            label={auth.userLoaded ? "Share article" : "Login"}
             variant="primary"
             radius="sm"
             width="100%"
             className="__share_btn"
-            onActionClick={onOpen}
+            onActionClick={handleShare}
           />
-          <TbScriptPlus
-            className="_mobile_share_article __nav_unactive"
-            size={35}
-            onClick={onOpen}
-          />
+          {auth.userLoaded ? (
+            <TbScriptPlus
+              className="_mobile_share_article __nav_unactive"
+              size={35}
+              onClick={handleShare}
+            />
+          ) : (
+            <TbLogin
+              className="_mobile_share_article __nav_unactive"
+              size={35}
+              onClick={handleShare}
+            />
+          )}
         </NavLinksWrapper>
       </FixedNav>
     </SideBarContainer>

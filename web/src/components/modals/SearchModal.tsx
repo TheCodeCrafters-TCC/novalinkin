@@ -111,7 +111,7 @@ const StyledSearchContainer = styled.div`
   flex-direction: column;
   position: relative;
   z-index: 100;
-  box-shadow: 2px 2px 2px 2px ${({ theme }) => theme.colors.nav};
+  border: 2px solid ${({ theme }) => theme.colors.nav};
 
   @media screen and (max-width: ${getDevice("xl")}) {
     width: 80%;

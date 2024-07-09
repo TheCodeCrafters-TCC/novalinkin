@@ -38,6 +38,7 @@ import CommunityImg from "./undraw_connected_re_lmq2.svg";
 import EmptyNotify from "./in_app_notify.svg";
 import NoRoom from "./room.svg";
 import PlaceholderImg from "./Placeholder.png";
+import Server_Down from "./server_down.svg";
 
 export {
   LogoImg,
@@ -80,4 +81,5 @@ export {
   EmptyNotify,
   NoRoom,
   PlaceholderImg,
+  Server_Down,
 };

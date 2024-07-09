@@ -5,14 +5,10 @@ import React, { useEffect, useState } from "react";
 import UsersConnections from "../user/connect/UsersConnections";
 
 const Profile = () => {
-  const [isfetching, setIsFetching] = useState(false);
-
-  useEffect(() => {
-    setIsFetching(true);
-    setTimeout(() => {
-      setIsFetching(false);
-    }, 4000);
-  }, []);
+  const useState = useAppSelector(
+    (state) => state.user.fetching_current_status
+  );
+  const isfetching = useState === "pending";
   const queryState = useAppSelector((state) => state.system.query.profileSlug);
   return (
     <DynamicWrap>

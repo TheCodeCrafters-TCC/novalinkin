@@ -1,4 +1,5 @@
 import { useSearchModal } from "@/context/useSearchModal";
+import { useAppSelector } from "@/hooks/state";
 import { useToaster } from "@/hooks/useToast";
 import { NotIcon } from "@/lib";
 import { NavLink } from "@/styles/components/styled";
@@ -28,15 +29,20 @@ const Nav: React.FC<NavProps> = ({
   const { toast } = useToaster();
   const isActive = router.pathname === url;
   const activeColor: any = isActive && colors.primaryColor;
+  const user = useAppSelector((state) => state.auth);
   function navPush() {
-    if (isProfile) {
-      push(`/profile/noah-moore`);
-    } else if (isModal) {
-      onOpen();
-    } else if (hasToast) {
-      toast("info", "Not Available");
+    if (user.userLoaded) {
+      if (isProfile) {
+        push(`/profile/${user?.slug}`);
+      } else if (isModal) {
+        onOpen();
+      } else if (hasToast) {
+        toast("info", "Not Available");
+      } else {
+        push(url);
+      }
     } else {
-      push(url);
+      router.replace("/auth/login");
     }
   }
   return (

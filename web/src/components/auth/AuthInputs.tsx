@@ -23,6 +23,7 @@ interface CheckProps {
 
 const AuthInputs = ({ checked, setCheck }: CheckProps) => {
   const [base64Image, setBase64Image] = useState<string | null>(null);
+  const auth = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -77,22 +78,18 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
       }
     } else {
       dispatch(SignUp({ form, image }));
-      setTimeout(() => {
-        onToast("success", "OTP have been sent", "top-right");
-        router.push(`/auth/register?stage=verification&email=${form.email}`);
-      }, 3000);
+      // setTimeout(() => {
+      //   onToast("success", "OTP have been sent", "top-right");
+      //   router.push(`/auth/register?stage=verification&email=${form.email}`);
+      // }, 3000);
     }
   }
 
-  // function signUp(e: React.ChangeEvent) {
-  //   e.preventDefault();
-  //   if (!checked) {
-  //     onToast("info", "Please accept T&C", "top-right");
-  //   } else {
-  //     dispatch(SignUp({ form, image }));
-  //     console.log("form:", form);
-  //   }
-  // }
+  useEffect(() => {
+    if (auth.userLoaded === true) {
+      router.replace("/");
+    }
+  }, [auth.userLoaded]);
 
   const isLoading = user.registerStatus === "pending";
   const nameIcon = <FaAddressCard size={25} />;

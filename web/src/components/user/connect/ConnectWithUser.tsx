@@ -1,18 +1,28 @@
-import { Users } from "@/constants/user";
 import React from "react";
 import styled from "styled-components";
 import ConnectUser from "./ConnectUser";
 import { colors, poppinsNormal } from "@/styles/global";
 import { useRouter } from "next/router";
-import { SkeletonImage } from "@/lib";
+import { ServerDown, SkeletonImage } from "@/lib";
+import { useAppSelector } from "@/hooks/state";
+import { UserTProps } from "@/types";
 
 interface BarProps {
   pushPath: string;
   isfetching?: boolean;
+  Users: UserTProps[];
+  netError: boolean;
 }
 
-const ConnectWithUser: React.FC<BarProps> = ({ pushPath, isfetching }) => {
+const ConnectWithUser: React.FC<BarProps> = ({
+  pushPath,
+  isfetching,
+  Users,
+  netError,
+}) => {
   const router = useRouter();
+
+  const currentUser = useAppSelector((state) => state.auth);
   return (
     <StyledConnect>
       {isfetching && (
@@ -27,11 +37,14 @@ const ConnectWithUser: React.FC<BarProps> = ({ pushPath, isfetching }) => {
       {isfetching && (
         <SkeletonImage height="40px" width="100%" borderradius="10px" />
       )}
-      {!isfetching &&
-        Users.filter((user) => user.connection > 100)
-          .sort((a, b) => a.connection - b.connection)
-          .slice(0, 4)
-          .map((user, index) => <ConnectUser user={user} key={index} />)}
+      {netError ? (
+        <ServerDown />
+      ) : (
+        !isfetching &&
+        Users.slice(0, 4).map((user, index) => (
+          <ConnectUser user={user} key={index} />
+        ))
+      )}
       {isfetching ? (
         <SkeletonImage height="20px" width="50%" borderradius="5px" />
       ) : (
