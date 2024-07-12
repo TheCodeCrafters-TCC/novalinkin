@@ -6,20 +6,22 @@ import Header from "./Header";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
+import { getUserCommunities } from "@/redux/thunks/community";
 // import { Divider } from "@/lib";
 
 const All = dynamic(() => import("./All"), { ssr: false });
 
 const Container = () => {
-  const [isfetching, setIsFetching] = useState(false);
+  const dispatch = useAppDispatch();
+  const userId = useAppSelector((state) => state.auth.userId);
+  const communityState = useAppSelector((state) => state.community);
+  const isfetching = communityState.fetching_in_status === "pending";
   const router = useRouter();
   const { query } = router.query;
 
   useEffect(() => {
-    setIsFetching(true);
-    setTimeout(() => {
-      setIsFetching(false);
-    }, 4000);
+    dispatch(getUserCommunities(userId));
   }, []);
 
   return (

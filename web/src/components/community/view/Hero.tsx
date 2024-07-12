@@ -5,10 +5,21 @@ import {
   StyledHeroWrapper,
   StyledHeroBg,
   StyledProfileImage,
+  ExImageContainer,
+  StyledCommunityExImage,
 } from "@/styles/components/styled";
-import React from "react";
+import React, { useState } from "react";
+import { CommunityInterface } from "./Profile";
 
-const Hero: React.FC<ProfileProps> = ({ isfetching }) => {
+const Hero: React.FC<CommunityInterface> = ({ isfetching, community }) => {
+  const [image, setImage] = useState("");
+  const [exImage, setExImage] = useState(false);
+
+  function viewImage() {
+    setExImage(true);
+    setImage(community?.communityProfile?.url);
+  }
+
   return (
     <StyledHeroWrapper>
       {isfetching ? (
@@ -17,9 +28,35 @@ const Hero: React.FC<ProfileProps> = ({ isfetching }) => {
         <StyledHeroBg></StyledHeroBg>
       )}
       {isfetching ? (
-        <SkeletonImage height="110px" width="110px" style={ImageStyles} />
+        <SkeletonImage
+          height="110px"
+          width="110px"
+          borderradius="9px"
+          style={ImageStyles}
+        />
       ) : (
-        <StyledProfileImage src={UProfile} alt="User" priority />
+        <>
+          <StyledProfileImage
+            src={community.communityProfile?.url}
+            onClick={viewImage}
+            style={{ borderRadius: 9 }}
+            width={110}
+            height={110}
+            alt="Community"
+            priority
+          />
+          {exImage && (
+            <ExImageContainer onClick={() => setExImage(false)}>
+              <StyledCommunityExImage
+                src={image}
+                width={350}
+                height={350}
+                priority
+                alt="User"
+              />
+            </ExImageContainer>
+          )}
+        </>
       )}
     </StyledHeroWrapper>
   );

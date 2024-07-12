@@ -6,9 +6,10 @@ import { IoPeople } from "react-icons/io5";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { HiOutlineSaveAs } from "react-icons/hi";
 import { IoMdSettings } from "react-icons/io";
-import { RiFeedbackFill } from "react-icons/ri";
+import { RiFeedbackFill, RiLiveFill } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 import { useAppSelector } from "@/hooks/state";
+import { colors } from "@/styles/global";
 
 const MSBLinks = () => {
   const icons = {
@@ -18,6 +19,7 @@ const MSBLinks = () => {
     saved: <HiOutlineSaveAs size={23} />,
     settings: <IoMdSettings size={23} />,
     feedback: <RiFeedbackFill size={23} />,
+    live: <RiLiveFill color={colors.primaryRed} size={27} />,
   };
   const user = useAppSelector((state) => state.auth);
   return (
@@ -32,7 +34,7 @@ const MSBLinks = () => {
       <MSBLink_Content
         label="Community"
         url="/community"
-        // hasLink
+        hasLink
         icon={icons.community}
       />
       <MSBLink_Content
@@ -45,6 +47,12 @@ const MSBLinks = () => {
         label="Network"
         url="/connect"
         hasLink
+        icon={icons.network}
+      />
+      <MSBLink_Content
+        label="Live"
+        url="/live"
+        // hasLink
         icon={icons.network}
       />
       <MSBLink_Content

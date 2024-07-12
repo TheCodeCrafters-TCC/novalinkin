@@ -35,8 +35,8 @@ export const StyledLogoWrap = styled.a`
 `;
 
 export const LogoWrap = styled(Image)`
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
 `;
 
 export const StyledLogoText = styled.h1`
@@ -158,8 +158,8 @@ export const StyledLoader = styled.div`
 `;
 
 export const LoaderImage = styled(Image)`
-  height: 200px;
-  width: 200px;
+  height: 120px;
+  width: 150px;
 `;
 
 export const TaskText = styled.p`
@@ -249,6 +249,7 @@ export const StyledInfoPage_ = styled.div`
 export const HImage = styled(Image)`
   width: 45px;
   height: 45px;
+  border-radius: 9999px;
 `;
 
 export const StyledActionHeader = styled.div`
@@ -474,13 +475,24 @@ export const StyledHeroBg = styled.div`
 export const StyledProfileImage = styled(Image)`
   width: 110px;
   height: 110px;
-  /* transform: translateY(-3.5rem); */
   margin-left: 2rem;
   position: absolute;
   bottom: -3rem;
 
   &:hover {
     cursor: pointer;
+  }
+`;
+
+export const StyledCommunityExImage = styled(Image)`
+  width: 350px;
+  height: 350px;
+  border-radius: 9px;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    width: 100%;
+    height: 50%;
+    border-radius: 0;
   }
 `;
 
@@ -654,9 +666,23 @@ export const BelongedContainer = styled.div`
   }
 `;
 
+export const EmptyCommunity = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  p {
+    font-size: 13px;
+    text-align: center;
+    color: ${colors.primaryGray};
+  }
+`;
+
 export const InCommunityImage = styled(Image)`
   width: 100px;
   height: 100px;
+  border-radius: 9px;
   &:hover {
     cursor: pointer;
   }
@@ -691,6 +717,7 @@ export const CommDetailsWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 9px;
+  /* width: 100%; */
 
   .__comm_desc {
     font-size: 13px;
@@ -710,6 +737,7 @@ export const CommInfo = styled.div`
 export const CommImage = styled(Image)`
   width: 100px;
   height: 100px;
+  border-radius: 9px;
 
   @media screen and (max-width: ${getDevice("md")}) {
     width: 80px;
@@ -744,6 +772,7 @@ export const HeaderSection = styled.div`
 export const HeaderUserImage = styled(Image)`
   width: 70px;
   height: 70px;
+  border-radius: 9999px;
 `;
 
 export const UserName = styled.p`

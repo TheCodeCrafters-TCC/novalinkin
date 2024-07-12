@@ -1,4 +1,4 @@
-import { ConnectifyLoaderImg } from "@/assets";
+import { ConnectifyLoaderImg, LogoImg2 } from "@/assets";
 import { PuffScaleLoader } from "@/lib/components/Loaders";
 import {
   LoaderImage,
@@ -39,7 +39,7 @@ const LoadingScreen = () => {
         <title>Loading...</title>
       </Head>
       <StyledLoader>
-        <LoaderImage src={ConnectifyLoaderImg} alt="Loading" priority />
+        <LoaderImage src={LogoImg2} alt="Loading" priority />
         <PuffScaleLoader size={40} color={colors.primaryColor} />
         <TaskText className={poppins.className}>{currentMessage}</TaskText>
       </StyledLoader>

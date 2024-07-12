@@ -5,9 +5,11 @@ import { Provider } from "react-redux";
 import ThemedApp from "../components/configs/ThemedApp";
 import { loadUser } from "@/redux/authSlice";
 import { getAllUsers } from "@/redux/thunks/user";
+import { getCommunities } from "@/redux/thunks/community";
 
 store.dispatch(updateTheme());
 store.dispatch(loadUser());
+store.dispatch(getCommunities());
 store.dispatch(getAllUsers());
 
 export default function App({ Component, pageProps, router }: AppProps) {

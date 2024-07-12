@@ -38,7 +38,7 @@ export const acceptRequest = async (req, res) => {
         slugName: receiver.slugName,
         ownerId: sender._id,
         reactId: userId,
-        notifyType: "connect",
+        notifyType: "connected",
       });
       request.status = "Accepted";
       request.save();
@@ -64,23 +64,9 @@ export const declineRequest = async (req, res) => {
     if (request.requestId !== userId) {
       return res.status(403).json("Unauthorize action");
     } else {
-      const notifyAction = new NotificationModel({
-        Image: receiver.userProfile,
-        header: `${
-          receiver.firstName + " " + receiver.lastName
-        } declined! your request 😢`,
-        body: `Sorry to say but ${
-          receiver.firstName + " " + receiver.lastName
-        } declined your request! 😢.`,
-        slugName: receiver.slugName,
-        ownerId: sender._id,
-        reactId: userId,
-        notifyType: "connect",
-      });
       request.status = "Declined";
       request.save();
-      const newNotification = await notifyAction.save();
-      await sender.updateOne({ $push: { notifications: newNotification } });
+      await receiver.updateOne({ $pull: { requests: sender._id } });
       await request.deleteOne();
       res.status(200).json({ data: request, message: "Request declined" });
     }
@@ -112,5 +98,18 @@ export const unDoConnection = async (req, res) => {
     }
   } catch (error) {
     console.log({ error: error.message });
+  }
+};
+
+export const getAllCommunityReqs = async (req, res) => {
+  try {
+    const { communityId } = req.params;
+    const requests = await connectModel
+      .find({ requestId: communityId })
+      .sort({ createdAt: -1 });
+    const unChecked = requests.filter((r) => r.status === "Pending");
+    res.status(200).json(unChecked);
+  } catch (error) {
+    console.log(error.message);
   }
 };

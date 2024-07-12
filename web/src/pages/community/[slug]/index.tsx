@@ -1,10 +1,12 @@
-import { CommunityProfile } from "@/components";
+import { CommunityProfile, ConfirmDelete } from "@/components";
 import { commdata } from "@/constants/community";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
 import { InfoPageHeader } from "@/lib";
+import { getCommunity } from "@/redux/thunks/community";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface SlugProps {
   community: any;
@@ -13,24 +15,30 @@ interface SlugProps {
 const Community_Slug: React.FC<SlugProps> = () => {
   const router = useRouter();
   const { slug } = router.query;
+  const dispatch = useAppDispatch();
+  const communityState = useAppSelector((state) => state.community);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    dispatch(getCommunity(slug));
+  }, [slug]);
 
   return (
     <>
       <Head>
-        <title>{slug} | Community</title>
+        <title>
+          {communityState.currentCommunity.communityName} | Community
+        </title>
       </Head>
-      <InfoPageHeader label={slug} />
+      <InfoPageHeader
+        hasBinIcon
+        label={communityState.currentCommunity.communityName}
+        addActionClick={() => setIsOpen(true)}
+      />
+      {isOpen && <ConfirmDelete setIsOpen={setIsOpen} isOpen={isOpen} />}
       <CommunityProfile />
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { slug } = context.query;
-
-  return {
-    props: {},
-  };
 };
 
 export default Community_Slug;

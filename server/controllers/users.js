@@ -143,14 +143,6 @@ const getUserRequests = async (req, res) => {
     const requests = await connectModel
       .find({ requestId: userId })
       .sort({ createdAt: -1 });
-    const users = await Promise.all(
-      requests.map(
-        async (item) =>
-          await UserModel.findById({ _id: item.connectionRequest }).select(
-            toSel
-          )
-      )
-    );
     const response = requests.filter((r) => r.status === "Pending");
     if (!requests || requests?.length < 1)
       return res.status(404).json("You have no request!");

@@ -1,8 +1,12 @@
 import { getDevice, poppins } from "@/styles/global";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CCOptionsProps } from "../types";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { onToast } from "./ToastContainer";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
+import { SelectCType, SelectOption } from "@/redux/systemSlice";
+import { useCreateCommunity } from "@/context/useCreateCommunity";
 
 const options = {
   join: ["Open", "Request to join", "Invite only"],
@@ -27,14 +31,44 @@ const getOptions = (variant: CCOptionsProps["variant"]) => {
   }
 };
 
-const COptions: React.FC<CCOptionsProps> = ({ variant, label }) => {
+const COptions: React.FC<CCOptionsProps> = ({
+  variant,
+  label,
+  setData,
+  data,
+}) => {
   const [selected, setSelected] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const cselectState = useAppSelector((state) => state.system);
+  const { isOpen: open } = useCreateCommunity();
+
+  const getSelected = (variant: CCOptionsProps["variant"]) => {
+    switch (variant) {
+      case "join":
+        return cselectState.communityOpt;
+      case "type":
+        return cselectState.communityType;
+    }
+  };
+
+  function getOpt(option: string) {
+    if (variant === "type") {
+      setData({ ...data, type: option });
+      dispatch(SelectCType(option));
+    } else if (variant === "join") {
+      setData({ ...data, joinOption: option });
+      dispatch(SelectOption(option));
+    }
+  }
 
   function selectOpt(option: string) {
-    setSelected(option);
+    getOpt(option);
     setIsOpen(false);
+    setSelected(option as any);
   }
+
+  const hasSelec = getSelected(variant);
 
   return (
     <Styled_Options className={poppins.className}>
@@ -43,19 +77,17 @@ const COptions: React.FC<CCOptionsProps> = ({ variant, label }) => {
         <Styled_Select onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <IoIosArrowUp size={25} /> : <IoIosArrowDown size={25} />}
           <p className="__o_name">
-            {selected ? selected : getPlaceholder(variant)}
+            {hasSelec ? hasSelec : getPlaceholder(variant)}
           </p>
         </Styled_Select>
         {isOpen && (
           <OptionsWrap>
             {getOptions(variant).map((option, index) => (
-              <p
-                key={index}
-                className="__o_name"
-                onClick={() => selectOpt(option)}
-              >
-                {option}
-              </p>
+              <div onClick={() => selectOpt(option)}>
+                <p key={index} className="__o_name">
+                  {option}
+                </p>
+              </div>
             ))}
           </OptionsWrap>
         )}

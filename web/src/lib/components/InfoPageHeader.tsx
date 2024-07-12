@@ -5,14 +5,18 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { useRouter } from "next/router";
 import { VscSettings } from "react-icons/vsc";
 import styled from "styled-components";
-import { poppinsSemibold } from "@/styles/global";
+import { colors, poppinsSemibold } from "@/styles/global";
 import { useMobileSearch } from "@/context/useMobileSearch";
 import { IoMdAdd } from "react-icons/io";
+import { RiDeleteBin3Fill } from "react-icons/ri";
+import { MdDeleteForever } from "react-icons/md";
+import { useAppSelector } from "@/hooks/state";
 
 interface HeaderProps {
   filter?: boolean;
   label?: string | any;
   hasAdd?: boolean;
+  hasBinIcon?: boolean;
   addActionClick?: () => void;
 }
 
@@ -20,11 +24,14 @@ const InfoPageHeader: React.FC<HeaderProps> = ({
   filter,
   label,
   hasAdd,
+  hasBinIcon,
   addActionClick,
 }) => {
   const router = useRouter();
   const { Onsearch } = useMobileSearch();
   const isUser = true;
+  const auth = useAppSelector((state) => state.auth);
+  const community = useAppSelector((state) => state.community.currentCommunity);
 
   return (
     <InfoHeader>
@@ -36,6 +43,17 @@ const InfoPageHeader: React.FC<HeaderProps> = ({
         <IoSearch size={25} onClick={Onsearch} />
         {hasAdd && <IoMdAdd size={26} onClick={addActionClick} />}
         {filter && isUser && <VscSettings size={25} />}
+        {hasBinIcon && (
+          <>
+            {auth.userId === community.ownerId && (
+              <MdDeleteForever
+                size={27}
+                color={colors.primaryRed}
+                onClick={addActionClick}
+              />
+            )}
+          </>
+        )}
       </AsycnAction>
     </InfoHeader>
   );

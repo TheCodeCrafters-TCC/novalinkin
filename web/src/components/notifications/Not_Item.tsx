@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/state";
+import { formatTimestamp } from "@/lib/utils";
 import { readNotification } from "@/redux/thunks/notifications";
 import {
   SpaceBetween,
@@ -14,6 +15,7 @@ import React from "react";
 import { BsReplyFill } from "react-icons/bs";
 import { CgComment } from "react-icons/cg";
 import { IoMdHeart } from "react-icons/io";
+import { IoPeople } from "react-icons/io5";
 import { MdConnectWithoutContact } from "react-icons/md";
 import styled from "styled-components";
 
@@ -29,6 +31,7 @@ const Not_Item: React.FC<NotificationProps> = ({
     seen,
     slugName,
     _id,
+    createdAt,
   },
 }) => {
   const getIcons = () => {
@@ -40,16 +43,18 @@ const Not_Item: React.FC<NotificationProps> = ({
       return <BsReplyFill size={25} />;
     } else if (notifyType === "connect") {
       return <MdConnectWithoutContact size={25} color={colors.primaryColor} />;
+    } else if (notifyType === "community-request") {
+      return <IoPeople size={25} />;
     }
   };
 
   const currentWidth = global?.window?.innerWidth;
   const xlTruncate = header.length > 38 ? header.slice(0, 38) + "..." : header;
   const mdTruncate = header.length > 33 ? header.slice(0, 33) + "..." : header;
-  const truncateBody = body.length > 80 ? body.slice(0, 80) + "..." : body;
+  const truncateBody = body.length > 88 ? body.slice(0, 88) + "..." : body;
   const truncateHeader = currentWidth <= 450 ? mdTruncate : xlTruncate;
   const currentTheme = useAppSelector((state) => state.system.theme);
-  const bg = currentTheme === "light" ? "#f0f8ff" : colors.neutral600;
+  const bg = currentTheme === "light" ? "#f0f8ff" : "rgb(100, 116, 139,0.3)";
   const userId = useAppSelector((state) => state.auth.userId);
   const dispatch = useAppDispatch();
 
@@ -60,32 +65,33 @@ const Not_Item: React.FC<NotificationProps> = ({
   const router = useRouter();
 
   function handlePush() {
-    if (slugName && notifyType !== "connect") {
+    if (notifyType === "connected") {
       router.push(`/profile/${slugName}`);
     } else if (notifyType === "connect") {
       router.push("/connect");
+    } else if (notifyType === "community-request") {
+      router.push(`/community/${slugName}`);
     }
     dispatch(readNotification({ userId, notificationId: _id }));
   }
 
   return (
-    <Container style={notStyles} onClick={handlePush}>
-      {getIcons()}
-      <SecondLayer>
-        <LayerOne>
-          <ImagesWrap>
-            <Not_Image
-              src={Image}
-              width={45}
-              height={45}
-              alt="Users"
-              priority
-            />
-          </ImagesWrap>
-          <p className={`${poppins.className} __header`}>{truncateHeader}</p>
-        </LayerOne>
-        <p className={`__body ${poppinsNormal.className}`}>{truncateBody}</p>
-      </SecondLayer>
+    <Container style={{ ...notStyles }} onClick={handlePush}>
+      {/* {getIcons()} */}
+      <ContentWrapper>
+        <SpaceBetween>
+          <Not_Image src={Image} width={45} height={45} alt="Users" priority />
+          <p className={`${poppins.className} __time`}>
+            {formatTimestamp(createdAt)}
+          </p>
+        </SpaceBetween>
+        <SecondLayer>
+          <LayerOne>
+            <p className={`${poppins.className} __header`}>{truncateHeader}</p>
+          </LayerOne>
+          <p className={`__body ${poppinsNormal.className}`}>{truncateBody}</p>
+        </SecondLayer>
+      </ContentWrapper>
     </Container>
   );
 };
@@ -96,17 +102,23 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
   width: 100%;
-  padding: 2rem;
   gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.nav};
+  padding-left: 2rem;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    padding: 1rem;
+  }
 
   &:hover {
     cursor: pointer;
   }
 
-  @media screen and (max-width: ${getDevice("md")}) {
-    padding: 1rem;
+  .__time {
+    font-size: 15px;
+    color: ${colors.neutral600};
   }
 `;
 
@@ -120,7 +132,7 @@ const SecondLayer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 90%;
+  width: 100%;
   user-select: none;
 
   .__header {
@@ -147,9 +159,9 @@ const Not_Image = styled(Image)`
   }
 `;
 
-const ImagesWrap = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   position: relative;
-  gap: 0;
+  gap: 10px;
 `;

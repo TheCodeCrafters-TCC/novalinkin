@@ -18,6 +18,7 @@ const AuthInput: React.FC<AuthInputType> = ({
   label,
   icon,
   invalidMail,
+  name,
 }) => {
   const [val, setVal] = useState(false);
   function setBor() {
@@ -44,6 +45,7 @@ const AuthInput: React.FC<AuthInputType> = ({
           type={type}
           className={poppins.className}
           placeholder={placeholder}
+          name={name}
         />
       </AInputContainer>
       {invalidMail ? (

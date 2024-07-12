@@ -13,6 +13,7 @@ interface EmptyProps {
   clickLabel?: string;
   clickAction?: () => void;
   disbaleClick?: boolean;
+  style?: React.CSSProperties;
 }
 
 // const getImage = (type: EmptyProps['type']) => {
@@ -27,9 +28,10 @@ const Empty: React.FC<EmptyProps> = ({
   clickAction,
   clickLabel,
   disbaleClick,
+  style,
 }) => {
   return (
-    <EmptyContainer>
+    <EmptyContainer style={style}>
       <EmptyImage src={NoRoom} alt="ALT" priority />
       <ActionElement>
         {header && <h2 className={poppins.className}>{header}</h2>}

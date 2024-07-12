@@ -23,3 +23,15 @@ export function slugify(text) {
 // function slugify(firstName, lastName) {
 //   return `${firstName}-${lastName}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 // }
+
+export function genHash() {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  const length = 10; // Length of the random string
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return result;
+}

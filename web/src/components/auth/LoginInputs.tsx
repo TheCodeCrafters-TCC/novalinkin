@@ -41,12 +41,14 @@ const LoginInputs = () => {
         placeholder="Enter email"
         icon={emailIcon}
         value={form.email}
+        name="email"
       />
       <PasswordInput
         onValueChange={(e) => setForm({ ...form, password: e.target.value })}
         placeholder="Enter your password"
         icon={passwordIcon}
         value={form.password}
+        name="password"
       />
       <Button
         label="Login"
