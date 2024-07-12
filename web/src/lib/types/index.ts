@@ -17,7 +17,7 @@ export type AuthInputType = {
   validCase?: boolean | any;
   validChar?: boolean | any;
   invalidMail?: boolean | any;
-  name: string;
+  name?: string;
 };
 
 /**
