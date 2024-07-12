@@ -1,10 +1,14 @@
-import { belongdata } from "@/constants/community";
+import { commMsg } from "@/constants/system";
+import { useAppSelector } from "@/hooks/state";
 import { SkeletonImage } from "@/lib";
 import {
   BelongedContainer,
   BelongedWrapper,
+  EmptyCommunity,
   InCommunityImage,
 } from "@/styles/components/styled";
+import { poppins, poppinsSemibold } from "@/styles/global";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -14,6 +18,8 @@ interface BelongProps {
 
 const BelongTo: React.FC<BelongProps> = ({ isfetching }) => {
   const scrollContainerRef = useRef<any>();
+  const router = useRouter();
+  const belongdata = useAppSelector((state) => state.community.belongTo);
 
   const scrollLeft = () => {
     scrollContainerRef.current.scrollBy({ left: -200, behavior: "smooth" });
@@ -44,15 +50,26 @@ const BelongTo: React.FC<BelongProps> = ({ isfetching }) => {
             <SkeletonImage height={loadWidth} width={loadWidth} />
           </>
         )}
-        {!isfetching &&
+        {!isfetching && belongdata.length < 1 ? (
+          <EmptyCommunity>
+            <h2 className={poppinsSemibold.className}>
+              {commMsg.belonged_header}
+            </h2>
+            <p className={poppins.className}>{commMsg.belonged_text}</p>
+          </EmptyCommunity>
+        ) : (
           belongdata.map((cm, index) => (
             <InCommunityImage
-              src={cm.image}
+              src={cm?.communityProfile?.url}
               alt="Community"
               priority
               key={index}
+              width={100}
+              height={100}
+              onClick={() => router.push(`/community/${cm.communitySlug}`)}
             />
-          ))}
+          ))
+        )}
       </BelongedContainer>
       {isfetching ? (
         <SkeletonImage height="40px" width="40px" />

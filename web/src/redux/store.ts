@@ -3,6 +3,7 @@ import systemReducer from "./systemSlice";
 import authReducer from "./authSlice";
 import userReducer from "./userSlice";
 import notificationReducer from "./notificationSlice";
+import communityReducer from "./communitySlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     auth: authReducer,
     user: userReducer,
     notifications: notificationReducer,
+    community: communityReducer,
   },
 });
 

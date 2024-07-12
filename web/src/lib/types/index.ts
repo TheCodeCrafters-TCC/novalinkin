@@ -17,6 +17,7 @@ export type AuthInputType = {
   validCase?: boolean | any;
   validChar?: boolean | any;
   invalidMail?: boolean | any;
+  name: string;
 };
 
 /**
@@ -130,6 +131,9 @@ export type BackdropProps = {
 export type CCOptionsProps = {
   label: string;
   variant: "type" | "join";
+  setData?: Dispatch<SetStateAction<string>> | any;
+  data: any;
+  // part: string | any;
 };
 
 export type ToastContainerProps = {

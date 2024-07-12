@@ -37,7 +37,7 @@ const UsersConnections: React.FC<UCProps> = () => {
         <SkeletonImage height="20px" width="100%" borderradius="5px" />
       ) : (
         <StyledConnect className={poppinsSemibold.className}>
-          {truncateName}'s Connections
+          {truncateName}&apos;s Connections
         </StyledConnect>
       )}
       <StyledBarWrap>

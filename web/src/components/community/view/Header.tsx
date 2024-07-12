@@ -1,12 +1,14 @@
-import { getDevice, poppins, poppinsSemibold } from "@/styles/global";
+import { colors, getDevice, poppins, poppinsSemibold } from "@/styles/global";
 import { useRouter } from "next/router";
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoMdAdd } from "react-icons/io";
 import { LuSettings2 } from "react-icons/lu";
+import { MdDeleteForever } from "react-icons/md";
 import styled from "styled-components";
+import { DeleteProps } from "./ConfirmDelete";
 
-const Header = () => {
+const Header = ({ setIsOpen, community, userId }: DeleteProps) => {
   const router = useRouter();
   return (
     <StyledHeader>
@@ -14,6 +16,13 @@ const Header = () => {
         <FaArrowLeft size={36} onClick={() => router.back()} />
         {/* <h1 className={poppinsSemibold.className}>Community</h1> */}
       </IconWrap>
+      {userId === community?.ownerId && (
+        <MdDeleteForever
+          onClick={() => setIsOpen(true)}
+          color={colors.primaryRed}
+          size={38}
+        />
+      )}
     </StyledHeader>
   );
 };

@@ -27,7 +27,13 @@ const MobileSideBar = () => {
   return (
     <StyledMSB onClick={(e) => e.stopPropagation()}>
       <HeaderSection onClick={goToProfile}>
-        <HeaderUserImage src={UProfile} alt="User" priority />
+        <HeaderUserImage
+          width={70}
+          height={70}
+          src={user?.userProfile}
+          alt="User"
+          priority
+        />
         <CommInfo>
           <UserName className={poppinsSemibold.className}>{name}</UserName>
           {user.isVerified && (

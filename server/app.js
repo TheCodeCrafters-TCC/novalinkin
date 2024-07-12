@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import {
   authRoutes,
+  CommunityRoute,
   notificationRoutes,
   ReqRoutes,
   userRoutes,
@@ -26,6 +27,7 @@ connectifyServer.use("/api/v1/auth", authRoutes);
 connectifyServer.use("/api/v1/users", userRoutes);
 connectifyServer.use("/api/v1/notification", notificationRoutes);
 connectifyServer.use("/api/v1/request", ReqRoutes);
+connectifyServer.use("/api/v1/community", CommunityRoute);
 
 // error handling middleware
 connectifyServer.use(errorHandlingMiddleware);

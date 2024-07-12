@@ -11,6 +11,8 @@ export type SystemTypes = {
   query: QueryProps;
   currentPage: string | any;
   isReturningUser: boolean | any;
+  communityType: string | any;
+  communityOpt: string | any;
 };
 
 export type ThemeType = {
@@ -203,7 +205,14 @@ export type UserStateType = {
   updating_profile_error: string | any;
 };
 
-type NOtActionTypes = "like" | "comment" | "reply" | "connect" | "star";
+type NOtActionTypes =
+  | "like"
+  | "comment"
+  | "reply"
+  | "connect"
+  | "star"
+  | "community-request"
+  | "connected";
 
 interface NotificationProp {
   _id: string;
@@ -226,17 +235,39 @@ export type NotificationType = {
   fetch_error: string;
 };
 
-// export type Notification = {
-//   ownerId?: string;
-//   notifyType: string;
-//   header: string;
-//   body: string;
-//   reactId?: string;
-//   objectId?: string;
-//   seen: boolean;
-//   Images: Array<any>;
-// };
-
 export type NotificationProps = {
   not_i: NotificationProp;
+};
+
+export type CommunityStateType = {
+  communities: CommunityType[];
+  creator_communities: CommunityType[];
+  belongTo: CommunityType[];
+  private_community: CommunityType[];
+  currentCommunity: CommunityType;
+  current_req: RequestProps[];
+  fetching_status: StatusType;
+  fetching_error: string | any;
+  fetching_current_status: StatusType;
+  fetching_current_error: string | any;
+  creation_status: StatusType;
+  creation_error: string | any;
+  fetching_private_status: StatusType;
+  fetching_private_error: string | any;
+  fetching_in_status: StatusType;
+  fetching_in_error: string | any;
+  fetching_creator_status: StatusType;
+  fetching_creator_error: string | any;
+  join_status: StatusType;
+  join_error: string | any;
+  delete_status: StatusType;
+  delete_error: string | any;
+  leave_status: StatusType;
+  leave_error: string | any;
+  fetch_req_status: StatusType;
+  fetch_req_error: string | any;
+  accepting_req_status: StatusType;
+  accepting_req_error: string | any;
+  rejecting_req_status: StatusType;
+  rejecting_req_error: string | any;
 };

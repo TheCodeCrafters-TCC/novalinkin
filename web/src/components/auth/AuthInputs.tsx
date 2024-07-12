@@ -104,6 +104,7 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
         icon={nameIcon}
         value={form.firstName}
         type="text"
+        name="name"
       />
       <AuthInput
         onValueChange={(e) => setForm({ ...form, lastName: e.target.value })}
@@ -111,6 +112,7 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
         icon={editIcon}
         value={form.lastName}
         type="text"
+        name="name"
       />
       <AuthInput
         onValueChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -119,6 +121,7 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
         type="email"
         value={form.email}
         invalidMail={invalidMail}
+        name="email"
       />
       <PasswordInput
         onValueChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -128,6 +131,7 @@ const AuthInputs = ({ checked, setCheck }: CheckProps) => {
         Reqlength={Reqlength}
         // validCase={validCase}
         validChar={validChar}
+        name="password"
       />
       <Button
         label="Sign Up"

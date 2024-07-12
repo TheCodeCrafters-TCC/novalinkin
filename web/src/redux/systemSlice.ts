@@ -6,6 +6,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: SystemTypes = {
   theme: "light",
+  communityType: "",
+  communityOpt: "",
   query: {
     profileSlug: "",
     communitySlug: "",
@@ -47,6 +49,12 @@ const systemSlice = createSlice({
       const slug = action.payload;
       state.query.communitySlug = slug;
     },
+    SelectOption: (state, action) => {
+      state.communityOpt = action.payload;
+    },
+    SelectCType: (state, action) => {
+      state.communityType = action.payload;
+    },
   },
 });
 
@@ -59,4 +67,6 @@ export const {
   setCurrntPage,
   setReturnedUser,
   setCommunitySlug,
+  SelectOption,
+  SelectCType,
 } = systemSlice.actions;

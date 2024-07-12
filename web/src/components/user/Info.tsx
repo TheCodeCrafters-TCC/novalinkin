@@ -41,7 +41,7 @@ const Info: React.FC<ProfileProps> = ({ isfetching, user, userId }) => {
       setRequest(response);
     };
     fetchReq();
-  });
+  }, [request]);
 
   const awaitingAproval = request?.requestId === connectionRequest;
   const isconnected = request?.status === "Accepted";

@@ -41,3 +41,5 @@ export { default as ProfileEdit } from "./modals/ProfileEdit";
 export { default as MobileSideNav } from "./modals/MobileSideNav";
 export { default as UserNetwork } from "./user/connect/UserNetwork";
 export { default as ProfileUpdate } from "./modals/ProfileUpdate";
+export { default as ConfirmDelete } from "./community/view/ConfirmDelete";
+export { default as CommunityRequest } from "./modals/CommunityRequest";

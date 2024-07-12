@@ -11,7 +11,6 @@ const Logo = () => {
   return (
     <StyledLogoWrap href="/">
       <LogoWrap priority src={LogoImg} alt="Logo" />
-      <StyledLogoText className={pollerOne.className}>onnectify</StyledLogoText>
     </StyledLogoWrap>
   );
 };

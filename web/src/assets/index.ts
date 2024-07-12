@@ -1,4 +1,5 @@
-import LogoImg from "./connectify.png";
+import LogoImg from "./novalinkin/logo.png";
+import LogoImg2 from "./novalinkin/logo2.png";
 import ConnectifyLoaderImg from "./connectifyLoader.png";
 import TestPlaceholderImg from "./test_placeholder.png";
 import firstUser from "./firstuser.png";
@@ -39,6 +40,7 @@ import EmptyNotify from "./in_app_notify.svg";
 import NoRoom from "./room.svg";
 import PlaceholderImg from "./Placeholder.png";
 import Server_Down from "./server_down.svg";
+import UnderDevelopment from "./under_dev.svg";
 
 export {
   LogoImg,
@@ -82,4 +84,6 @@ export {
   NoRoom,
   PlaceholderImg,
   Server_Down,
+  LogoImg2,
+  UnderDevelopment,
 };

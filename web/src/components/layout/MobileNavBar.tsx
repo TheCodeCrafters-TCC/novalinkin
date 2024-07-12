@@ -28,6 +28,7 @@ const MobileNavBar: React.FC<MobileNavProps> = ({
 }) => {
   const isUser = true;
   const theme = useAppSelector((state) => state.system.theme);
+  const user = useAppSelector((state) => state.auth);
   const isLight = theme === "light";
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -48,8 +49,10 @@ const MobileNavBar: React.FC<MobileNavProps> = ({
       {hasUserIcon && (
         <HImage
           onClick={OpenSideNav}
-          src={TestPlaceholderImg}
+          src={user?.userProfile}
           alt="user"
+          width={45}
+          height={45}
           priority
         />
       )}

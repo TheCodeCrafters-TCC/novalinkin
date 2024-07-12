@@ -1,9 +1,11 @@
+import { colors } from "@/styles/global";
 import { AiFillHome } from "react-icons/ai";
 import { BsFillChatSquareDotsFill } from "react-icons/bs";
 import { FaBell, FaUser } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { MdDynamicFeed, MdExplore } from "react-icons/md";
+import { RiLiveFill } from "react-icons/ri";
 import { TbScriptPlus } from "react-icons/tb";
 
 export const MobileTabsData = [
@@ -30,13 +32,23 @@ export const MobileTabsData = [
 ];
 
 export const sidenavlink = [
-  { url: "/", label: "Feed", icon: <MdDynamicFeed size={27} /> },
+  {
+    url: "/",
+    label: "Feed",
+    icon: <MdDynamicFeed size={27} />,
+  },
   {
     url: "/explore",
     hasToast: true,
     label: "Explore",
     icon: <MdExplore size={27} />,
   },
+  // {
+  //   url: "/live",
+  //   hasToast: true,
+  //   label: "Live",
+  //   icon: <RiLiveFill color={colors.primaryRed} size={27} />,
+  // },
   {
     url: "/notifications",
     hasIcon: true,
@@ -67,7 +79,7 @@ export const sidenavlink = [
   {
     url: "/community",
     label: "Community",
-    hasToast: true,
+    // hasToast: true,
     icon: <HiMiniUserGroup size={27} />,
   },
 ];
