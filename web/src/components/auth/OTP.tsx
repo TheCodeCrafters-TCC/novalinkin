@@ -106,6 +106,7 @@ const OTP = () => {
               icon={otpIcon}
               onValueChange={(e) => setOtp(e.target.value)}
               disabled={verifying}
+              name="number"
             />
             <ResendWrap>
               <p

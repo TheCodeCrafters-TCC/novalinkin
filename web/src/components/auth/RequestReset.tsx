@@ -40,6 +40,7 @@ const RequestReset = () => {
         placeholder="Enter email"
         icon={emailIcon}
         value={email}
+        name="email"
       />
       <Button
         label="Request"
