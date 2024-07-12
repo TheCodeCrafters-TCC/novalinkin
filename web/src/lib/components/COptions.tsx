@@ -83,10 +83,8 @@ const COptions: React.FC<CCOptionsProps> = ({
         {isOpen && (
           <OptionsWrap>
             {getOptions(variant).map((option, index) => (
-              <div onClick={() => selectOpt(option)}>
-                <p key={index} className="__o_name">
-                  {option}
-                </p>
+              <div key={index} onClick={() => selectOpt(option)}>
+                <p className="__o_name">{option}</p>
               </div>
             ))}
           </OptionsWrap>
