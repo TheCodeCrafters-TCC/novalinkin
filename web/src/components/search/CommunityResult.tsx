@@ -4,6 +4,7 @@ import { ResultContainer } from "@/styles/components/styled";
 import { commdata } from "@/constants/community";
 import C_ResultItem from "./C_ResultItem";
 import { useAppSelector } from "@/hooks/state";
+import { Empty } from "@/lib";
 
 const CommunityResult: React.FC<SearchProps> = ({ searchQuery }) => {
   const communities = useAppSelector((state) => state.community.communities);
@@ -12,11 +13,18 @@ const CommunityResult: React.FC<SearchProps> = ({ searchQuery }) => {
     const queried = searchQuery?.toLowerCase();
     return queried && name.includes(queried);
   });
+  const notmatch = filterResult.length < 1;
   return (
     <ResultContainer>
-      {filterResult.map((cm, index) => (
-        <C_ResultItem key={index} community={cm} />
-      ))}
+      {notmatch ? (
+        <Empty
+          label={`No result match your input <strong>${searchQuery}</strong>`}
+        />
+      ) : (
+        filterResult.map((cm, index) => (
+          <C_ResultItem key={index} community={cm} />
+        ))
+      )}
     </ResultContainer>
   );
 };

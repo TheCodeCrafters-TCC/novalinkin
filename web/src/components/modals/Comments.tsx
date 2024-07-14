@@ -211,7 +211,7 @@ const DetailsWrap = styled.div`
 
   @media screen and (max-width: ${getDevice("lg")}) {
     .__desc {
-      width: 280px;
+      width: 250px;
     }
   }
 `;

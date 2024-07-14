@@ -5,6 +5,7 @@ import AResultItem from "./AResultItem";
 import { useRouter } from "next/router";
 import { SearchProps } from "./interface";
 import { useAppSelector } from "@/hooks/state";
+import { Empty } from "@/lib";
 
 const ArticlesResult: React.FC<SearchProps> = ({ searchQuery }) => {
   const router = useRouter();
@@ -15,11 +16,19 @@ const ArticlesResult: React.FC<SearchProps> = ({ searchQuery }) => {
     const queried = searchQuery?.toLowerCase();
     return queried && desc.includes(queried as string);
   });
+  const notmatch = filteredArticles.length < 1;
+
   return (
     <ResultContainer>
-      {filteredArticles.map((art, index) => (
-        <AResultItem art={art} key={index} />
-      ))}
+      {notmatch ? (
+        <Empty
+          label={`No result match your input <strong>${searchQuery}</strong>`}
+        />
+      ) : (
+        filteredArticles.map((art, index) => (
+          <AResultItem art={art} key={index} />
+        ))
+      )}
     </ResultContainer>
   );
 };
