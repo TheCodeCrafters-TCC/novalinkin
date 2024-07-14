@@ -1,4 +1,4 @@
-import { DEV_URL } from "@/hooks/url";
+import { DEV_URL, PRO_URL } from "@/hooks/url";
 import { onToast } from "@/lib/components/ToastContainer";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -18,7 +18,7 @@ export const createCommunity = createAsyncThunk(
   ) => {
     try {
       const community = await axios.post(
-        `${DEV_URL}/community/create/${ownerId}`,
+        `${PRO_URL}/community/create/${ownerId}`,
         {
           communityDesc,
           communityName,
@@ -40,7 +40,7 @@ export const getCommunities = createAsyncThunk(
   "community/all",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${DEV_URL}/community/all`);
+      const response = await axios.get(`${PRO_URL}/community/all`);
       return response?.data;
     } catch (error: any) {
       onToast("error", `${error?.response?.data}`);
@@ -54,7 +54,7 @@ export const getCommunity = createAsyncThunk(
   "community/one",
   async (slug: string | any, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${DEV_URL}/community/one/${slug}`);
+      const response = await axios.get(`${PRO_URL}/community/one/${slug}`);
       return response?.data;
     } catch (error: any) {
       onToast("error", `${error?.response?.data}`);
@@ -68,7 +68,7 @@ export const getUserCommunities = createAsyncThunk(
   "community/belong",
   async (userId: string | any, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${DEV_URL}/community/belong/${userId}`);
+      const response = await axios.get(`${PRO_URL}/community/belong/${userId}`);
       return response?.data;
     } catch (error: any) {
       onToast("error", `${error?.response?.data}`);
@@ -83,7 +83,7 @@ export const findPrivateCommunity = createAsyncThunk(
   async (url: string | any, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${DEV_URL}/community/one/private/invite?${url}`
+        `${PRO_URL}/community/one/private/invite?${url}`
       );
       return response?.data;
     } catch (error: any) {
@@ -99,7 +99,7 @@ export const getCreatorCommunities = createAsyncThunk(
   async (ownerId: string | any, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${DEV_URL}/community/all/creator/${ownerId}`
+        `${PRO_URL}/community/all/creator/${ownerId}`
       );
       return response?.data;
     } catch (error: any) {
@@ -120,7 +120,7 @@ export const deleteCommunity = createAsyncThunk(
   async ({ ownerId, communityId }: DeleteProps, { rejectWithValue }) => {
     try {
       const response = await axios.delete(
-        `${DEV_URL}/community/delete/${ownerId}/one/${communityId}`
+        `${PRO_URL}/community/delete/${ownerId}/one/${communityId}`
       );
       return response?.data;
     } catch (error: any) {
@@ -140,7 +140,7 @@ export const joinCommunity = createAsyncThunk(
   "community/join",
   async ({ userId, communityId }: JoinProps, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(`${DEV_URL}/community/current/join`, {
+      const response = await axios.patch(`${PRO_URL}/community/current/join`, {
         userId,
         communityId,
       });
@@ -157,7 +157,7 @@ export const leaveCommunity = createAsyncThunk(
   "community/leave",
   async ({ userId, communityId }: JoinProps, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(`${DEV_URL}/community/current/leave`, {
+      const response = await axios.patch(`${PRO_URL}/community/current/leave`, {
         userId,
         communityId,
       });
@@ -175,7 +175,7 @@ export const fetchJoinRequest = createAsyncThunk(
   async (communityId: string | any, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${DEV_URL}/community/all/request/${communityId}`
+        `${PRO_URL}/community/all/request/${communityId}`
       );
       return response?.data;
     } catch (error: any) {
@@ -200,7 +200,7 @@ export const acceptJoinRequest = createAsyncThunk(
   ) => {
     try {
       const response = await axios.patch(
-        `${DEV_URL}/community/current/accept`,
+        `${PRO_URL}/community/current/accept`,
         { ownerId, communityId, requestId }
       );
       return response?.data;
@@ -220,7 +220,7 @@ export const declineJoinRequest = createAsyncThunk(
   ) => {
     try {
       const response = await axios.patch(
-        `${DEV_URL}/community/current/decline`,
+        `${PRO_URL}/community/current/decline`,
         { ownerId, communityId, requestId }
       );
       return response?.data;
