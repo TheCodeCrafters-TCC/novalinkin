@@ -29,12 +29,8 @@ export const acceptRequest = async (req, res) => {
     } else {
       const notifyAction = new NotificationModel({
         Image: receiver.userProfile,
-        header: `${
-          receiver.firstName + " " + receiver.lastName
-        } accepted! your request`,
-        body: `${
-          receiver.firstName + " " + receiver.lastName
-        } accepted your request! Say hello and start building your professional network.`,
+        header: `Your network request has been accepted!`,
+        body: `<strong>${receiver.firstName} ${receiver.lastName}</strong> accepted your request! Say hello and start building your professional network.`,
         slugName: receiver.slugName,
         ownerId: sender._id,
         reactId: userId,

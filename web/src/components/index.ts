@@ -43,3 +43,5 @@ export { default as UserNetwork } from "./user/connect/UserNetwork";
 export { default as ProfileUpdate } from "./modals/ProfileUpdate";
 export { default as ConfirmDelete } from "./community/view/ConfirmDelete";
 export { default as CommunityRequest } from "./modals/CommunityRequest";
+export { default as Viewed } from "./article/Viewed";
+export { default as ArticleBuffer } from "./skeleton/ArticleBuffer";

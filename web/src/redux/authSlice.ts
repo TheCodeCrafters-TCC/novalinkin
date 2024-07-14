@@ -9,6 +9,7 @@ import {
 } from "./thunks/auth";
 import { onToast } from "@/lib/components/ToastContainer";
 import { jwtDecode } from "jwt-decode";
+import { updateCurrentUser } from "./thunks/user";
 
 const initialState: AuthStateProps = {
   token: global?.localStorage?.getItem("token") || "",
@@ -31,6 +32,8 @@ const initialState: AuthStateProps = {
   verifying_mail_status: "",
   req_res_error: "",
   req_reset_status: "",
+  updating_status: "",
+  updating_error: "",
 };
 
 const AuthSlice = createSlice({
@@ -184,6 +187,36 @@ const AuthSlice = createSlice({
         req_reset_status: "failed",
       };
     });
+    // builder.addCase(updateCurrentUser.pending, (state) => {
+    //   return { ...state, updating_status: "pending" };
+    // });
+    // builder.addCase(updateCurrentUser.fulfilled, (state:any, action) => {
+    //   onToast("success", "Profile updated");
+    //   const token = action.payload?.token;
+    //   global?.localStorage?.setItem("token", token);
+    //   const user: UserType = jwtDecode(token);
+    //   return {
+    //     ...state,
+    //     token: token,
+    //     firstName: user.firstName,
+    //     lastName: user.lastName,
+    //     email: user.email,
+    //     isVerified: user.isVerified,
+    //     userProfile: user.userProfile,
+    //     userId: user.userId,
+    //     hasVerified_email: user.hasVerified_email,
+    //     slug: user.slug,
+    //     updating_status: "successful",
+    //     userLoaded: true,
+    //   };
+    // });
+    // builder.addCase(updateCurrentUser.rejected, (state, action) => {
+    //   return {
+    //     ...state,
+    //     updating_error: action.payload,
+    //     updating_status: "failed",
+    //   };
+    // });
   },
 });
 

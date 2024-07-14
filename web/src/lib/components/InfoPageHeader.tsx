@@ -17,6 +17,7 @@ interface HeaderProps {
   label?: string | any;
   hasAdd?: boolean;
   hasBinIcon?: boolean;
+  hasSearch?: boolean;
   addActionClick?: () => void;
 }
 
@@ -26,6 +27,7 @@ const InfoPageHeader: React.FC<HeaderProps> = ({
   hasAdd,
   hasBinIcon,
   addActionClick,
+  hasSearch,
 }) => {
   const router = useRouter();
   const { Onsearch } = useMobileSearch();
@@ -40,7 +42,7 @@ const InfoPageHeader: React.FC<HeaderProps> = ({
         {label && <p className={poppinsSemibold.className}>{label}</p>}
       </Wrap>
       <AsycnAction>
-        <IoSearch size={25} onClick={Onsearch} />
+        {hasSearch && <IoSearch size={25} onClick={Onsearch} />}
         {hasAdd && <IoMdAdd size={26} onClick={addActionClick} />}
         {filter && isUser && <VscSettings size={25} />}
         {hasBinIcon && (

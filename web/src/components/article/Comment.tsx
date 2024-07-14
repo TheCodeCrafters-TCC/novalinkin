@@ -4,67 +4,67 @@ import React, { useState } from "react";
 import { HiDotsVertical } from "react-icons/hi";
 import { MdVerified } from "react-icons/md";
 import styled from "styled-components";
-import ActionBar from "./ActionBar";
 import { Divider } from "@/lib";
-import Menu from "./Menu";
 import { formatTimestamp } from "@/lib/utils";
 import { useRouter } from "next/router";
-import Comments from "../modals/Comments";
+import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
+import { likeComment } from "@/redux/thunks/article";
 
-export interface ArticleProps {
-  article: ArticleType;
+interface CommentProps {
+  comment: CommentType;
 }
 
-const Item = ({ article }: ArticleProps) => {
+const Comment = ({ comment }: CommentProps) => {
   const [fullImage, setFullImage]: any = useState(null);
   const [view, setView] = useState(false);
-  const [openComment, setOpenComment] = useState(false);
   const router = useRouter();
-  const [openMenu, setOpenMenu] = useState(false);
+  const userId = useAppSelector((state) => state.auth.userId);
+  const hasLiked = comment.likes.includes(userId);
+  const dispatch = useAppDispatch();
+  function like() {
+    dispatch(likeComment({ userId, commentId: comment._id }));
+  }
   function viewFullWidth(img: any) {
     setView(true);
     setFullImage(img?.url);
   }
-  function openmenu(e: React.MouseEvent) {
-    setOpenMenu(!openMenu);
-    e.stopPropagation();
-  }
+
   return (
-    <ArticleItem onClick={() => setOpenMenu(false)}>
+    <ArticleItem>
       <ArticleHeaderWrap>
         <ArticleHeader
-          onClick={() => router.push(`/profile/${article.slugName}`)}
+          onClick={() => router.push(`/profile/${comment.slugName}`)}
         >
           <ArticleUser
             width={45}
             height={45}
-            src={article?.userProfile}
+            src={comment?.userProfile}
             alt="user"
             priority
           />
           <ArticleUserInfo>
-            <p>{article.userName}</p>
+            <p>{comment.userName}</p>
             <span className={`__timestamp ${poppins.className}`}>
-              {formatTimestamp(article.createdAt)}
+              {formatTimestamp(comment.createdAt)}
             </span>
           </ArticleUserInfo>
-          {article.isVerified && (
+          {comment.isVerified && (
             <MdVerified size={18} color={colors.primaryColor} />
           )}
         </ArticleHeader>
-        <HiDotsVertical size={20} onClick={openmenu} />
-        {openMenu && <Menu setIsOpen={setOpenMenu} article={article} />}
+        <HiDotsVertical size={20} />
       </ArticleHeaderWrap>
       <Divider />
-      <ArticleWrap onClick={() => router.push(`/article/${article._id}`)}>
-        <p className={poppinsNormal.className}>{article.desc}</p>
-        {article.image && (
+      <ArticleWrap>
+        <p className={poppinsNormal.className}>{comment.desc}</p>
+        {comment.image && (
           <>
             <ImagesWrap>
-              {article.image.map((img: any, index) => (
+              {comment.image.map((img: any, index) => (
                 <ArticleImg
                   className={
-                    article.image.length < 2
+                    comment.image.length < 2
                       ? "__full"
                       : index === 0
                       ? "first fit"
@@ -82,7 +82,10 @@ const Item = ({ article }: ArticleProps) => {
             </ImagesWrap>
           </>
         )}
-        <ActionBar article={article} OpenComment={() => setOpenComment(true)} />
+        <StyledClick onClick={like}>
+          {hasLiked ? <IoMdHeart size={18} /> : <IoMdHeartEmpty size={18} />}
+          <p>{comment.likes.length}</p>
+        </StyledClick>
       </ArticleWrap>
       <Divider />
       {view && (
@@ -94,14 +97,11 @@ const Item = ({ article }: ArticleProps) => {
           />
         </ImageView>
       )}
-      {openComment && (
-        <Comments article={article} onClose={() => setOpenComment(false)} />
-      )}
     </ArticleItem>
   );
 };
 
-export default Item;
+export default Comment;
 const ArticleItem = styled.div`
   display: flex;
   width: 100%;
@@ -218,7 +218,7 @@ const ImageView = styled.div`
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 190;
+  z-index: 200;
   left: 0;
   top: 0;
   cursor: pointer;
@@ -235,5 +235,21 @@ const ImageView = styled.div`
     bottom: 3rem;
     z-index: 200;
     cursor: pointer;
+  }
+`;
+
+const StyledClick = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: ${colors.primaryRed};
+  padding: 5px;
+  margin-left: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
+  p {
+    font-size: 11px;
   }
 `;

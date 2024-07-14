@@ -93,9 +93,8 @@ const userSlice = createSlice({
     });
     builder.addCase(updateCurrentUser.fulfilled, (state, action) => {
       onToast("success", "Profile updated");
-      const token = action.payload?.token;
-      // set authState
-      global?.localStorage?.setItem("token", token);
+      const token = action.payload.token;
+      global.localStorage?.setItem("token", token);
       return {
         ...state,
         updating_status: "successful",
@@ -180,10 +179,11 @@ const userSlice = createSlice({
     });
     builder.addCase(updateCurrentUserProfile.fulfilled, (state, action) => {
       onToast("success", "Profile updated");
+      global.localStorage?.setItem("token", action.payload.token);
       return {
         ...state,
         updating_profile_status: "successful",
-        currentUser: action.payload,
+        currentUser: action.payload.user,
       };
     });
     builder.addCase(updateCurrentUserProfile.rejected, (state, action) => {

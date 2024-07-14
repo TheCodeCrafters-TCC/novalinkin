@@ -28,3 +28,16 @@ export async function getCurrentReq({
   );
   return response?.data;
 }
+
+export async function getUserCollections(userId: string) {
+  const photos = await axios.get(
+    `${DEV_URL}/article/user/collections/${userId}`
+  );
+  return photos.data;
+}
+export async function getUserArticles(userId: string) {
+  const articles = await axios.get(
+    `${DEV_URL}/article/user/articles/${userId}`
+  );
+  return articles.data;
+}

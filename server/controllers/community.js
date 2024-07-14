@@ -57,9 +57,11 @@ export const deleteCommunity = async (req, res) => {
       return res.status(403).json("Unauthorized action");
     } else {
       await Cloud.uploader.destroy(Community.communityProfile?.public_id);
-      await user.updateOne({ $pull: { community: Community } }, { new: true });
-      user.save();
-
+      await UserModel.findByIdAndUpdate(
+        ownerId,
+        { $pull: { community: Community } },
+        { new: true }
+      );
       await Community.deleteOne();
 
       res.status(200).json({ message: "Community deleted", data: Community });
@@ -142,14 +144,14 @@ export const joinCommunity = async (req, res) => {
     // Reject request if option is invite only /
     if (community.joinOption === "Open") {
       if (!community.members.includes(userId)) {
-        await community.updateOne(
+        const updatedCommunity = await CommunityModel.findByIdAndUpdate(
+          communityId,
           { $push: { members: userId } },
           { new: true }
         );
-        await community.save();
         res
           .status(200)
-          .json({ message: "You're now a member", data: community });
+          .json({ message: "You're now a member", data: updatedCommunity });
       } else return res.status(403).json("You're already a memeber");
     } else if (community.joinOption === "Request to join") {
       const creator = await UserModel.findById(community.ownerId);
@@ -161,7 +163,7 @@ export const joinCommunity = async (req, res) => {
       const notifyAction = new NotificationModel({
         Image: user.userProfile,
         header: `You have a new request`,
-        body: `${user.firstName} ${user.lastName} has shown interest in becoming a member of your community.`,
+        body: `<strong>${user.firstName} ${user.lastName}</strong> has shown interest in becoming a member of your community.`,
         slugName: community.communitySlug,
         ownerId: creator._id,
         reactId: userId,
@@ -169,14 +171,15 @@ export const joinCommunity = async (req, res) => {
       });
       const newNotification = await notifyAction.save();
       const newReq = await sendRequest.save();
-      await community.updateOne(
+      const updatedCommunity = await CommunityModel.findByIdAndUpdate(
+        communityId,
         { $push: { joinRequest: newReq } },
         { new: true }
       );
       await creator.updateOne({ $push: { notifications: newNotification } });
       res
         .status(200)
-        .json({ message: "You request has been sent", data: community });
+        .json({ message: "You request has been sent", data: updatedCommunity });
     } else {
       return res.status(403).json("Invitation is required");
     }
@@ -192,9 +195,13 @@ export const leaveCommunity = async (req, res) => {
     const community = await CommunityModel.findById(communityId);
     if (!community) return res.status(404).json("Community not found");
     if (community.members.includes(userId)) {
-      await community.updateOne({ $pull: { members: userId } }, { new: true });
-      await community.save();
-      res.status(200).json(community);
+      const updatedCommunity = await CommunityModel.findByIdAndUpdate(
+        communityId,
+        { $pull: { members: userId } },
+        { new: true }
+      );
+
+      res.status(200).json(updatedCommunity);
     } else return res.status(409).json("You're not a member");
   } catch (error) {
     console.log(error.message);
@@ -219,7 +226,7 @@ export const acceptCommunityReq = async (req, res) => {
       const notifyAction = new NotificationModel({
         Image: community.communityProfile?.url,
         header: `Welcome to the Community!`,
-        body: `Congratulations! Your request to join ${community.communityName} has been accepted. We’re excited to have you with us. Explore, connect, and contribute!`,
+        body: `Congratulations! Your request to join <strong>${community.communityName}</strong> has been accepted. We’re excited to have you with us. Explore, connect, and contribute!`,
         slugName: community.communitySlug,
         ownerId: user._id,
         reactId: ownerId,
@@ -227,13 +234,16 @@ export const acceptCommunityReq = async (req, res) => {
       });
       const newNotification = await notifyAction.save();
       request.status = "Accepted";
-      await request.save();
-      await community.updateOne(
+      const updatedRequest = await request.save();
+      const updatedCommunity = await CommunityModel.findByIdAndUpdate(
+        communityId,
         { $push: { members: request.connectionRequest } },
         { new: true }
       );
       await user.updateOne({ $push: { notifications: newNotification } });
-      res.status(200).json({ community, request });
+      res
+        .status(200)
+        .json({ community: updatedCommunity, request: updatedRequest });
     }
   } catch (error) {
     console.log(error.message);
@@ -257,7 +267,7 @@ export const declineCommunityReq = async (req, res) => {
       const notifyAction = new NotificationModel({
         Image: community.communityProfile?.url,
         header: `Join Request Declined😢`,
-        body: `We're sorry to inform you that your request to join ${community.communityName} has been declined. We encourage you to explore other communities that may suit your interests.`,
+        body: `We're sorry to inform you that your request to join <strong>${community.communityName}</strong> has been declined. We encourage you to explore other communities that may suit your interests.`,
         slugName: community.communitySlug,
         ownerId: user._id,
         reactId: ownerId,
@@ -265,14 +275,17 @@ export const declineCommunityReq = async (req, res) => {
       });
       const newNotification = await notifyAction.save();
       request.status = "Declined";
-      await request.save();
-      await community.updateOne(
-        { $pull: { joinRequest: request } },
+      const updatedRequest = await request.save();
+      const updatedCommunity = await CommunityModel.findByIdAndUpdate(
+        communityId,
+        { $push: { members: request.connectionRequest } },
         { new: true }
       );
       await user.updateOne({ $push: { notifications: newNotification } });
       await request.deleteOne();
-      res.status(200).json({ community, request });
+      res
+        .status(200)
+        .json({ community: updatedCommunity, request: updatedRequest });
     }
   } catch (error) {
     console.log(error.message);

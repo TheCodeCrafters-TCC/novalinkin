@@ -21,7 +21,7 @@ export const StyledNav = styled.nav`
   /* border-bottom: 1px solid ${colors.neutral300}; */
   padding: 2rem;
   justify-content: space-between;
-  z-index: 100;
+  z-index: 250;
 
   @media screen and (max-width: ${getDevice("md")}) {
     display: none;
@@ -332,6 +332,7 @@ export const FeedWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   @media screen and (max-width: ${getDevice("dxxl")}) {
     width: 650px;
@@ -1024,14 +1025,16 @@ export const ActionsWrap = styled.div`
   padding: 1rem;
 `;
 
-export const ActionInput = styled.textarea`
+export const ActionInput = styled.input`
   width: 100%;
-  height: 120px;
+  height: 80px;
   padding: 1rem;
   border-radius: 11px;
   outline: none;
   border: none;
+  font-size: 16px;
   background: ${({ theme }) => theme.colors.search};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const IconsWrap = styled.div`

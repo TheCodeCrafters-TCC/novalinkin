@@ -53,6 +53,10 @@ const colors = {
   green400: "rgb(74 222 128)",
   green500: "rgb(34 197 94)",
   green600: "rgb(22 163 74)",
+  blue200: "rgb(191 219 254)",
+  blue300: "rgb(147 197 253)",
+  blue400: "rgb(96 165 250)",
+  blue500: "rgb(59 130 246)",
 };
 
 export const IconWrap = styled.div`
@@ -241,6 +245,9 @@ export const lightTheme = {
   buffer_img: colors.sk_img_light,
   bodyText: colors.primaryGray,
   dropBg: "rgba(255, 255, 255, 0.6)",
+  timestamps: colors.primaryGray,
+  divider: "white",
+  header: " rgb(255,2555,255,0.5)",
 };
 export const darkTheme = {
   primary: colors.primaryColor,
@@ -257,6 +264,9 @@ export const darkTheme = {
   buffer_img: colors.sk_img_dark,
   bodyText: colors.darkGray,
   dropBg: "rgb(0, 0, 0, 0.5)",
+  timestamps: colors.neutral600,
+  divider: "black",
+  header: "rgb(0, 0, 0, 0.5)",
 };
 
 export const FlexBetween = styled.div`
