@@ -8,7 +8,7 @@ import ActionBar from "./ActionBar";
 import { Divider } from "@/lib";
 import Menu from "./Menu";
 import { formatTimestamp } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Comments from "../modals/Comments";
 
 export interface ArticleProps {
