@@ -22,8 +22,10 @@ const ImageContainer = ({
   return (
     <ImagesWrap>
       {images.map((img: any, index) => (
-        <FlexItem className={inModel && images.length < 2 ? "__full_m" : ""}>
-          {/* // <FlexItem> */}
+        <FlexItem
+          key={index}
+          className={inModel && images.length < 2 ? "__full_m" : ""}
+        >
           <IoClose size={35} className="close" onClick={removeAction} />
           <ArticleImg
             //   className={images.length < 2? "__full": index === 0? "first fit": "last fit"}
