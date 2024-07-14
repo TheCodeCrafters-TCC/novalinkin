@@ -11,6 +11,7 @@ import { useAppSelector } from "@/hooks/state";
 import { ToasterProvider } from "@/hooks/useToast";
 import { ToastContainer } from "@/lib";
 import { store } from "@/redux/store";
+import { getArticles } from "@/redux/thunks/article";
 import { getCommunities } from "@/redux/thunks/community";
 import { getAllUsers } from "@/redux/thunks/user";
 import { darkTheme, lightTheme, GlobalStyle } from "@/styles/global";
@@ -21,23 +22,22 @@ import { ThemeProvider } from "styled-components";
 const ThemedApp = ({ Component, pageProps, router }: AppProps) => {
   const systemState = useAppSelector((state) => state.system);
   const userState = useAppSelector((state) => state.user);
+  const articleState = useAppSelector((state) => state.article);
   const currentTheme: string = systemState.theme;
   const isReturningUser = systemState.isReturningUser;
   const isfetching = userState.fetching_status === "pending";
+  const isfetching_articles = articleState.fetching_status === "pending";
   const user = useAppSelector((state) => state.auth);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Make sure all data are available before returning
     if (isReturningUser === true) {
-      if (isfetching) {
+      if (isfetching || isfetching_articles) {
         setIsLoading(true);
-        //  Dispatch stores here
-        // store.dispatch(getAllUsers());
-        // store.dispatch(getCommunities)
       } else setIsLoading(false);
     } else {
-      //  nahh
+      //naah
     }
   }, [isReturningUser]);
 

@@ -144,8 +144,6 @@ const getUserRequests = async (req, res) => {
       .find({ requestId: userId })
       .sort({ createdAt: -1 });
     const response = requests.filter((r) => r.status === "Pending");
-    if (!requests || requests?.length < 1)
-      return res.status(404).json("You have no request!");
     res.status(200).json(response);
   } catch (error) {
     console.log({ error: error.message });

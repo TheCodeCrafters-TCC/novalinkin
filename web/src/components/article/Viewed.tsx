@@ -88,4 +88,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 3rem;
+
+  @media screen and (max-width: ${getDevice("md")}) {
+    margin-top: 0;
+  }
 `;

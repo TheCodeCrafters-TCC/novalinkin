@@ -20,7 +20,9 @@ const Article = () => {
   const width = currentWidth <= 450 ? "100%" : "550px" || "auto";
 
   useEffect(() => {
-    dispatch(getArticle({ articleId, userId }));
+    if (router.isReady) {
+      dispatch(getArticle({ articleId, userId }));
+    }
   }, [articleId]);
   return (
     <>

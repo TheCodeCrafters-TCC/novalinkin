@@ -126,6 +126,8 @@ const Container: React.FC<ContainerProps> = ({ hasNavBack, header }) => {
         <StyledConnectWrap>
           {netError ? (
             <NetworkDown />
+          ) : MapUsers.length <= 1 ? (
+            <Empty label="There's no one to connect with" />
           ) : notFound ? (
             <Not_Found_404 style={{ height: "70vh" }} />
           ) : (

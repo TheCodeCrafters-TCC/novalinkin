@@ -35,7 +35,10 @@ const Empty: React.FC<EmptyProps> = ({
       <EmptyImage src={NoRoom} alt="ALT" priority />
       <ActionElement>
         {header && <h2 className={poppins.className}>{header}</h2>}
-        <p className={poppins.className}>{label}</p>
+        <p
+          className={poppins.className}
+          dangerouslySetInnerHTML={{ __html: label }}
+        />
         {clickAble && (
           <Button
             label={clickLabel}
