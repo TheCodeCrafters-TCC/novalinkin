@@ -1,5 +1,5 @@
 import NotificationModel from "../models/Notification.js";
-import connectModel from "../models/request.js";
+import connectModel from "../models/Request.js";
 import UserModel from "../models/User.js";
 
 export const findUserRequest = async (req, res) => {

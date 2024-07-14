@@ -1,6 +1,6 @@
 import NotificationModel from "../models/Notification.js";
 import UserModel from "../models/User.js";
-import connectModel from "../models/request.js";
+import connectModel from "../models/Request.js";
 import Cloud from "../utils/cloudinary.js";
 import genAuthToken from "../utils/genAuthToken.js";
 import { exc, slugExc, toSel } from "../utils/select.js";
