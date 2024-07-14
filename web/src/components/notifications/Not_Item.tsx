@@ -49,8 +49,8 @@ const Not_Item: React.FC<NotificationProps> = ({
   };
 
   const currentWidth = global?.window?.innerWidth;
-  const xlTruncate = header.length > 38 ? header.slice(0, 38) + "..." : header;
-  const mdTruncate = header.length > 33 ? header.slice(0, 33) + "..." : header;
+  const xlTruncate = header.length > 70 ? header.slice(0, 70) + "..." : header;
+  const mdTruncate = header.length > 60 ? header.slice(0, 60) + "..." : header;
   const truncateBody = body.length > 88 ? body.slice(0, 88) + "..." : body;
   const truncateHeader = currentWidth <= 450 ? mdTruncate : xlTruncate;
   const currentTheme = useAppSelector((state) => state.system.theme);
@@ -87,9 +87,17 @@ const Not_Item: React.FC<NotificationProps> = ({
         </SpaceBetween>
         <SecondLayer>
           <LayerOne>
-            <p className={`${poppins.className} __header`}>{truncateHeader}</p>
+            {/* <p className={`${poppins.className} __header`}>{truncateHeader}</p> */}
+            <p
+              dangerouslySetInnerHTML={{ __html: truncateHeader }}
+              className={`${poppinsNormal.className} __header`}
+            />
           </LayerOne>
-          <p className={`__body ${poppinsNormal.className}`}>{truncateBody}</p>
+          {/* <p className={`__body ${poppinsNormal.className}`}>{truncateBody}</p> */}
+          <p
+            className={`__body ${poppinsNormal.className}`}
+            dangerouslySetInnerHTML={{ __html: truncateBody }}
+          />
         </SecondLayer>
       </ContentWrapper>
     </Container>
@@ -118,7 +126,7 @@ const Container = styled.div`
 
   .__time {
     font-size: 15px;
-    color: ${colors.neutral600};
+    color: ${({ theme }) => theme.colors.timestamps};
   }
 `;
 
@@ -164,4 +172,5 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   position: relative;
   gap: 10px;
+  width: 100%;
 `;

@@ -167,7 +167,8 @@ const updateUserProfile = async (req, res) => {
           { userProfile: uploadRes.url },
           { new: true }
         );
-        return res.status(200).json(user);
+        const token = genAuthToken(user);
+        return res.status(200).json({ user, token });
       } else {
         console.log("Something went wrong with the image");
         return res.status(404).json("Image not found");

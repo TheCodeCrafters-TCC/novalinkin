@@ -1,4 +1,5 @@
 import { differenceInDays, format, formatDistanceToNow } from "date-fns";
+import { onToast } from "../components/ToastContainer";
 
 export function formatDate(createdAt: Date) {
   if (createdAt) {
@@ -28,5 +29,34 @@ export function formatTimestamp(createdAt: Date | string, form_at?: string) {
       .replace(/^about/, "")
       .replace(/hours?/, "hr")
       .replace(/ago?/, "");
+  }
+}
+
+export function copyToClip(item: string | any, extra?: string) {
+  navigator.clipboard
+    .writeText(item)
+    .then(() => {
+      onToast("info", `${extra ? extra : ""} Copied!`);
+    })
+    .catch((err) => {
+      onToast("error", "Failed to copy!");
+    });
+}
+
+export async function handleShare(title: string, text: string, url: string) {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title,
+        text,
+        url,
+      });
+      console.log("Content shared successfully");
+      onToast("info", "You shared article");
+    } catch (error) {
+      console.error("Error sharing content: ", error);
+    }
+  } else {
+    console.error("Web Share API not supported in this browser");
   }
 }

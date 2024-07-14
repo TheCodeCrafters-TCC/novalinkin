@@ -3,15 +3,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Title from "./Title";
 import { ActionButtonProps } from "@/types";
-import { IoMdHeart } from "react-icons/io";
+import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { CgComment } from "react-icons/cg";
 import { MdInsertChart } from "react-icons/md";
 import { FaStar } from "react-icons/fa6";
 
-const getIcon = (variant: ActionButtonProps["variant"]) => {
+const getIcon = (variant: ActionButtonProps["variant"], isBold?: boolean) => {
   switch (variant) {
     case "like":
-      return { icon: <IoMdHeart size={18} />, color: colors.primaryRed };
+      return {
+        icon: isBold ? <IoMdHeart size={18} /> : <IoMdHeartEmpty size={18} />,
+        color: colors.primaryRed,
+      };
     case "comments":
       return { icon: <CgComment size={18} />, color: colors.primaryColor };
     case "views":
@@ -29,6 +32,7 @@ const ActionButon: React.FC<ActionButtonProps> = ({
   onActionClick,
   title,
   variant,
+  isBold,
 }) => {
   const [viewTitle, setViewTitle] = useState(false);
 
@@ -48,7 +52,7 @@ const ActionButon: React.FC<ActionButtonProps> = ({
         onMouseEnter={onView}
         onMouseLeave={outView}
       >
-        {getIcon(variant)?.icon}
+        {getIcon(variant, isBold)?.icon}
         <p>{data}</p>
       </StyledClick>
     </IconWrap>
@@ -69,22 +73,3 @@ const StyledClick = styled.div`
     font-size: 11px;
   }
 `;
-
-{
-  /* <StyledClick style={{ color: colors.primaryRed }}>
-<IoMdHeart size={18} />
-<p>{article.likes}</p>
-</StyledClick>
-<StyledClick style={{ color: colors.primaryColor }}>
-<CgComment size={18} />
-<p>{article.comment}</p>
-</StyledClick>
-<StyledClick>
-<MdInsertChart size={18} />
-<p>{article.views}</p>
-</StyledClick>
-<StyledClick style={{ color: colors.star500 }}>
-<FaStar size={18} />
-<p>{article.stars}</p>
-</StyledClick> */
-}

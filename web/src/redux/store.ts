@@ -4,14 +4,16 @@ import authReducer from "./authSlice";
 import userReducer from "./userSlice";
 import notificationReducer from "./notificationSlice";
 import communityReducer from "./communitySlice";
+import articleReducer from "./articleSlice";
 
 export const store = configureStore({
   reducer: {
-    system: systemReducer,
     auth: authReducer,
+    article: articleReducer,
     user: userReducer,
-    notifications: notificationReducer,
     community: communityReducer,
+    notifications: notificationReducer,
+    system: systemReducer,
   },
 });
 

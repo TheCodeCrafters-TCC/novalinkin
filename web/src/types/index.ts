@@ -66,6 +66,7 @@ export type ActionButtonProps = {
   title: string;
   onActionClick?: () => void;
   variant: "like" | "comments" | "views" | "star";
+  isBold?: boolean;
 };
 
 export type TitleProps = {
@@ -88,6 +89,8 @@ export type AuthStateProps = {
   verifying_mail_status: "pending" | "successful" | "failed" | "";
   verifying_mail_error: string | any;
   req_reset_status: "pending" | "successful" | "failed" | "";
+  updating_status: StatusType;
+  updating_error: string | any;
   req_res_error: string | any;
   registerError?: string | any;
   userProfile: string;

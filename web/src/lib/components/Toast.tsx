@@ -96,9 +96,9 @@ const Toast: React.FC<ToastType> = ({
         </InfoWrap>
         <IoClose size={25} onClick={endToast} className="close" />
       </IToast>
-      <div className="loadToast" style={{ background: getColor(variant) }}>
+      {/* <div className="loadToast" style={{ background: getColor(variant) }}>
         .
-      </div>
+      </div> */}
     </StyledToast>
   );
 };

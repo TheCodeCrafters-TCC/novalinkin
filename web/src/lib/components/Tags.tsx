@@ -9,8 +9,12 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { poppins, poppinsSemibold } from "@/styles/global";
 import { tags } from "@/constants/tags";
 
-const Tags = () => {
-  const [selectedTag, setSelectedTag] = useState("");
+interface TagProps {
+  selectedTag: string;
+  setSelectedTag: any;
+}
+
+const Tags = ({ setSelectedTag, selectedTag }: TagProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function CloseOptions(tag: any) {

@@ -1,13 +1,14 @@
-import { articlesdata } from "@/data/article";
 import { poppins } from "@/styles/global";
 import React from "react";
 import styled from "styled-components";
 import AResultItem from "./AResultItem";
 import { useRouter } from "next/router";
 import { SearchProps } from "./interface";
+import { useAppSelector } from "@/hooks/state";
 
 const ArticlesResult: React.FC<SearchProps> = ({ searchQuery }) => {
   const router = useRouter();
+  const articlesdata = useAppSelector((state) => state.article.articles);
 
   const filteredArticles = articlesdata.filter((art) => {
     const desc = art.desc.toLowerCase();

@@ -3,6 +3,7 @@ import userRoutes from "./userRoutes.js";
 import notificationRoutes from "./notification.js";
 import ReqRoutes from "./request.js";
 import CommunityRoute from "./community.js";
+import ArticlesRoute from "./article.js";
 
 export {
   authRoutes,
@@ -10,4 +11,5 @@ export {
   notificationRoutes,
   ReqRoutes,
   CommunityRoute,
+  ArticlesRoute,
 };

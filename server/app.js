@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import {
+  ArticlesRoute,
   authRoutes,
   CommunityRoute,
   notificationRoutes,
@@ -28,6 +29,7 @@ connectifyServer.use("/api/v1/users", userRoutes);
 connectifyServer.use("/api/v1/notification", notificationRoutes);
 connectifyServer.use("/api/v1/request", ReqRoutes);
 connectifyServer.use("/api/v1/community", CommunityRoute);
+connectifyServer.use("/api/v1/article", ArticlesRoute);
 
 // error handling middleware
 connectifyServer.use(errorHandlingMiddleware);

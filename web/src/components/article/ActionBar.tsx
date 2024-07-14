@@ -1,18 +1,46 @@
 import { ActionButton } from "@/lib";
 import React from "react";
 import styled from "styled-components";
+import { ArticleProps } from "./Item";
+import { useAppDispatch, useAppSelector } from "@/hooks/state";
+import { likeArticle, likeCurrentArticle } from "@/redux/thunks/article";
+import { useRouter } from "next/router";
 
-const ActionBar = ({ article }: any) => {
+interface ActionBarProps {
+  article: ArticleType;
+  OpenComment: any;
+}
+
+const ActionBar = ({ article, OpenComment }: ActionBarProps) => {
+  const userId = useAppSelector((state) => state.auth.userId);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const isCurrent = router.pathname === "/article/[articleId]";
+
+  function like() {
+    if (isCurrent) {
+      dispatch(likeCurrentArticle({ userId, articleId: article._id }));
+    } else {
+      dispatch(likeArticle({ userId, articleId: article._id }));
+    }
+  }
   return (
-    <StyledAction>
-      <ActionButton data={article.likes} title="Likes" variant="like" />
+    <StyledAction onClick={(e) => e.stopPropagation()}>
       <ActionButton
-        data={article.comment}
+        data={article.likes.length}
+        title="Likes"
+        isBold={article.likes.includes(userId)}
+        variant="like"
+        onActionClick={like}
+      />
+      <ActionButton
+        data={article.comments.length}
         title="Comments"
         variant="comments"
+        onActionClick={OpenComment}
       />
-      <ActionButton data={article.views} title="Views" variant="views" />
-      <ActionButton data={article.stars} title="Stars" variant="star" />
+      <ActionButton data={article.views.length} title="Views" variant="views" />
+      <ActionButton data={article.stars.length} title="Stars" variant="star" />
     </StyledAction>
   );
 };
