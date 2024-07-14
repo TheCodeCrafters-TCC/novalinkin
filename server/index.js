@@ -1,4 +1,6 @@
-import { PORT } from "./config/keys.js"
-import connectifyServer from "./app.js"
+import { PORT } from "./config/keys.js";
+import connectifyServer from "./app.js";
 
-connectifyServer.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+connectifyServer.listen(PORT || 6000, () =>
+  console.log(`Server running on http://localhost:${PORT}`)
+);
