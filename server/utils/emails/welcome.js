@@ -4,7 +4,7 @@ import fs from "fs";
 import ejs from "ejs";
 import { fileURLToPath } from "url";
 import path from "path";
-import { userOne_mail_slurp } from "./users.js";
+import { userOne_gmail, userOne_mail_slurp } from "./users.js";
 
 dotenv.config();
 
@@ -22,7 +22,7 @@ const welcomeUser = async ({ emailTo, subject, name }) => {
   const to = emailTo;
   const data = { name: name };
   const welcomeTem = ejs.render(template, data);
-  const transporter = nodemailer.createTransport(userOne_mail_slurp);
+  const transporter = nodemailer.createTransport(userOne_gmail);
 
   const message = {
     to,

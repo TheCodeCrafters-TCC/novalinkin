@@ -1,8 +1,8 @@
 import nodemailer from "nodemailer";
-import { userTwo_gmail } from "./emails/users.js";
+import { userOne_gmail, userTwo_gmail } from "./emails/users.js";
 
 const sendEmail = async ({ emailTo, subject, code, content }) => {
-  const transporter = nodemailer.createTransport(userTwo_gmail);
+  const transporter = nodemailer.createTransport(userOne_gmail);
 
   const message = {
     to: emailTo,
