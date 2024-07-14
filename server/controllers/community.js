@@ -1,6 +1,6 @@
 import CommunityModel from "../models/Community.js";
 import NotificationModel from "../models/Notification.js";
-import connectModel from "../models/request.js";
+import connectModel from "../models/Request.js";
 import UserModel from "../models/User.js";
 import Cloud from "../utils/cloudinary.js";
 import { slugExc } from "../utils/select.js";
