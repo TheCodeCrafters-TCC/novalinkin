@@ -16,7 +16,7 @@ const Article = () => {
   const isLoading = articleState.fetching_current_status === "pending";
   const netError = articleState.fetching_current_status === "failed";
   const notFound = articleState.fetching_current_error === "Article not found";
-  const currentWidth = window.innerWidth;
+  const currentWidth = global?.window.innerWidth;
   const width = currentWidth <= 450 ? "100%" : "550px";
 
   useEffect(() => {
