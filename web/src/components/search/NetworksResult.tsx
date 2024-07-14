@@ -13,7 +13,7 @@ const NetworksResult: React.FC<SearchProps> = ({ searchQuery }) => {
     const queried = searchQuery?.toLowerCase();
     return queried && Name.includes(queried);
   });
-  const notmatch = filteredNetwork.length < 1;
+  const notmatch = searchQuery && filteredNetwork.length < 1;
   return (
     <ResultContainer>
       {/* Recent search here */}

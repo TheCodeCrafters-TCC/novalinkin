@@ -16,7 +16,7 @@ const ArticlesResult: React.FC<SearchProps> = ({ searchQuery }) => {
     const queried = searchQuery?.toLowerCase();
     return queried && desc.includes(queried as string);
   });
-  const notmatch = filteredArticles.length < 1;
+  const notmatch = searchQuery && filteredArticles.length < 1;
 
   return (
     <ResultContainer>
