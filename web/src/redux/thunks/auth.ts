@@ -1,4 +1,4 @@
-import { DEV_URL } from "@/hooks/url";
+import { DEV_URL, PRO_URL } from "@/hooks/url";
 import { onToast } from "@/lib/components/ToastContainer";
 import { FormProps } from "@/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
@@ -8,7 +8,7 @@ export const LoginUser = createAsyncThunk(
   "auth/login",
   async (form: FormProps, { rejectWithValue }) => {
     try {
-      const token = await axios.post(`${DEV_URL}/auth/sign-in`, {
+      const token = await axios.post(`${PRO_URL}/auth/sign-in`, {
         email: form.email,
         password: form.password,
       });
@@ -30,7 +30,7 @@ export const SignUp = createAsyncThunk(
   "auth/sign-up",
   async ({ form, image }: Payload, { rejectWithValue }) => {
     try {
-      const token = await axios.post(`${DEV_URL}/auth/sign-up`, {
+      const token = await axios.post(`${PRO_URL}/auth/sign-up`, {
         firstName: form.firstName,
         lastName: form.lastName,
         email: form.email,
@@ -51,7 +51,7 @@ export const ResendOTP = createAsyncThunk(
   "auth/resend-otp",
   async (email: string, { rejectWithValue }) => {
     try {
-      const code = await axios.post(`${DEV_URL}/auth/send-verification-email`, {
+      const code = await axios.post(`${PRO_URL}/auth/send-verification-email`, {
         email,
       });
       return code?.data;
@@ -72,7 +72,7 @@ export const VerifyEmail = createAsyncThunk(
   "auth/verify-email",
   async ({ email, otp }: EProps, { rejectWithValue }) => {
     try {
-      const vmail = await axios.patch(`${DEV_URL}/auth/verify-email`, {
+      const vmail = await axios.patch(`${PRO_URL}/auth/verify-email`, {
         email: email,
         code: otp,
       });
@@ -90,7 +90,7 @@ export const ReqReset = createAsyncThunk(
   async (email: any, { rejectWithValue }) => {
     console.log("Payload:", email);
     try {
-      const reqRes = await axios.post(`${DEV_URL}/auth/forgotten-password/`, {
+      const reqRes = await axios.post(`${PRO_URL}/auth/forgotten-password/`, {
         email,
       });
       return reqRes?.data;

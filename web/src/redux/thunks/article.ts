@@ -1,4 +1,4 @@
-import { DEV_URL } from "@/hooks/url";
+import { DEV_URL, PRO_URL } from "@/hooks/url";
 import { onToast } from "@/lib/components/ToastContainer";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -21,7 +21,7 @@ export const shareArticle = createAsyncThunk(
   "article/share",
   async ({ userId, desc, image, tag }: ArticleForm, { rejectWithValue }) => {
     try {
-      const article = await axios.post(`${DEV_URL}/article/create`, {
+      const article = await axios.post(`${PRO_URL}/article/create`, {
         userId,
         desc,
         image,
@@ -40,7 +40,7 @@ export const getArticles = createAsyncThunk(
   "article/all",
   async (id, { rejectWithValue }) => {
     try {
-      const article = await axios.get(`${DEV_URL}/article/all`);
+      const article = await axios.get(`${PRO_URL}/article/all`);
       return article?.data;
     } catch (error: any) {
       onToast("error", `${error?.response?.data}`);
@@ -55,7 +55,7 @@ export const getArticle = createAsyncThunk(
   async ({ articleId, userId }: ActionProps, { rejectWithValue }) => {
     try {
       const article = await axios.get(
-        `${DEV_URL}/article/current/${articleId}/view/${userId}`
+        `${PRO_URL}/article/current/${articleId}/view/${userId}`
       );
       return article?.data;
     } catch (error: any) {
@@ -70,7 +70,7 @@ export const likeArticle = createAsyncThunk(
   "article/one/like",
   async ({ userId, articleId }: ActionProps, { rejectWithValue }) => {
     try {
-      const article = await axios.patch(`${DEV_URL}/article/one/like`, {
+      const article = await axios.patch(`${PRO_URL}/article/one/like`, {
         userId,
         articleId,
       });
@@ -87,7 +87,7 @@ export const likeCurrentArticle = createAsyncThunk(
   "article/current/like",
   async ({ userId, articleId }: ActionProps, { rejectWithValue }) => {
     try {
-      const article = await axios.patch(`${DEV_URL}/article/one/like`, {
+      const article = await axios.patch(`${PRO_URL}/article/one/like`, {
         userId,
         articleId,
       });
@@ -107,7 +107,7 @@ export const commentOnArticle = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const article = await axios.patch(`${DEV_URL}/article/one/comment`, {
+      const article = await axios.patch(`${PRO_URL}/article/one/comment`, {
         userId,
         desc,
         image,
@@ -129,7 +129,7 @@ export const commentOnCurrentArticle = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const article = await axios.patch(`${DEV_URL}/article/one/comment`, {
+      const article = await axios.patch(`${PRO_URL}/article/one/comment`, {
         userId,
         desc,
         image,
@@ -148,7 +148,7 @@ export const likeComment = createAsyncThunk(
   "article/one/comment/like",
   async ({ userId, commentId }: ActionProps, { rejectWithValue }) => {
     try {
-      const article = await axios.patch(`${DEV_URL}/article/one/comment/like`, {
+      const article = await axios.patch(`${PRO_URL}/article/one/comment/like`, {
         userId,
         commentId,
       });
@@ -166,7 +166,7 @@ export const deleteArticle = createAsyncThunk(
   async ({ userId, articleId }: ActionProps, { rejectWithValue }) => {
     try {
       const article = await axios.delete(
-        `${DEV_URL}/article/one/${userId}/delete/${articleId}`
+        `${PRO_URL}/article/one/${userId}/delete/${articleId}`
       );
       return article?.data;
     } catch (error: any) {
