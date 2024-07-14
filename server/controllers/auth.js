@@ -45,12 +45,12 @@ export const signUpController = async (req, res, next) => {
 
     const user = await User.save();
 
-    await sendEmail({
-      emailTo: user.email,
-      subject: "Verify Your NovaLinkin Account",
-      code,
-      content: "Verify Your NovaLinkin Account!",
-    });
+    // await sendEmail({
+    //   emailTo: user.email,
+    //   subject: "Verify Your NovaLinkin Account",
+    //   code,
+    //   content: "Verify Your NovaLinkin Account!",
+    // });
 
     const token = genAuthToken(user);
 

@@ -68,7 +68,7 @@ const Not_Item: React.FC<NotificationProps> = ({
     if (notifyType === "connected") {
       router.push(`/profile/${slugName}`);
     } else if (notifyType === "connect") {
-      router.push("/connect");
+      router.push(`/profile/${slugName}`);
     } else if (notifyType === "community-request") {
       router.push(`/community/${slugName}`);
     }
