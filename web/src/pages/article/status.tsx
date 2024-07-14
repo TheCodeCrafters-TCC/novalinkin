@@ -7,7 +7,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-const Article = () => {
+const Status = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { articleId } = router.query;
@@ -20,10 +20,12 @@ const Article = () => {
   const width = currentWidth <= 450 ? "100%" : "550px" || "auto";
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router.isReady && articleId) {
+      // Check if articleId is defined
       dispatch(getArticle({ articleId, userId }));
     }
-  }, [articleId]);
+  }, [router.isReady, articleId]);
+
   return (
     <>
       <Head>
@@ -51,4 +53,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default Status;

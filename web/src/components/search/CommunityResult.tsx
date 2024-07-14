@@ -13,7 +13,7 @@ const CommunityResult: React.FC<SearchProps> = ({ searchQuery }) => {
     const queried = searchQuery?.toLowerCase();
     return queried && name.includes(queried);
   });
-  const notmatch = filterResult.length < 1;
+  const notmatch = searchQuery && filterResult.length < 1;
   return (
     <ResultContainer>
       {notmatch ? (
